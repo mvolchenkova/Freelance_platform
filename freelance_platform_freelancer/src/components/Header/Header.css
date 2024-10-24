@@ -1,0 +1,17 @@
+.profileDiv{
+    display: flex;
+    flex-direction: row;
+}
+.HeaderDiv{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+.navLink{
+    padding:15px
+}
+.profileDiv{
+    display: flex;
+    gap: 10px;
+}
