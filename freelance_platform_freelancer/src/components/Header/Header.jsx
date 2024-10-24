@@ -21,7 +21,7 @@ export default function Header(){
                 <img src={userPhoto} alt="" />
                 <p>Login</p>
             </div>
-            <div>
+            <div className="headerButtonsDiv">
                 <Button className="ReadexFont" text="Start hiring" backgroundColor="rgb(255,255,255)" color="rgb(127,135,100)" fontSize="12px"/>
                 <Button className="ReadexFont" text="Find a job" backgroundColor="rgb(61,66,90)" color="rgb(255,255,255)" fontSize="12px"/>
             </div>

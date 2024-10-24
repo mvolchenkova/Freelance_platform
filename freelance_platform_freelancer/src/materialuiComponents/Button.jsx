@@ -1,5 +1,6 @@
 import { styled } from '@mui/material/styles';
 import Button from '@mui/material/Button';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward'; 
 
 const ColorButton = styled(Button)(({ backgroundColor, color, borderRadius, fontSize, padding }) => ({
   backgroundColor: backgroundColor || 'rgb(128, 0, 18)',
@@ -8,10 +9,13 @@ const ColorButton = styled(Button)(({ backgroundColor, color, borderRadius, font
   borderRadius: borderRadius || '12px', 
   fontSize: fontSize || '16px', 
   padding: padding || '13px',
+  display: 'flex', 
+  alignItems: 'center',
+  textTransform: 'none', //убрала капс
 }));
 
 export default function CustomizedButtons(props) {
-  const { text, backgroundColor, color, borderRadius, fontSize, padding } = props;
+  const { text, backgroundColor, color, borderRadius, fontSize, padding, showArrow } = props;
 
   return (
     <ColorButton 
@@ -22,7 +26,8 @@ export default function CustomizedButtons(props) {
       fontSize={fontSize} 
       padding={padding}
     >
-      {text}
+      {text} 
+      {showArrow && <ArrowForwardIcon style={{ marginLeft: '8px' }} />} 
     </ColorButton>
   );
 }
