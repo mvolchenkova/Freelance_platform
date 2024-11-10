@@ -1,0 +1,40 @@
+.worldClassText{
+    font-size: 3.875em;
+    font-weight: 600;
+    margin: 0;
+    width: 45%;
+}
+.partnersSliderNavigation{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+.sliderArrowsDiv{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    width: 25%;
+}
+.partnersMainDiv{
+    margin-top: 100px;
+}
+.partnersDiv{
+    display: flex;
+    flex-direction: row;
+    align-items:center;
+    gap:30px;
+    overflow-x: hidden;
+    padding-left: 7.5%;
+}
+.arrowsText{
+    color: rgb(61,66,90)
+}
+.logosDiv{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 100px;
+}
