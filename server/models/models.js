@@ -31,7 +31,7 @@ const Request = sequelize.define('Request',{
     idFreelancer:{type:DataTypes.BIGINT, allowNull:false}
 })
 const Transaction = sequelize.define('Transaction',{
-    idTransaction:{rtpe:DataTypes.BIGINT, primaryKey:true},
+    idTransaction:{type:DataTypes.BIGINT, primaryKey:true},
     cost:{type:DataTypes.DOUBLE, allowNull:false},
     isComplete:{type:DataTypes.BOOLEAN, allowNull:false},
     idFreelancer:{type:DataTypes.BIGINT, allowNull:false}
@@ -52,7 +52,7 @@ const Proposal = sequelize.define('Proposal',{
     description:{type:DataTypes.STRING,allowNull:false},
     isPublished:{type:DataTypes.BOOLEAN, allowNull:false},
 })
-const Category = sequelize.define('Proposal',{
+const Category = sequelize.define('Category',{
     idCategory:{type:DataTypes.BIGINT,primaryKey:true},
     nameOfCategory:{type:DataTypes.STRING,allowNull:false}
 })
@@ -86,4 +86,4 @@ Proposal.belongsTo(Customer);
 Category.hasMany(Proposal);
 Proposal.belongsTo(Category);
 
-module.exports = {Customer, Support, Stat, SavedFreelancer, Request, Transaction, Chat, Vacancie, Proposal, Category}
+module.exports =  {Customer, Support, Stat, SavedFreelancer, Request, Transaction, Chat, Vacancie, Proposal, Category}

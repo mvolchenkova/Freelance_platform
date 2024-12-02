@@ -3,7 +3,7 @@ const cors = require('cors');
 const express = require('express')
 const sequelize = require('./db.js');
 const PORT = process.env.PORT;
-const express = require('express');
+const routes = require('./routes/index.js')
 
 const app = express();
 app.use(cors());
