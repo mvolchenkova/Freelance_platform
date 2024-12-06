@@ -23,7 +23,7 @@ const Stat = sequelize.define('Stat',{
 })
 const SavedFreelancer = sequelize.define('SavedFreelancer',{
     idSavedFreelancers:{type:DataTypes.BIGINT, primaryKey:true},
-    idCustomer:{type:DataTypes.BIGINT}
+    idFreelancer:{type:DataTypes.BIGINT}
 })
 const Request = sequelize.define('Request',{
     idRequest:{type:DataTypes.BIGINT, primaryKey:true},
