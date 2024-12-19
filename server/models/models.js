@@ -80,4 +80,4 @@ Report.belongsTo(User);
 User.hasOne(Transaction);
 Transaction.belongsTo(User);
 
-module.exports =  {User, Support, Report, BannedUser, Request, Transaction, Chat, Fine, Deal, Category}
+module.exports =  {User, Support, Report, BannedUser, Transaction, Chat, Fine, Deal, Category}
