@@ -9,9 +9,9 @@ export default function Header(){
     return(
         <div className="HeaderDiv ReadexFont">
             <div>
-                <img src={HeaderLogo} alt="" />
+                <img src="/images/headerLogo.svg" alt="" />
             </div>
-            <nav cassName="navMenu">
+            <nav className="navMenu">
                 <Link to="/employers" className="navLink">Employers</Link>
                 <Link to="/candidates"className="navLink">Candidates</Link>
                 <Link to="/company"className="navLink">Company</Link>

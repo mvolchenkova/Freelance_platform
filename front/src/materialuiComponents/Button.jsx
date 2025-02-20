@@ -12,6 +12,7 @@ const ColorButton = styled(Button)(({ backgroundColor, color, borderRadius, font
   display: 'flex', 
   alignItems: 'center',
   textTransform: 'none', //убрала капс
+  width: 'fit-content'
 }));
 
 export default function CustomizedButtons(props) {
