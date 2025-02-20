@@ -1,0 +1,25 @@
+.profileDiv{
+    display: flex;
+    flex-direction: row;
+}
+.HeaderDiv{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    padding-top: 30px;
+}
+.navLink{
+    padding:15px;
+    text-decoration: none;
+    color:black;
+}
+.profileDiv{
+    display: flex;
+    gap: 10px;
+}
+.headerButtonsDiv{
+    display:flex;
+    flex-direction: row;
+    gap: 20px;
+}
