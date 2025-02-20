@@ -1,4 +1,3 @@
-const { where } = require('sequelize');
 const {SavedFreelancer} = require('../models/models')
 class SavedFreelancerController{
     async getAllSavedFreelancer(req, res){

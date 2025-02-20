@@ -16,28 +16,29 @@ class SupportController {
     }
     async createSupport(req,res){
         const {id} = req.params
-        const {answer} = req.body
+        const {question} = req.body
 
         try{
             const support = await Support.create({
-                answer: answer,
-                CustomerIdCustomer: id
+                question: question,
+                CustomerIdCustomer: id,
+                timeOfAsk: new Date()
             })
             return res.status(200).json(support)
         }catch(error){
-            return res.status(500).json('Internal server error')
+            return res.status(500).json('Internal server error '+error)
         }
     }
     async updateSupport(req,res){
         const {id} = req.params
-        const {question} = req.body
+        const {answer} = req.body
 
         try{    
             const support = await Support.findByPk(id)
             if(!support){
                 return res.status(404).json('Question is not found')
             }
-            await support.update(question);
+            await support.update(answer);
             return res.status(201).json('Data has been updated')
         }catch(error){
             return res.status(500).json('Interna; server error')

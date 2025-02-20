@@ -37,7 +37,7 @@ class CustomerController {
             })
             return res.status(200).json(customer)
         }catch(error){
-            return res.status(500).json('Internal server error')
+            return res.status(500).json(`Internal server error ${error.message}`)
         }
     }
 }

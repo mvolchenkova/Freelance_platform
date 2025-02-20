@@ -32,7 +32,7 @@ class ProposalController {
             })
             return res.status(200).json(proposal)
         }catch(error){
-            return res.status(500).json('Internal server error')
+            return res.status(500).json('Internal server error '+error)
         }
     }
     async deleteProposal(req,res){
@@ -57,10 +57,12 @@ class ProposalController {
             if(!proposal){
                 return res.status(404).json('Proposal not found')
             }
-            proposal.update(isPublished)
+            await proposal.update({
+                isPublished: isPublished
+            })
             return res.status(201).json('Proposal updated')
         }catch(error){
-            return res.status(500).json('Interna; server error')
+            return res.status(500).json('Internal server error')
         }
     }
 }

@@ -42,13 +42,13 @@ const Chat = sequelize.define('Chat',{
     idFreelancer:{type:DataTypes.BIGINT, allowNull:false}
 })
 const Vacancie = sequelize.define('Vacancie',{
-    idVacancie:{type:DataTypes.BIGINT, primaryKey:true},
-    description:{type:DataTypes.STRING, allowNull:false,
+    idVacancie:{type:DataTypes.BIGINT, primaryKey:true, autoIncrement:true},
+    description:{type:DataTypes.STRING, allowNull:false},
     skills:{type:DataTypes.STRING}
     }
-})
+)
 const Proposal = sequelize.define('Proposal',{
-    idProposal:{type:DataTypes.BIGINT, primaryKey:true},
+    idProposal:{type:DataTypes.BIGINT, primaryKey:true, autoIncrement:true},
     description:{type:DataTypes.STRING,allowNull:false},
     isPublished:{type:DataTypes.BOOLEAN, allowNull:false},
 })

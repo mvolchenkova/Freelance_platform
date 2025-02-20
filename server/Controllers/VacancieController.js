@@ -32,7 +32,7 @@ class VacancieController {
             })
             return res.status(200).json(vacancie)
         }catch(error){
-            return res.status(500).json('Internal server error')
+            return res.status(500).json(`Internal server error ${error.message}`)
         }
     }
     async deleteVacancie(req,res){
