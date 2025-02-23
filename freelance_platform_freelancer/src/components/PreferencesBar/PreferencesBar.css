@@ -1,0 +1,15 @@
+.preferBar{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: fit-content;
+    background-color: white;
+    border-radius: 30px;
+}
+.amount{
+    background-color: rgb(243,243,243);
+    color:grey;
+    padding: 5px 10px;
+    border-radius: 10px;
+    margin: 0;
+}

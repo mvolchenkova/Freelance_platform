@@ -1,0 +1,4 @@
+.sidebarAndVacancies{
+    display: flex;
+    flex-direction: row;
+}
