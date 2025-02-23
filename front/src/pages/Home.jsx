@@ -8,7 +8,7 @@ import HireDream from '../components/HireDream/HireDream'
 export default function Home(){
     return(
         <>
-          <StartHiring />
+            <StartHiring />
             <Steps />
             <PoweredBy/>
             <Opportunities/>
