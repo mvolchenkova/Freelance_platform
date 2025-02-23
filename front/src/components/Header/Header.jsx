@@ -2,23 +2,21 @@ import {Link} from 'react-router-dom'
 import '../Header/Header.css'
 import '../../index.css'
 import Button from '../../materialuiComponents/Button'
-import HeaderLogo from '../../images/headerLogo.svg'
-import userPhoto from '../../images/User_solid.svg'
 
 export default function Header(){
     return(
         <div className="HeaderDiv ReadexFont">
-            <div>
-                <img src={HeaderLogo} alt="" />
-            </div>
-            <nav cassName="navMenu">
+            <Link to="/">
+                <img src="/images/headerLogo.svg" alt="" />
+            </Link>
+            <nav className="navMenu">
                 <Link to="/employers" className="navLink">Employers</Link>
                 <Link to="/candidates"className="navLink">Candidates</Link>
                 <Link to="/company"className="navLink">Company</Link>
                 <Link to="/blog"className="navLink">Blog</Link>
             </nav>
             <div className="profileDiv">
-                <img src={userPhoto} alt="" />
+                <img src="/images/User_solid.svg" alt="" />
                 <p>Login</p>
             </div>
             <div className="headerButtonsDiv">

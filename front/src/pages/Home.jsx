@@ -1,11 +1,19 @@
 
 import StartHiring from '../components/StartHiring/StartHiring'
-
+import Steps from '../components/Steps/Steps'
+import PoweredBy from '../components/PoweredBy/PoweredBy'
+import Opportunities from '../components/Opportunities/Opportunities'
+import Partners from '../components/Partners/Partners'
+import HireDream from '../components/HireDream/HireDream'
 export default function Home(){
     return(
         <>
-           
-            <StartHiring />
+          <StartHiring />
+            <Steps />
+            <PoweredBy/>
+            <Opportunities/>
+            <Partners/>
+            <HireDream/>
         </>
     )
 }
