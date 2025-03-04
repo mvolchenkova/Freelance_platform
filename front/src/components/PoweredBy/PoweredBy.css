@@ -1,0 +1,32 @@
+.PoweredByDiv{
+    display: flex;
+    flex-direction: row;
+}
+.powByTitle{
+    font-size: 2.5em;
+    font-weight: bold;
+    width: 80%;
+    margin: 0;
+}
+.powByText{
+    color: rgb(61,66,90);
+    font-size: 1.125em;
+    width: 80%;
+    margin: 0;
+}
+.tabletLogo{
+    width: 100px;
+    height: 100px;
+}
+.poweredByContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 100px;
+}
+.description{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-left: 100px;
+}

@@ -1,0 +1,23 @@
+.hireText{
+    font-size: 3em;
+    font-weight: bold;
+    width: 75%;
+}
+.hireDiv{
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    width: 90%;
+    border-radius: 50px;
+    background-color: rgb(182,218,255);
+}
+.hireMainDiv{
+    display: flex;
+    align-items:center;
+    justify-content: center;
+    margin-top: 100px;
+}
+.hireButtonDiv{
+    padding-left: 100px;
+}
