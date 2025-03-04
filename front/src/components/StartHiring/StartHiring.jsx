@@ -1,6 +1,5 @@
 import Button from '../../materialuiComponents/Button'
 import '../StartHiring/StartHiring.css'
-import people from '../../images/homePeople.svg'
 
 export default function StartHiring(){
     return(
@@ -14,7 +13,7 @@ export default function StartHiring(){
                         <Button text="Post a job" showArrow={true} backgroundColor="rgb(255,255,255)" color="rgb(127,135,100)"/>
                     </div>  
                 </div>
-                <img src={people} alt="" className="people" />
+                <img src="/images/homePeople.svg" alt="" className="people" />
             </div>
             
         </div>

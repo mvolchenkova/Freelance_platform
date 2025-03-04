@@ -1,4 +1,10 @@
 .sidebarAndVacancies{
     display: flex;
     flex-direction: row;
+<<<<<<< HEAD
+=======
+    justify-content: center;
+    width: 100%;
+    margin-top: 40px;
+>>>>>>> 8084a7f7ef9f32e816149dee2cadad555546f378
 }

@@ -5,6 +5,10 @@
     width: fit-content;
     background-color: white;
     border-radius: 30px;
+<<<<<<< HEAD
+=======
+    width: 25%;
+>>>>>>> 8084a7f7ef9f32e816149dee2cadad555546f378
 }
 .amount{
     background-color: rgb(243,243,243);
@@ -12,4 +16,8 @@
     padding: 5px 10px;
     border-radius: 10px;
     margin: 0;
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 8084a7f7ef9f32e816149dee2cadad555546f378

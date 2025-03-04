@@ -29,7 +29,11 @@ export default function PreferencesBar() {
 
     return (
         <div className="ReadexFont preferBar">
+<<<<<<< HEAD
             <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }} component="nav">
+=======
+            <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper',  borderRadius: '15px' }} component="nav">
+>>>>>>> 8084a7f7ef9f32e816149dee2cadad555546f378
                 <ListItemButton onClick={() => handleClick('experience')}>
                     <ListItemText primary="Experience level" />
                     {openStates.experience ? <ExpandLess /> : <ExpandMore />}
@@ -137,7 +141,11 @@ export default function PreferencesBar() {
                 </Collapse>
             </List>
 
+<<<<<<< HEAD
             <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }} component="nav">
+=======
+            <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper',  borderRadius: '15px' }} component="nav">
+>>>>>>> 8084a7f7ef9f32e816149dee2cadad555546f378
                 <ListItemButton onClick={() => handleClick('timeZones')}>
                     <ListItemText primary="Time Zones" />
                     {openStates.timeZones ? <ExpandLess /> : <ExpandMore />}

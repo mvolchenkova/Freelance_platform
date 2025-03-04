@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import './Card.css';
+=======
+import '../Card/Card.css';
+>>>>>>> 8084a7f7ef9f32e816149dee2cadad555546f378
 
 export default function Card(props) {
     const { id,
