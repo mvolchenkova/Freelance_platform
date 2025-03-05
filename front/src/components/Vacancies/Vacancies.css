@@ -1,10 +1,6 @@
 .sortDiv{
     display: flex;
     flex-direction: row;
-<<<<<<< HEAD
-    justify-content: space-around;
-    width: 100%;
-=======
     justify-content: space-between;
     width: 100%;
   
@@ -27,5 +23,4 @@
     margin: 0 0 0 50px;
     display: flex;
     flex-direction: column;
->>>>>>> 8084a7f7ef9f32e816149dee2cadad555546f378
 }

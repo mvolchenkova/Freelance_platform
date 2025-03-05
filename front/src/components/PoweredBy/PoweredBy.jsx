@@ -1,9 +1,5 @@
 import Button from '../../materialuiComponents/Button'
-<<<<<<< HEAD
 import './PoweredBy.css'
-=======
-import '../PoweredBy/PoweredBy.css'
->>>>>>> 8084a7f7ef9f32e816149dee2cadad555546f378
 export default function PoweredBy(){
     return(
         <>

@@ -1,0 +1,34 @@
+.main-FAQ{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+}
+.header-faq{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    margin: 40px;
+}
+.small-letters{
+    font-size: 18px;
+    color: rgba(34, 34, 34, 0.384);
+    text-align: center;
+    line-height: 180%;
+}
+.title-faq{
+    font-size: 40px;
+    font-weight: 500;
+    margin: 10px;
+}
+.searhDiv{
+    width: 80%;
+
+}
+.accordion{
+    width: 70%;
+    margin: 40px;
+}

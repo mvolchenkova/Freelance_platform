@@ -1,10 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Card from '../Card/Card';
-<<<<<<< HEAD
 import './Steps.css';
-=======
-import '../Steps/Steps.css';
->>>>>>> 8084a7f7ef9f32e816149dee2cadad555546f378
 
 export default function Steps() {
     const [cardData, setCardData] = useState([]);

@@ -1,0 +1,26 @@
+.have-question{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
+    margin: 50px;
+}
+.question{
+    width: 70%;
+}
+.contact-blocks{
+    display: flex;
+    flex-direction: row;
+    width: 70%;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+}
+.contact-blocks > div > p{
+    font-size: 20px;
+    font-weight: 600;
+}
+.width{
+    width: 50%;
+}
