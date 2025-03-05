@@ -6,15 +6,9 @@ import Button from '../../materialuiComponents/Button'
 export default function Header(){
     return(
         <div className="HeaderDiv ReadexFont">
-<<<<<<< HEAD
             <div>
                 <img src="/images/headerLogo.svg" alt="" />
             </div>
-=======
-            <Link to="/">
-                <img src="/images/headerLogo.svg" alt="" />
-            </Link>
->>>>>>> 8084a7f7ef9f32e816149dee2cadad555546f378
             <nav className="navMenu">
                 <Link to="/employers" className="navLink">Employers</Link>
                 <Link to="/candidates"className="navLink">Candidates</Link>

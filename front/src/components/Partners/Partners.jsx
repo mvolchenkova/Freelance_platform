@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import './Partners.css'
 =======
 import '../Partners/Partners.css'
