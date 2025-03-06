@@ -7,6 +7,8 @@ import MuiAccordionSummary, {
 } from '@mui/material/AccordionSummary';
 import MuiAccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
+import './Accordion.css';
+import { colors } from '@mui/material';
 
 const Accordion = styled((props) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
@@ -26,7 +28,7 @@ const AccordionSummary = styled((props) => (
     {...props}
   />
 ))(({ theme }) => ({
-  backgroundColor: ' rgb(233, 247, 231)',
+  backgroundColor: 'transparent',
   
   flexDirection: 'row-reverse',
   [`& .${accordionSummaryClasses.expandIconWrapper}.${accordionSummaryClasses.expanded}`]:
@@ -37,7 +39,7 @@ const AccordionSummary = styled((props) => (
     marginLeft: theme.spacing(1),
   },
   ...theme.applyStyles('dark', {
-    backgroundColor: 'rgba(219, 242, 215, 1)',
+    backgroundColor: 'transparent',
   }),
 }));
 
@@ -57,7 +59,7 @@ export default function CustomizedAccordions() {
   return (
     <div>
       <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
-        <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
+        <AccordionSummary aria-controls="panel1d-content" id="panel1d-header" backgroundColor='transparent'>
           <Typography component="span">How many steps to get a job?</Typography>
         </AccordionSummary>
         <AccordionDetails>

@@ -17,7 +17,9 @@ export default function Header(){
             </nav>
             <div className="profileDiv">
                 <img src="/images/User_solid.svg" alt="" />
-                <p>Login</p>
+                <Link to='/login'>
+                Login
+                </Link>
             </div>
             <div className="headerButtonsDiv">
                 <Button className="ReadexFont" text="Start hiring" backgroundColor="rgb(255,255,255)" color="rgb(127,135,100)" fontSize="12px"/>

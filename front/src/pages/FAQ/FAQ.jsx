@@ -5,7 +5,7 @@ import InputBase from '@mui/material/InputBase';
 import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
 import Button from '../../materialuiComponents/Button';
-import Accordion  from '../../materialuiComponents/Accordion';
+import Accordion  from '../../materialuiComponents/accordion/Accordion';
 import StillHaveQuestion from '../../components/StillHaveQuestion/StillHaveQuestion'
 export default function FAQ(){
     return(

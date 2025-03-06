@@ -1,13 +1,15 @@
 const {DataTypes} = require('sequelize')
 const sequelize = require('../db.js');
 
-const Customer = sequelize.define('Customer',{
-    idCustomer:{type:DataTypes.BIGINT,primaryKey:true, autoIncrement:true},
-    firstname:{type:DataTypes.STRING, allowNull:false},
-    lastname:{type:DataTypes.STRING, allowNull:false},
-    mail:{type:DataTypes.STRING, allowNull:true},
+const User = sequelize.define('User',{
+    idUser:{type:DataTypes.BIGINT, primaryKey:true, autoIncrement: true},
+    email:{type:DataTypes.CHAR(50), allowNull:false},
+    login:{type:DataTypes.CHAR(50), allowNull:false},
+    password:{type:DataTypes.STRING, allowNull:false},
+    name:{type:DataTypes.CHAR(50), allowNull:true},
+    isBlocked:{type:DataTypes.BOOLEAN, allowNull:false},
     phone:{type:DataTypes.STRING, allowNull:true},
-    birthdayDate:{type:DataTypes.DATE, allowNull:true}
+    role:{type:DataTypes.CHAR(50), allowNull:false}
 })
 const Support = sequelize.define('Support',{
     idSupport:{type:DataTypes.BIGINT, primaryKey:true, autoIncrement:true},
@@ -56,34 +58,41 @@ const Category = sequelize.define('Category',{
     idCategory:{type:DataTypes.BIGINT,primaryKey:true},
     nameOfCategory:{type:DataTypes.STRING,allowNull:false}
 })
+const Token = sequelize.define('Token',{
+    idToken:{type:DataTypes.BIGINT, primaryKey:true, autoIncrement:true},
+    refreshToken:{type:DataTypes.STRING(1024)},
+    idUser:{type:DataTypes.BIGINT,}
+})
 
 
 
-Customer.hasMany(Support);
-Support.belongsTo(Customer);
+User.hasMany(Support);
+Support.belongsTo(User);
 
-Customer.hasOne(Stat);
-Stat.belongsTo(Customer);
+User.hasOne(Stat);
+Stat.belongsTo(User);
 
 Stat.hasMany(SavedFreelancer);
 SavedFreelancer.belongsTo(Stat);
 
-Customer.hasMany(Request);
-Request.belongsTo(Customer);
+User.hasMany(Request);
+Request.belongsTo(User);
 
-Customer.hasOne(Transaction);
-Transaction.belongsTo(Customer);
+User.hasOne(Transaction);
+Transaction.belongsTo(User);
 
-Customer.hasMany(Chat);
-Chat.belongsTo(Customer);
+User.hasMany(Chat);
+Chat.belongsTo(User);
 
-Customer.hasMany(Vacancie);
-Vacancie.belongsTo(Customer);
+User.hasMany(Vacancie);
+Vacancie.belongsTo(User);
 
-Customer.hasMany(Proposal);
-Proposal.belongsTo(Customer);
+User.hasMany(Proposal);
+Proposal.belongsTo(User);
 
 Category.hasMany(Proposal);
 Proposal.belongsTo(Category);
 
-module.exports =  {Customer, Support, Stat, SavedFreelancer, Request, Transaction, Chat, Vacancie, Proposal, Category}
+module.exports =  {User, Support, Stat, SavedFreelancer, Request,
+     Transaction, Chat, Vacancie, Proposal, Category,Token
+}
