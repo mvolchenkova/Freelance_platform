@@ -8,13 +8,11 @@ import '../FindJob/FindJob.css'
 export default function FindJob(){
     return(
         <>
-            <Header/>
             <SearchBar/>
             <div className="sidebarAndVacancies">
                 <PreferencesBar/>
                 <Vacancies/>
             </div>
-            <Footer/>
         </>
     )
 }

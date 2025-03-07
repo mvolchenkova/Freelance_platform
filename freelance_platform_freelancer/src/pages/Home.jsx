@@ -10,14 +10,12 @@ import Footer from '../components/Footer/Footer'
 export default function Home(){
     return(
         <>
-            <Header />
             <StartHiring />
             <Steps />
             <PoweredBy/>
             <Opportunities/>
             <Partners/>
             <HireDream/>
-            <Footer/>
         </>
     )
 }

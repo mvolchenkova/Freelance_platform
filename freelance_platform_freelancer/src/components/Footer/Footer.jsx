@@ -26,6 +26,10 @@ export default function Footer(){
                         <p>Temporary Employment</p>
                         <p>Graduates</p>
                         <p>Volunteer</p>
+                        <Link to='/mainCandidates'>
+                            <p>Main</p>
+                        </Link>
+                       
                     </div>
                     <div className="footerLink">
                         <p className="footerTitle">Company</p>
@@ -34,7 +38,10 @@ export default function Footer(){
                         <p>Brand Ambassadors</p>
                         <p>About</p>
                         <p>Resources</p>
-                        <p>Blog</p>
+                        <Link to='/articles'>
+                            <p>Articles</p>
+                        </Link>
+                        
                     </div>
                 </div>
                 <hr/>
