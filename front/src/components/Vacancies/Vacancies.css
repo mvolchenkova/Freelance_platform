@@ -1,0 +1,26 @@
+.sortDiv{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+  
+}
+.title-recomend{
+    font-size: 24px;
+    font-weight: 700
+}
+.sortDiv > div > p{
+    margin: 3px 0;
+}
+.sorted-by{
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.candidates{
+    width: 62%;
+    margin: 0 0 0 50px;
+    display: flex;
+    flex-direction: column;
+}

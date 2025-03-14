@@ -1,0 +1,156 @@
+.container-for-reg-log{
+   margin: 50px 0;
+}
+.flex-con{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: auto;
+   padding-bottom: 30px;
+}
+.article-for-form{
+    
+    width: 80%;
+    display: flex;
+    color: rgb(234, 237, 182);
+    justify-content: space-around;
+    flex-direction: row;
+    align-items: center;
+    background-color: rgb(61, 66, 90);
+    border-radius: 40px;
+    padding: 20px;
+    border: 1px solid rgb(61, 66, 90);
+    box-shadow: 10px 10px 15px rgba(61, 66, 90, 0.25);
+    animation: switch 0.3s ease;
+}
+.span{
+    color: #fff;
+    text-decoration: none;
+    margin: 0;
+
+}
+.switch{
+    width: 76px;
+    font-size: 20px;
+    text-align: center;
+}
+.registration-form > h3{
+    font-size: 48px;
+    letter-spacing: 2px;
+    padding-top: 5%;
+}
+/* p,h3{
+    color: white;
+    margin: 0;
+
+}
+h3{
+    font-size: 48px;
+    letter-spacing: 2px;
+    padding-top: 5%;
+} */
+.registration-form{
+    animation: switch 0.3s ease;
+    text-transform: uppercase;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    background-color: rgb(85, 88, 101);
+    border: 1px solid rgb(72, 76, 101);
+    border-radius: 30px;
+    box-shadow: 20px 20px 10px rgba(61, 66, 90, 0.25);
+    box-sizing: border-box;
+    height: 550px;
+}
+
+.img{
+    width: 100%;
+    box-shadow: 20px 20px 10px rgba(0, 0, 0, 0.25);
+    animation: switch 0.3s ease;
+}
+.width{
+    min-width: 280px;
+    min-height: 300px;
+    max-width: 500px;
+    max-height: 550px;
+}
+
+.inputs{
+    width: 100%;
+    height: 100%;
+    min-height: 250px;
+    min-width: 171px;
+    max-height: 256px;
+    max-width: 350px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    gap: 10px;
+}
+.reg-button{
+    width: 180px;
+    background-color: #ffffff;
+    border-radius: 20px;
+    text-align: center;
+    padding: 4px 0;
+    font-family: "Bebas Neue", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 25px;
+}
+.input-form{
+    border-radius: 10px;
+    position: relative;
+    background-color: #fff;
+    font-size: 20px;
+    width: auto;
+    padding: 5px 10px;
+    font-family: Belleza;
+}
+.input-form:focus{
+    box-shadow: #ffffff 0 0 0 2px;
+    border-color: #ffffff;
+}
+
+@media screen and (max-width: 768px){
+   
+    .inputs{
+        gap: 0px;
+    }
+
+    .reg-button{
+        width: 150px;
+        padding: 0;
+    }
+    .article-for-form{
+        flex-direction: column;
+    }
+}
+@media screen and (max-width: 320px){
+    .registration-form{
+        height: 400px;
+    }
+    h3{
+        font-size: 20px;
+    }
+    .reg-button{
+        font-size: 20px;
+    }
+}
+
+@keyframes switch{
+    0%{
+        display: none;
+    }
+    50%{
+        width: 200px;
+        display: flex;
+    }
+    100%{
+        width: 100%;
+    }
+}

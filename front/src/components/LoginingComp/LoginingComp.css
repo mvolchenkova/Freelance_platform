@@ -1,0 +1,16 @@
+.container-for-reg-log{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+.logining-inputs{
+    justify-content: center;
+    gap: 30px;
+}
+.logining-form{
+    justify-content: center;
+}
+.reg-button{
+    cursor: pointer;
+}
