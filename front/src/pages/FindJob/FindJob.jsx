@@ -10,8 +10,10 @@ export default function FindJob(){
             <Header/>
             <SearchBar/>
             <div className="sidebarAndVacancies">
-                <PreferencesBar/>
-                <Vacancies/>
+                <main className='main-candidate'>
+                    <PreferencesBar/>
+                    <Vacancies/>
+                </main>
             </div>
         </>
     )

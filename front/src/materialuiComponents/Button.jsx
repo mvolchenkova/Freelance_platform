@@ -27,6 +27,7 @@ export default function CustomizedButtons(props) {
       fontSize={fontSize} 
       padding={padding}
       onClick={func}
+
     >
       {text} 
       {showArrow && <ArrowForwardIcon style={{ marginLeft: '8px' }} />} 

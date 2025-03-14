@@ -20,3 +20,27 @@ code {
 .greenText{
   color: rgb(71, 209, 140);
 }
+.fontWeight600{
+  font-weight: 800;
+}
+.gray{
+  color: #7F879E;
+}
+.flex-row{
+  display: flex;
+  flex-direction: row;
+}
+.flex-column{
+  display: flex;
+  flex-direction: column;
+}
+.align-center{
+  align-items: center;
+  
+}
+.justify-between{
+  justify-content: space-between;
+}
+.justify-around{
+  justify-content: space-around;
+}
