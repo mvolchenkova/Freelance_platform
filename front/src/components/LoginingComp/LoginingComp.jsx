@@ -33,7 +33,6 @@ export default function LoginingComp(){
             return
         }
         else{
-            console.log("Результат авторизации:", resultAction.payload);
             localStorage.setItem('token',resultAction.payload.refreshToken);
             navigate('/')
         }

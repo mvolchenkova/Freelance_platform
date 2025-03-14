@@ -4,16 +4,25 @@ import '../../index.css'
 import Button from '../../materialuiComponents/Button'
 import { logout } from '../../store/Slices/userSlicer'
 import { useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 
 
 export default function Header(){
     const dispatch = useDispatch();
-    const user = JSON.parse(localStorage.getItem('currentUser'));
+
+    const user =  JSON.parse(localStorage.getItem('currentUser'));
+    const status = useSelector(state => state.users.users.status);
+    if(status === 'loading'){
+        return <div>asdasd</div>
+    }
+    console.log(status);
     const getLogout = ()=>{
         dispatch(logout());
-
+        window.location.reload();
+        localStorage.removeItem('currentUser');
     }
     return(
+        
         <div className="HeaderDiv ReadexFont">
             <Link to='/'>
                 <img src="/images/headerLogo.svg" alt="" />
@@ -40,10 +49,17 @@ export default function Header(){
                 )}
                 
             </div>
-            <div className="headerButtonsDiv">
-                <Button className="ReadexFont" text="Start hiring" backgroundColor="rgb(255,255,255)" color="rgb(127,135,100)" fontSize="12px"/>
-                <Button className="ReadexFont" text="Find a job" backgroundColor="rgb(61,66,90)" color="rgb(255,255,255)" fontSize="12px"/>
-            </div>
+            {
+                user?(
+                    <Button className="ReadexFont" text="Profile" backgroundColor="rgb(61,66,90)" color="rgb(255,255,255)" fontSize="12px"/>
+                ) : (
+                    <div className="headerButtonsDiv">
+                    <Button className="ReadexFont" text="Start hiring" backgroundColor="rgb(255,255,255)" color="rgb(127,135,100)" fontSize="12px"/>
+                    <Button className="ReadexFont" text="Find a job" backgroundColor="rgb(61,66,90)" color="rgb(255,255,255)" fontSize="12px"/>
+                </div>
+                )
+            }
+           
         </div>
     )
 }

@@ -13,7 +13,7 @@ const VacancieRouter = require('./VacancieRouter')
 
 router.use('/Category',CategoryRouter)
 router.use('/Chat',ChatRouter)
-router.use('/Customer',CustomerRouter)
+router.use('/user',CustomerRouter)
 router.use('/Proposal',ProposalRouter)
 router.use('/Request',RequestRouter)
 router.use('/SavedFreelancer',SavedFreelancerRouter)

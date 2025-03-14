@@ -4,21 +4,19 @@ import axios from "axios";
 export const fetchUsers = createAsyncThunk(
     'users/fetchUsers', async(_,{rejectWithValue,dispatch}) =>{
         try{
-            const response = await axios.get(`${process.env.REACT_APP_API_URL}Customer/`)
+            const response = await axios.get(`${process.env.REACT_APP_API_URL}user/`)
             dispatch(setUsers(response.data))
             return response.data;
             }
         catch(error){
-            console.error("Fetch users error:", error);
             return rejectWithValue(error.message)
         }
     }
 )
 export const registration = createAsyncThunk(
     'users/registration', async({email,login,password},{rejectWithValue,dispatch})=>{
-        console.log("API URL:", process.env.REACT_APP_API_URL);
         try{
-            const response = await axios.post(`${process.env.REACT_APP_API_URL}Customer/registration`,
+            const response = await axios.post(`${process.env.REACT_APP_API_URL}user/registration`,
                 {
                     email:email,
                     login:login,
@@ -29,7 +27,6 @@ export const registration = createAsyncThunk(
             return response.data
         }
         catch (error) {
-            console.log(error)
             return rejectWithValue(error.message); 
         }
     }
@@ -38,12 +35,11 @@ export const logout = createAsyncThunk(
     'users/logout', async(_,{rejectWithValue}) =>{
         try{
             const refreshToken = localStorage.getItem('token')
-            await axios.post(`${process.env.REACT_APP_API_URL}Customer/logout`,{refreshToken},{ withCredentials: true })
+            await axios.post(`${process.env.REACT_APP_API_URL}user/logout`,{refreshToken},{ withCredentials: true })
             localStorage.removeItem('token')
             localStorage.removeItem('currentUser')
       
         }catch (error) {
-            console.log(error)
             return rejectWithValue(error.response?.data?.message); 
         }
     }
@@ -52,7 +48,7 @@ export const login = createAsyncThunk(
     'users/login',async({email,password},{rejectWithValue}) =>{
         try{
             
-            const response = await axios.post(`${process.env.REACT_APP_API_URL}Customer/login`,
+            const response = await axios.post(`${process.env.REACT_APP_API_URL}user/login`,
                 {
                     email:email,
                     password:password
@@ -60,7 +56,6 @@ export const login = createAsyncThunk(
              localStorage.setItem('currentUser',JSON.stringify(response.data));
             return response.data
         }catch(error){
-            console.log(error)
             return rejectWithValue(error.status);
         }
     }
@@ -69,9 +64,7 @@ export const EditInformation = createAsyncThunk(
     'users/EditInformation', async({name,age,nationality},{rejectWithValue}) =>{
         try{
             const user = JSON.parse(localStorage.getItem('currentUser'));
-       
-            const id = user.user.id
-           
+            const id = user.user.id 
             const response = await axios.put(`${process.env.REACT_APP_API_URL}user/updateUser/${id}`,{
                 name: name,
                 age: age,
@@ -82,7 +75,6 @@ export const EditInformation = createAsyncThunk(
             return response.data
         }
         catch(error){
-            console.log(error)
             return rejectWithValue(error);
         }
     }
@@ -93,8 +85,7 @@ export const BlockUser = createAsyncThunk(
             await axios.put(`${process.env.REACT_APP_API_URL}user/blockUser/${id}`)
 
         }
-        catch(error){
-            console.log(error)
+        catch(error){ 
             return rejectWithValue(error);
         }
     }
