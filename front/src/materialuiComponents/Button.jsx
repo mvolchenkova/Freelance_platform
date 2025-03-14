@@ -16,7 +16,7 @@ const ColorButton = styled(Button)(({ backgroundColor, color, borderRadius, font
 }));
 
 export default function CustomizedButtons(props) {
-  const { text, backgroundColor, color, borderRadius, fontSize, padding, showArrow } = props;
+  const { text, backgroundColor, color, borderRadius, fontSize, padding, showArrow,func } = props;
 
   return (
     <ColorButton 
@@ -26,6 +26,7 @@ export default function CustomizedButtons(props) {
       borderRadius={borderRadius} 
       fontSize={fontSize} 
       padding={padding}
+      onClick={func}
     >
       {text} 
       {showArrow && <ArrowForwardIcon style={{ marginLeft: '8px' }} />} 

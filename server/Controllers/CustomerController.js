@@ -100,16 +100,11 @@ class UserController{
             res.cookie('refreshToken', userData.refreshToken, { maxAge: 10 * 24 * 60 * 60 * 1000, httpOnly: true });
             return res.status(200).json(userData);
         } catch (error) {
-            // Вариант 1: Вывести только сообщение об ошибке
-            // return res.status(500).json({ message: `Internal server error: ${error.message}` });
+            
             console.error(error);
-            // Вариант 2: Вывести весь объект ошибки в виде строки
             return res.status(500).json({ message: `Internal server error: ${error}` });
     
-            // Вариант 3: Логировать ошибку для отладки
-            
-            // return res.status(500).json({ message: 'Internal server error' });
-        }
+            }
     }
     async logining(req,res){
         try{

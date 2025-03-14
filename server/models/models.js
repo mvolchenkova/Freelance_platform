@@ -3,13 +3,13 @@ const sequelize = require('../db.js');
 
 const User = sequelize.define('User',{
     idUser:{type:DataTypes.BIGINT, primaryKey:true, autoIncrement: true},
-    email:{type:DataTypes.CHAR(50), allowNull:false},
-    login:{type:DataTypes.CHAR(50), allowNull:false},
+    email:{type:DataTypes.STRING, allowNull:false},
+    login:{type:DataTypes.STRING, allowNull:false},
     password:{type:DataTypes.STRING, allowNull:false},
-    name:{type:DataTypes.CHAR(50), allowNull:true},
+    name:{type:DataTypes.STRING, allowNull:true},
     isBlocked:{type:DataTypes.BOOLEAN, allowNull:false},
     phone:{type:DataTypes.STRING, allowNull:true},
-    role:{type:DataTypes.CHAR(50), allowNull:false}
+    role:{type:DataTypes.STRING, allowNull:false}
 })
 const Support = sequelize.define('Support',{
     idSupport:{type:DataTypes.BIGINT, primaryKey:true, autoIncrement:true},

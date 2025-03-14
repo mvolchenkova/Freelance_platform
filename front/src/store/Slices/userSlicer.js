@@ -38,7 +38,7 @@ export const logout = createAsyncThunk(
     'users/logout', async(_,{rejectWithValue}) =>{
         try{
             const refreshToken = localStorage.getItem('token')
-            await axios.post(`${process.env.REACT_APP_API_URL}user/logout`,{refreshToken},{ withCredentials: true })
+            await axios.post(`${process.env.REACT_APP_API_URL}Customer/logout`,{refreshToken},{ withCredentials: true })
             localStorage.removeItem('token')
             localStorage.removeItem('currentUser')
       
@@ -52,7 +52,7 @@ export const login = createAsyncThunk(
     'users/login',async({email,password},{rejectWithValue}) =>{
         try{
             
-            const response = await axios.post(`${process.env.REACT_APP_API_URL}user/login`,
+            const response = await axios.post(`${process.env.REACT_APP_API_URL}Customer/login`,
                 {
                     email:email,
                     password:password
@@ -135,6 +135,10 @@ const usersSlicer = createSlice({
          .addCase(logout.fulfilled, (state, action) =>{
             state.status = 'resolved';
             state.currentUsers = null;
+        })
+        .addCase(logout.pending, (state) =>{
+            state.status = 'loading';
+            state.error = null
         })
         .addCase(login.pending, (state) =>{
             state.status = 'loading';
