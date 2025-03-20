@@ -1,6 +1,6 @@
 const Router = require('express')
 const router = new Router();
-const CategoryRouter = require('./CategoryRouter')
+
 const ChatRouter = require('./ChatRouter')
 const CustomerRouter = require('./CustomerRouter')
 const ProposalRouter = require('./ProposalRouter')
@@ -11,7 +11,7 @@ const SupportRouter = require('./SupportRouter')
 const TransactionRouter = require('./TransactionRouter')
 const VacancieRouter = require('./VacancieRouter')
 
-router.use('/Category',CategoryRouter)
+
 router.use('/Chat',ChatRouter)
 router.use('/user',CustomerRouter)
 router.use('/Proposal',ProposalRouter)

@@ -63,11 +63,38 @@ const Token = sequelize.define('Token',{
     refreshToken:{type:DataTypes.STRING(1024)},
     idUser:{type:DataTypes.BIGINT,}
 })
-
-
+const BannedUser = sequelize.define('BannedUser',{
+    idUser:{type:DataTypes.BIGINT,primaryKey:true},
+    Reason:{type:DataTypes.STRING, allowNull:true},
+    idAdmin:{type:DataTypes.BIGINT,allowNull:false}
+})
+const Fine = sequelize.define('Fine',{
+    idFine:{type:DataTypes.BIGINT, primaryKey:true},
+    idUser:{type:DataTypes.BIGINT, allowNull:false},
+    Reason:{type:DataTypes.STRING, allowNull:false},
+    Cost:{type:DataTypes.DECIMAL, allowNull:false}
+})
+const Report = sequelize.define('Report',{
+    idReport:{type:DataTypes.BIGINT, primaryKey:true, autoIncrement:true},
+    Reason:{type:DataTypes.STRING,allowNull:false},
+    idReportedUser:{type:DataTypes.BIGINT,allowNull: false},
+    idReportedByUser :{type:DataTypes.BIGINT, allowNull: false},
+    Status:{type:DataTypes.STRING, allowNull:false},
+    idAdmin:{type:DataTypes.BIGINT,allowNull:false},
+    idDeal:{type:DataTypes.BIGINT,allowNull:true}
+})
 
 User.hasMany(Support);
 Support.belongsTo(User);
+
+User.hasMany(Fine);
+Fine.belongsTo(User);
+
+User.hasOne(BannedUser);
+BannedUser.belongsTo(User);
+
+User.hasMany(Report);
+Report.belongsTo(User);
 
 User.hasOne(Stat);
 Stat.belongsTo(User);
@@ -93,6 +120,139 @@ Proposal.belongsTo(User);
 Category.hasMany(Proposal);
 Proposal.belongsTo(Category);
 
+
+
+
+const Portfolio = sequelize.define('portfolio', {
+    portfolioId: { type:DataTypes.BIGINT,primaryKey:true, autoIncrement:true },
+    workExperience: { type: DataTypes.INTEGER }
+},{
+    tableName: 'portfolios'
+})
+
+
+const Task = sequelize.define('task',{
+    taskId: { type:DataTypes.BIGINT,primaryKey:true, autoIncrement:true },
+    title: { type: DataTypes.TEXT, allowNull: false },
+    description: { type: DataTypes.TEXT, allowNull: false },
+    payment: { type: DataTypes.DOUBLE, allowNull: false },
+    deadline: { type: DataTypes.DATE, allowNull: false },
+    taskStatus: { type: DataTypes.TEXT, allowNull: false }
+},{
+    tableName: 'tasks'
+})
+
+
+const Response = sequelize.define('response',{
+    responseId: { type:DataTypes.BIGINT,primaryKey:true, autoIncrement:true },
+    responseStatus: { type: DataTypes.TEXT, allowNull: false },
+    proposal: { type: DataTypes.TEXT, allowNull: true },
+    submissionDate: { type: DataTypes.DATE, allowNull: false },
+    userId: { type: DataTypes.BIGINT, allowNull: false }
+},{
+    tableName: 'responses'
+})
+
+
+const AdditionalService = sequelize.define('additionalService',{
+    serviceId: { type:DataTypes.BIGINT,primaryKey:true, autoIncrement:true },
+    serviceName: { type:DataTypes.TEXT, allowNull: false },
+    description: { type:DataTypes.TEXT, allowNull: false },
+    price: { type:DataTypes.DOUBLE, allowNull: false }
+},{
+    tableName: 'additionalServices'
+})
+
+
+const Balance = sequelize.define('balance',{
+    balanceId: { type:DataTypes.BIGINT,primaryKey:true, autoIncrement:true },
+    current: { type: DataTypes.DOUBLE, allowNull: false, defaultValue: 0 },
+    userId: { type: DataTypes.BIGINT, allowNull: false }
+},{
+    tableName: 'balances'
+})
+
+
+const Deal = sequelize.define('deal',{
+    dealId: { type:DataTypes.BIGINT,primaryKey:true, autoIncrement:true },
+    startDate: { type: DataTypes.DATE, allowNull: false },
+    endDate: { type: DataTypes.DATE, allowNull: false },
+},{
+    tableName: 'deals'
+})
+
+
+const Review = sequelize.define('review',{
+    reviewId: { type:DataTypes.BIGINT,primaryKey:true, autoIncrement:true },
+    rating: { type: DataTypes.INTEGER, allowNull: false },
+    comment: { type: DataTypes.TEXT, allowNull: true },
+    reviewDate: { type: DataTypes.DATE, allowNull: false }
+},{
+    tableName: 'reviews'
+})
+
+
+const SkillAssessment = sequelize.define('skillAssessment',{
+    assessmentId: { type:DataTypes.BIGINT,primaryKey:true, autoIncrement:true },
+    score: { type: DataTypes.INTEGER, allowNull: false }, 
+    assessmentDate: { type: DataTypes.DATE, allowNull: false }
+},{
+    tableName: 'skillAssessments'
+})
+
+
+const Skill = sequelize.define('skill',{
+    skillId: { type:DataTypes.BIGINT,primaryKey:true, autoIncrement:true },
+    skillName: { type: DataTypes.TEXT, allowNull: false }
+},{
+    tableName: 'skills'
+})
+
+
+const Project = sequelize.define('project',{
+    projectId: { type:DataTypes.BIGINT,primaryKey:true, autoIncrement:true },
+    title: { type: DataTypes.TEXT, allowNull: false },
+    description: { type: DataTypes.TEXT, allowNull: false }
+},{
+    tableName: 'projects'
+})
+
+
+const Language = sequelize.define('language',{
+    languageId: { type:DataTypes.BIGINT,primaryKey:true, autoIncrement:true },
+    langName: { type: DataTypes.TEXT, allowNull: false },
+    proficiencyLevel: { type: DataTypes.TEXT, allowNull: false }
+},{
+    tableName: 'languages'
+})
+
+// freelancer-response 1:M
+User.hasMany(Response, { foreignKey: 'userId', as: 'responses' })
+Response.belongsTo(User, { foreignKey: 'userId', as: 'user' })
+
+// freelancer-portfolio 1:1
+User.hasOne(Portfolio, { foreignKey: 'userId', as: 'portfolio' })
+Portfolio.belongsTo(User, { foreignKey: 'userId', as: 'user' })
+
+// freelancer-balance 1:1
+User.hasOne(Balance, { foreignKey: 'userId', as: 'balance' })
+Balance.belongsTo(User, { foreignKey: 'userId', as: 'user' })
+
+// freelancer-transaction 1:M
+User.hasMany(Transaction, { foreignKey: 'userId', as: 'transaction' })
+Transaction.belongsTo(User, { foreignKey: 'userId', as: 'user' })
+
+// transaction-deal 1:M
+// freelancer-project 1:M
+// freelancer-review 1:M
+// skill-skillAssessment 1:M
+// task-review 1:M
+
+
+module.exports = { User, Portfolio, Task, Response, AdditionalService, Balance, Deal, 
+    Review, SkillAssessment, Category, Skill, Project, Language, Transaction }
+
 module.exports =  {User, Support, Stat, SavedFreelancer, Request,
      Transaction, Chat, Vacancie, Proposal, Category,Token
 }
+

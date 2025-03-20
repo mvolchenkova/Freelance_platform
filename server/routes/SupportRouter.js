@@ -1,6 +1,6 @@
 const Router = require('express');
 const router = new Router();
-const supportController = require('../Controllers/SupportController');
+const supportController = require('../Controllers/Customer/SupportController');
 
 router.get('/',supportController.getSupport)
 router.post('/create/:id',supportController.createSupport)

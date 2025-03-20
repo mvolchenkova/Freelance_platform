@@ -1,6 +1,6 @@
 const Router = require('express');
 const router = new Router();
-const userController = require('../Controllers/CustomerController')
+const userController = require('../Controllers/Customer/CustomerController')
 const {body} = require('express-validator')
 
 router.get('/',userController.getUsers);

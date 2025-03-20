@@ -1,6 +1,6 @@
 const Router = require('express');
 const router = new Router();
-const vacancieController = require('../Controllers/VacancieController')
+const vacancieController = require('../Controllers/Customer/VacancieController')
 
 router.get('/',vacancieController.getVacancie)
 router.post('/create/:id',vacancieController.createVacancie);

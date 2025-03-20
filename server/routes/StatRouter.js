@@ -1,6 +1,6 @@
 const Router = require('express');
 const router = new Router();
-const statController = require('../Controllers/StatController');
+const statController = require('../Controllers/Customer/StatController');
 
 router.get('/',statController.getAllStat)
 router.post('/create/:id',statController.createStat)
