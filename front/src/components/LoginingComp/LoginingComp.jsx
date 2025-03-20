@@ -24,7 +24,7 @@ export default function LoginingComp(){
         e.preventDefault();
         const resultAction = await dispatch(login({email,password}));
         const user = resultAction.payload.user
-        if(resultAction.payload == 404){
+        if(resultAction.payload === 404){
             setIsCorrect(false)
             return
         }
@@ -34,7 +34,11 @@ export default function LoginingComp(){
         }
         else{
             localStorage.setItem('token',resultAction.payload.refreshToken);
-            navigate('/')
+            if(resultAction.payload.user.role === 'customer'){
+                navigate('/')
+            }
+
+          
         }
     }
     return(
