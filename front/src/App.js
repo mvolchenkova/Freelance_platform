@@ -6,6 +6,7 @@ import Footer from './components/Footer/Footer';
 import FAQ from './pages/FAQ/FAQ.jsx';
 import Registration from './pages/Registration.jsx';
 import Logining from './pages/Logining.jsx';
+import Profile from './pages/Profile/Profile.jsx'
 function App() {
   return (
     <>
@@ -17,6 +18,7 @@ function App() {
             <Route path="/FAQ" element={<FAQ/>}/>
             <Route path="/registration" element={<Registration/>}/>
             <Route path="/login" element={<Logining/>}/>
+            <Route path="/profile" element={<Profile/>}/>
           </Routes>
         <Footer/>
         </BrowserRouter>

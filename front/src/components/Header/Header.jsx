@@ -51,7 +51,9 @@ export default function Header(){
             </div>
             {
                 user?(
+                   <Link to='profile'>
                     <Button className="ReadexFont" text="Profile" backgroundColor="rgb(61,66,90)" color="rgb(255,255,255)" fontSize="12px"/>
+                   </Link> 
                 ) : (
                     <div className="headerButtonsDiv">
                     <Button className="ReadexFont" text="Start hiring" backgroundColor="rgb(255,255,255)" color="rgb(127,135,100)" fontSize="12px"/>
