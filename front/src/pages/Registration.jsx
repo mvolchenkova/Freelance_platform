@@ -1,5 +1,5 @@
-import Header from '../components/Header/Header'
-import ContainerForRegLog from "../components/ContainerForReg/ContainerForReg"
+import Header from '../compCustomer/Header/Header'
+import ContainerForRegLog from "../compCustomer/ContainerForReg/ContainerForReg"
 export default function Registration(){
     return(
         <>

@@ -1,9 +1,9 @@
 
-import SearchBar from '../../components/SearchBar/SearchBar'
-import PreferencesBar from '../../components/PreferencesBar/PreferencesBar'
-import Vacancies from '../../components/Vacancies/Vacancies'
+import SearchBar from '../../compCustomer/SearchBar/SearchBar'
+import PreferencesBar from '../../compCustomer/PreferencesBar/PreferencesBar'
+import Vacancies from '../../compCustomer/Vacancies/Vacancies'
 import '../FindJob/FindJob.css'
-import Header from '../../components/Header/Header'
+import Header from '../../compCustomer/Header/Header'
 export default function FindJob(){
     return(
         <>
