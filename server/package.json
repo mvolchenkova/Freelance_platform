@@ -1,4 +1,9 @@
 {
+  "scripts": {
+    "start:customer": "set NODE_ENV=customer && nodemon server.js", 
+    "start:freelancer": "set NODE_ENV=freelancer && nodemon server.js", 
+    "start": "NODE_ENV=development node server.js"
+  },
   "dependencies": {
     "bcrypt": "^5.1.1",
     "cors": "^2.8.5",

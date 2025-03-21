@@ -1,10 +1,14 @@
-require('dotenv').config();
+const dotenv = require('dotenv');
 const cors = require('cors');
 const express = require('express')
 const sequelize = require('./db.js');
-const PORT = process.env.PORT;
+
 const routes = require('./routes/index.js')
 
+const envFile = process.env.NODE_ENV === 'customer' ? '.env.customer' : '.env.freelancer';
+dotenv.config({ path: envFile });
+
+const PORT = process.env.PORT;
 const app = express();
 app.use(cors({
     origin: 'http://localhost:3000', // Замените на адрес вашего фронтенда
