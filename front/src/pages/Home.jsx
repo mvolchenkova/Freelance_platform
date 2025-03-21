@@ -1,11 +1,11 @@
 
-import StartHiring from '../components/StartHiring/StartHiring'
-import Steps from '../components/Steps/Steps'
-import Opportunities from '../components/Opportunities/Opportunities'
-import PoweredBy from '../components/PoweredBy/PoweredBy'
-import Partners from '../components/Partners/Partners'
-import HireDream from '../components/HireDream/HireDream'
-import Header from '../components/Header/Header'
+import StartHiring from '../compFreelancer/StartHiring/StartHiring'
+import Steps from '../compFreelancer/Steps/Steps'
+import Opportunities from '../compFreelancer/Opportunities/Opportunities'
+import PoweredBy from '../compFreelancer/PoweredBy/PoweredBy'
+import Partners from '../compFreelancer/Partners/Partners'
+import HireDream from '../compFreelancer/HireDream/HireDream'
+import Header from '../compFreelancer/Header/Header'
 export default function Home(){
     return(
         <>

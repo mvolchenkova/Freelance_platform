@@ -37,6 +37,9 @@ export default function LoginingComp(){
             if(resultAction.payload.user.role === 'customer'){
                 navigate('/')
             }
+            else if(resultAction.payload.user.role === 'freelancer'){
+                navigate('/mainCandidates')
+            }
 
           
         }

@@ -5,9 +5,9 @@ import InputBase from '@mui/material/InputBase';
 import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
 import Button from '../../materialuiComponents/Button';
-import Header from '../../components/Header/Header';
+import Header from '../../compCustomer/Header/Header';
 import Accordion  from '../../materialuiComponents/accordion/Accordion';
-import StillHaveQuestion from '../../components/StillHaveQuestion/StillHaveQuestion'
+import StillHaveQuestion from '../../compCustomer/StillHaveQuestion/StillHaveQuestion'
 export default function FAQ(){
     return(
         <>
