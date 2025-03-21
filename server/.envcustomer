@@ -1,7 +1,8 @@
 PORT = 5000
-DB_NAME = freelancersPlatform
+DB_NAME = freelancersplatform
 DB_USER = postgres
-DB_PASSWORD = 1d2i3m4a5DIMAS
+DB_PASSWORD = "1d2i3m4a5DIMAS"
+ROLE = customer
 DB_HOST = localhost
 DB_PORT = 5432
 JWT_SECRET=32412567

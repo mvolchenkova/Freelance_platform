@@ -1,12 +1,13 @@
 {
   "scripts": {
-    "start:customer": "set NODE_ENV=customer && nodemon server.js", 
-    "start:freelancer": "set NODE_ENV=freelancer && nodemon server.js", 
-    "start": "NODE_ENV=development node server.js"
+    "start:admin": "cross-env ROLE=admin node server.js",
+    "start:freelancer": "cross-env ROLE=freelancer node server.js",
+    "start:customer": "cross-env ROLE=customer node server.js"
   },
   "dependencies": {
     "bcrypt": "^5.1.1",
     "cors": "^2.8.5",
+    "cross-env": "^7.0.3",
     "dotenv": "^16.4.5",
     "express": "^4.21.1",
     "express-validator": "^7.2.1",

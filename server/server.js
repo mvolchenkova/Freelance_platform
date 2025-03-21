@@ -5,8 +5,14 @@ const sequelize = require('./db.js');
 
 const routes = require('./routes/index.js')
 
-const envFile = process.env.NODE_ENV === 'customer' ? '.env.customer' : '.env.freelancer';
-dotenv.config({ path: envFile });
+const role = process.env.ROLE || 'customer';  // По умолчанию роль 'client'
+
+// Загружаем соответствующий файл .env в зависимости от роли
+dotenv.config({
+  path: `.env${role}`  // Загружаем соответствующий файл .env для роли
+});
+
+console.log(`Пароль для роли ${role}: ${process.env.DB_PASSWORD}`);
 
 const PORT = process.env.PORT;
 const app = express();
