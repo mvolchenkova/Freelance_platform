@@ -1,18 +1,18 @@
-const {DataTypes} = require('sequelize')
-const sequelize = require('../db.js');
+const { DataTypes } = require('sequelize');
+const sequelize = require('../db'); // Проверь путь к файлу
 
-const User = sequelize.define('User',{
-    idUser:{type:DataTypes.BIGINT, primaryKey:true, autoIncrement: true},
-    email:{type:DataTypes.STRING, allowNull:false},
-    login:{type:DataTypes.STRING, allowNull:false},
-    password:{type:DataTypes.STRING, allowNull:false},
-    img:{type:DataTypes.STRING, allowNull: true},
-    name:{type:DataTypes.STRING, allowNull:true},
-    skills:{type:DataTypes.ARRAY(DataTypes.STRING), allowNull:true},
-    isBlocked:{type:DataTypes.BOOLEAN, allowNull:false},
-    phone:{type:DataTypes.STRING, allowNull:true},
-    role:{type:DataTypes.STRING, allowNull:false}
-})
+const User = sequelize.define('User', {
+    idUser: { type: DataTypes.BIGINT, primaryKey: true, autoIncrement: true },
+    email: { type: DataTypes.STRING, allowNull: false },
+    login: { type: DataTypes.STRING, allowNull: false },
+    password: { type: DataTypes.STRING, allowNull: false },
+    img: { type: DataTypes.STRING, allowNull: true },
+    name: { type: DataTypes.STRING, allowNull: true },
+    skills: { type: DataTypes.ARRAY(DataTypes.STRING), allowNull: true },
+    isBlocked: { type: DataTypes.BOOLEAN, allowNull: false },
+    phone: { type: DataTypes.STRING, allowNull: true },
+    role: { type: DataTypes.STRING, allowNull: false },
+});
 const Support = sequelize.define('Support',{
     idSupport:{type:DataTypes.BIGINT, primaryKey:true, autoIncrement:true},
     answer:{type:DataTypes.STRING,allowNull: true},
@@ -251,7 +251,7 @@ Transaction.belongsTo(User, { foreignKey: 'userId', as: 'user' })
 // task-review 1:M
 
 
-module.exports = { User, Portfolio, Task, Response, AdditionalService, Balance, Deal, 
+module.exports = { Portfolio, Task, Response, AdditionalService, Balance, Deal, 
     Review, SkillAssessment, Category, Skill, Project, Language, Transaction }
 
 module.exports =  {User, Support, Stat, SavedFreelancer, Request,
