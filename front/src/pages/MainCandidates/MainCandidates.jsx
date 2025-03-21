@@ -1,10 +1,15 @@
 import '../MainCandidates/MainCandidates.css'
 import Button from '../../materialuiComponents/Button'
 import { Link } from 'react-router-dom'
+import Header from '../../compCustomer/Header/Header'
 
 export default function MainCandidates(){
     return(
+    <>
+
+    <Header/>
         <main className='mainCandidates ReadexFont'>
+            
             <p className="findJobTitle">Find Your <span className="greenText">Dream Job</span></p>
             <p className='findJobDescr'>289 jobs in 28 locations</p>
             <div className="findNcvDiv">
@@ -74,5 +79,6 @@ export default function MainCandidates(){
                 <img className="createResImg" src="/images/createResMan.png" alt="" />
             </div>
         </main>
+    </>
     )
 }
