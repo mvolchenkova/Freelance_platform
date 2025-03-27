@@ -59,7 +59,7 @@ import Alert from '../ReadyToUseComponents/alert.jsx'
             <article className='article-for-form'>      
                 <img src="./images/registrationPhoto.png" alt=""  className='img width'/>
                 <div className='switch'>
-                    <p>switch to
+                    <p className='uppercase'>switch to
                         <Link to='/login' className='span'>
                         <span className='span'> login</span>
                         </Link>
@@ -67,6 +67,12 @@ import Alert from '../ReadyToUseComponents/alert.jsx'
                 </div>
                 <form action="register" onSubmit={handleSubmit} className='registration-form width'>
                     <h3>registration</h3>
+                    <p>
+                        <button>As customer</button>
+                         / 
+                        <button>As freelancer</button>
+                    </p>
+                   
                     <div className='inputs'>
                         <input className='input-form' type='Email' placeholder='Entire your email' onChange={handleChangeEmail} value={email}/>
                         <input className='input-form' type='text' placeholder='Entire your login'onChange={handleChangeLogin} value={login}></input>

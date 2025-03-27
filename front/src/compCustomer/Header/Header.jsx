@@ -13,9 +13,8 @@ export default function Header(){
     const user =  JSON.parse(localStorage.getItem('currentUser'));
     const status = useSelector(state => state.users.users.status);
     if(status === 'loading'){
-        return <div>asdasd</div>
+        return <div>Loading....</div>
     }
-    console.log(status);
     const getLogout = ()=>{
         dispatch(logout());
         window.location.reload();
@@ -51,7 +50,7 @@ export default function Header(){
             </div>
             {
                 user?(
-                   <Link to='profile'>
+                   <Link to='/profile'>
                     <Button className="ReadexFont" text="Profile" backgroundColor="rgb(61,66,90)" color="rgb(255,255,255)" fontSize="12px"/>
                    </Link> 
                 ) : (

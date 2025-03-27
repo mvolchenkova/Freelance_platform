@@ -92,23 +92,32 @@ export const BlockUser = createAsyncThunk(
 )
 
 
-
 const usersSlicer = createSlice({
     name:'users',
     initialState:{
         users:[],
+        savedUsers:[],
         currentUsers:null,
         status: null,
         error: null
     },
+    
     reducers:{
         setCurrentUser(state, action){
             state.currentUsers = action.payload
         },
         setUsers(state, action){
             state.users = action.payload
+        },
+        setSavedFreelancer(state,action){
+            state.savedUsers.push(action.payload);
+        },
+        removeSavedFreelancer(state, action) {
+            state.savedUsers = state.savedUsers.filter(user => user.id !== action.payload);
         }
+        
     },
+   
     extraReducers: (builder) =>{
         builder
         .addCase(registration.pending, (state) =>{
@@ -169,5 +178,5 @@ const usersSlicer = createSlice({
         })
      }
 })
-export const {setCurrentUser,setUsers} = usersSlicer.actions
+export const {setCurrentUser,setUsers,setSavedFreelancer, removeSavedFreelancer} = usersSlicer.actions
 export default usersSlicer.reducer;

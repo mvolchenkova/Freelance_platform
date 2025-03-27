@@ -1,0 +1,9 @@
+.saved{
+    background-color: rgb(228, 228, 228);
+}
+.saved-candidates{
+    gap: 20px;
+}
+.message-saved{
+    font-size: 18px;
+}
