@@ -48,6 +48,7 @@ import Alert from '../ReadyToUseComponents/alert.jsx'
             console.log("Результат регистрации:", resultAction.payload);
             localStorage.setItem('token',resultAction.payload.refreshToken);
             navigate('/')
+            window.location.reload();
         }
         
     };

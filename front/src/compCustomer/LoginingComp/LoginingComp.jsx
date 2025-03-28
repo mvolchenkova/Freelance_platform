@@ -35,10 +35,13 @@ export default function LoginingComp(){
         else{
             localStorage.setItem('token',resultAction.payload.refreshToken);
             if(resultAction.payload.user.role === 'customer'){
+                
                 navigate('/')
+                window.location.reload();
             }
             else if(resultAction.payload.user.role === 'freelancer'){
                 navigate('/mainCandidates')
+                window.location.reload();
             }
 
           
