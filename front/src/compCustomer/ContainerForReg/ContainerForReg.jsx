@@ -2,7 +2,7 @@
  import './ContainerForReg.css'
  import { Link, useNavigate } from 'react-router-dom'
  import {registration} from '../../store/Slices/userSlicer.js'
- import { useState,useCallback } from 'react'
+ import { useState } from 'react'
  import {useDispatch,useSelector} from 'react-redux'
 import Alert from '../ReadyToUseComponents/alert.jsx'
 
@@ -15,16 +15,16 @@ import Alert from '../ReadyToUseComponents/alert.jsx'
     const [login, setlogin] = useState('')
     const {error} = useSelector(state => state.users)
     const [passwordsMatch, setPasswordsMatch] = useState(true);
-    const handleChangeEmail = useCallback((e) => {
+    const handleChangeEmail = ((e) => {
         setemail(e.target.value);
     });
-    const handleChangeLogin = useCallback((e) => {
+    const handleChangeLogin = ((e) => {
         setlogin(e.target.value);
     });
-    const handleChangePassword = useCallback((e) => {
+    const handleChangePassword = ((e) => {
         setpassword(e.target.value);
     });
-    const handleChangeCPassword = useCallback((e) => {
+    const handleChangeCPassword = ((e) => {
         setCpassword(e.target.value);
     });
 
