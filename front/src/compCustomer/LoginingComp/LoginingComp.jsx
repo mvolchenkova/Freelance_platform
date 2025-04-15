@@ -1,6 +1,6 @@
 
 import {Link,useNavigate} from 'react-router-dom'
-import { useState,useCallback } from "react";
+import { useState } from "react";
 import {  useDispatch } from "react-redux";
 import { login } from "../../store/Slices/userSlicer";
 import Alert from '../ReadyToUseComponents/alert'
@@ -14,10 +14,10 @@ export default function LoginingComp(){
     const [password, setpassword] = useState('')
    
     
-    const handleChangeEmail = useCallback((e) => {
+    const handleChangeEmail = ((e) => {
         setemail(e.target.value);
     });
-    const handleChangePassword = useCallback((e) => {
+    const handleChangePassword = ((e) => {
         setpassword(e.target.value);
     });
     const handleSubmit = async (e) => {
