@@ -15,7 +15,7 @@ export const fetchUsers = createAsyncThunk(
 );
 export const registration = createAsyncThunk(
   'users/registration',
-  async ({ email, login, password }, { rejectWithValue, dispatch }) => {
+  async ({ email, login, password }, { rejectWithValue }) => {
     try {
       const response = await axios.post(`${process.env.REACT_APP_API_URL}user/registration`, {
         email: email,
@@ -124,7 +124,7 @@ const usersSlicer = createSlice({
         state.status = 'rejected';
         state.error = action.error.message;
       })
-      .addCase(logout.fulfilled, (state, action) => {
+      .addCase(logout.fulfilled, (state) => {
         state.status = 'resolved';
         state.currentUsers = null;
       })

@@ -2,13 +2,10 @@ import * as React from 'react';
 import { styled } from '@mui/material/styles';
 import ArrowForwardIosSharpIcon from '@mui/icons-material/ArrowForwardIosSharp';
 import MuiAccordion from '@mui/material/Accordion';
-import MuiAccordionSummary, {
-  accordionSummaryClasses,
-} from '@mui/material/AccordionSummary';
+import MuiAccordionSummary, { accordionSummaryClasses } from '@mui/material/AccordionSummary';
 import MuiAccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import './Accordion.css';
-import { colors } from '@mui/material';
 
 const Accordion = styled((props) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
@@ -29,12 +26,11 @@ const AccordionSummary = styled((props) => (
   />
 ))(({ theme }) => ({
   backgroundColor: 'transparent',
-  
+
   flexDirection: 'row-reverse',
-  [`& .${accordionSummaryClasses.expandIconWrapper}.${accordionSummaryClasses.expanded}`]:
-    {
-      transform: 'rotate(90deg)',
-    },
+  [`& .${accordionSummaryClasses.expandIconWrapper}.${accordionSummaryClasses.expanded}`]: {
+    transform: 'rotate(90deg)',
+  },
   [`& .${accordionSummaryClasses.content}`]: {
     marginLeft: theme.spacing(1),
   },
@@ -45,7 +41,7 @@ const AccordionSummary = styled((props) => (
 
 const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
   padding: theme.spacing(2),
-  border: "0px",
+  border: '0px',
   fontSize: '1.5rem',
 }));
 
@@ -59,17 +55,19 @@ export default function CustomizedAccordions() {
   return (
     <div>
       <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
-        <AccordionSummary aria-controls="panel1d-content" id="panel1d-header" backgroundColor='transparent'>
+        <AccordionSummary
+          aria-controls="panel1d-content"
+          id="panel1d-header"
+          backgroundColor="transparent"
+        >
           <Typography component="span">How many steps to get a job?</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
-          Bibendum eu a pellentesque suspendisse at purus sit.
-          Diam turpis arcu fringilla elit. Ridiculus odio lacus,
-          ac bibendum vulputate. Pharetra, enim mi proin varius
-          urna vel eu. Neque, velit et sed mattis malesuada aliquet
-          nisl, pulvinar viverra. Massa tempus egestas nec id morbi ultrices morbi at.
-          
+            Bibendum eu a pellentesque suspendisse at purus sit. Diam turpis arcu fringilla elit.
+            Ridiculus odio lacus, ac bibendum vulputate. Pharetra, enim mi proin varius urna vel eu.
+            Neque, velit et sed mattis malesuada aliquet nisl, pulvinar viverra. Massa tempus
+            egestas nec id morbi ultrices morbi at.
           </Typography>
         </AccordionDetails>
       </Accordion>
@@ -78,9 +76,7 @@ export default function CustomizedAccordions() {
           <Typography component="span">What do we need to apply for a job?</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>
-        
-          </Typography>
+          <Typography></Typography>
         </AccordionDetails>
       </Accordion>
       <Accordion expanded={expanded === 'panel3'} onChange={handleChange('panel3')}>
@@ -88,9 +84,7 @@ export default function CustomizedAccordions() {
           <Typography component="span">Do we get cv from Developli?</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>
-           
-          </Typography>
+          <Typography></Typography>
         </AccordionDetails>
       </Accordion>
       <Accordion expanded={expanded === 'panel4'} onChange={handleChange('panel4')}>
@@ -98,9 +92,7 @@ export default function CustomizedAccordions() {
           <Typography component="span">Can we reschedule the interview meeting?</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>
-        
-          </Typography>
+          <Typography></Typography>
         </AccordionDetails>
       </Accordion>
       <Accordion expanded={expanded === 'panel5'} onChange={handleChange('panel5')}>
@@ -108,9 +100,7 @@ export default function CustomizedAccordions() {
           <Typography component="span">Can we apply for all jobs?</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>
-        
-          </Typography>
+          <Typography></Typography>
         </AccordionDetails>
       </Accordion>
     </div>

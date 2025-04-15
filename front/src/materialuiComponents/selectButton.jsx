@@ -44,20 +44,18 @@ export default function CustomizedSelects() {
     setSort(event.target.value);
   };
   return (
-      <FormControl sx={{ m: 1 }} variant="standard">
-
-        <Select
-          labelId="demo-customized-select-label"
-          id="demo-customized-select"
-          value={sort}
-          onChange={handleChange}
-          input={<BootstrapInput />}
-        >
-          <MenuItem value={1}>Most relevant</MenuItem>
-          <MenuItem value={2}>Newest</MenuItem>
-          <MenuItem value={3}>Oldest</MenuItem>
-        </Select>
-      </FormControl>
-   
+    <FormControl sx={{ m: 1 }} variant="standard">
+      <Select
+        labelId="demo-customized-select-label"
+        id="demo-customized-select"
+        value={sort}
+        onChange={handleChange}
+        input={<BootstrapInput />}
+      >
+        <MenuItem value={1}>Most relevant</MenuItem>
+        <MenuItem value={2}>Newest</MenuItem>
+        <MenuItem value={3}>Oldest</MenuItem>
+      </Select>
+    </FormControl>
   );
 }

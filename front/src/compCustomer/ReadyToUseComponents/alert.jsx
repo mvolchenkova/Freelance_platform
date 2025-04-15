@@ -5,11 +5,11 @@ import IconButton from '@mui/material/IconButton';
 import Collapse from '@mui/material/Collapse';
 import CloseIcon from '@mui/icons-material/Close';
 export default function TransitionAlerts(props) {
-    const [open, setOpen] = React.useState(true);
-    const closed = () =>{
-      setOpen(false);
-      props.setisBlocked(false);
-    }
+  const [open, setOpen] = React.useState(true);
+  const closed = () => {
+    setOpen(false);
+    props.setisBlocked(false);
+  };
 
   return (
     <Box sx={{ width: '50%' }}>
@@ -28,7 +28,7 @@ export default function TransitionAlerts(props) {
             </IconButton>
           }
           sx={{ mb: 2 }}
-          severity='error'
+          severity="error"
         >
           {props.message}
         </Alert>
