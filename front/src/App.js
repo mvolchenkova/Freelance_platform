@@ -10,12 +10,11 @@ import Profile from './pages/Profile/Profile.jsx'
 import Articles from './pages/Articles/Articles.jsx';
 import MainCandidates from './pages/MainCandidates/MainCandidates.jsx';
 import Portfolio from './pages/Portfolio/Portfolio.jsx';
-import Header from './compCustomer/Header/Header.jsx';
 function App() {
   return (
     <>
         <BrowserRouter>
-        <Header/>
+        
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/findJob" element={<FindJob/>}/>

@@ -6,7 +6,8 @@ import Button from '../../materialuiComponents/Button'
 import IconButton from '@mui/material/IconButton';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
-
+import {setSavedFreelancer, removeSavedFreelancer} from '../../store/Slices/userSlicer'
+import { useDispatch,useSelector } from 'react-redux';
 export default function Vacancies(){
     const candidates = {
         id: 1,
@@ -20,6 +21,22 @@ export default function Vacancies(){
         skills:[
             "Part-time","UI Design","Designer","Remote"
         ]
+    };
+    const dispatch = useDispatch();
+    const savedCandidates = useSelector((state) => state.users.savedUsers) || []
+    console.log(savedCandidates)
+    const toggleFavorite = (candidate) => {
+        try {
+            const isFavorite = savedCandidates.some((user) => user.id === candidate.id);
+    
+            if (isFavorite) {
+                dispatch(removeSavedFreelancer(candidate.id)); 
+            } else {
+                dispatch(setSavedFreelancer(candidate));
+            }
+        } catch (error) {
+            console.error("Error toggling favorite:", error);
+        }
     };
     return(
         <main className='main-vacancies'>
@@ -42,9 +59,14 @@ export default function Vacancies(){
                             <div className='additional-buttons'>
                                 <IconButton 
                                     style={{ paddingRight: '5px'}} 
-                                    aria-label="add to favorites" 
+                                    aria-label="add to favorites"
+                                    onClick={() => toggleFavorite(candidates)}
                                 > 
-                                    <FavoriteIcon style={{ color: 'red'}} />
+                                    {savedCandidates.some(user => user.id === candidates.id) ? (
+                                            <FavoriteIcon style={{ color: 'red' }} />
+                                        ) : (
+                                            <FavoriteBorder />
+                                        )}
                                     
                                 </IconButton>
                             </div>

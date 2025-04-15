@@ -1,0 +1,30 @@
+.header-block{
+    display: block;
+    width: 100%;
+    border-bottom: 1px solid black;
+}
+.stat-block{
+    gap: 20px;
+}
+.MuiChartsLegend-column{
+    display: none;
+}
+.Pie-stat{
+    width: 40%;
+}
+.center-text{
+    text-align: center;
+}
+.TaskList{
+    width: 60%;
+}
+.graphics{
+    gap: 30px;
+    margin: 0px 30px;
+}
+.create-job-vacancie{
+    gap: 10px;
+}
+.create-job-vacancie > p{
+    font-size: 18px;
+}
