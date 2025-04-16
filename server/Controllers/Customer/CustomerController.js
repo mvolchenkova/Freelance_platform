@@ -57,7 +57,7 @@ class UserController{
     }
     async updateUser(req, res){
         const {id} = req.params;
-        const {name, age, nationality} = req.body;
+        const {name, age, description, salary, location} = req.body;
         try{
             const user = await User.findByPk(id);
             if(!user){

@@ -10,7 +10,7 @@ const StatRouter = require('./StatRouter')
 const SupportRouter = require('./SupportRouter')
 const TransactionRouter = require('./TransactionRouter')
 const VacancieRouter = require('./VacancieRouter')
-
+const UserInformationRouter = require('./UserInformationRouter')
 
 router.use('/Chat',ChatRouter)
 router.use('/user',CustomerRouter)
@@ -21,5 +21,6 @@ router.use('/Stat',StatRouter)
 router.use('/Support',SupportRouter)
 router.use('/Transaction',TransactionRouter)
 router.use('/Vacancie',VacancieRouter)
+router.use('/UserInformation', UserInformationRouter)
 
 module.exports = router;

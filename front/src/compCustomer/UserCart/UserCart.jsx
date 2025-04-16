@@ -1,9 +1,13 @@
 import './UserCart.css';
-import BasicRating from '../../materialuiComponents/ReadOnlyRating';
-
+import { useSelector } from 'react-redux';
 export default function UserCart() {
   const user = JSON.parse(localStorage.getItem('currentUser'));
+  const { status } = useSelector((state) => state.users.users);
+  const userinf = useSelector((state) => state.users.inf);
   const { skills } = user.user;
+  if (status === 'loading') {
+    return <p>loading</p>;
+  }
   return (
     <article className="user-cart flex-column align-center">
       <div className="main-cart flex-row align-center">
@@ -22,10 +26,6 @@ export default function UserCart() {
               {user.user.name}
             </p>
             <p className="ReadexFont parametrs">
-              Age:
-              {user.user.age}
-            </p>
-            <p className="ReadexFont parametrs">
               Nickname:
               {user.user.login}
             </p>
@@ -34,13 +34,21 @@ export default function UserCart() {
               {user.user.email}
             </p>
             <p className="ReadexFont parametrs">
+              Salary: {userinf.salary ? userinf.salary : 'empty'}
+            </p>
+            <p className="ReadexFont parametrs">
+              Location: {userinf.location ? userinf.location : 'no location'}
+            </p>
+            <p className="ReadexFont parametrs">
               Created account: {new Date(user.user.createdAt).toLocaleDateString('ru-RU')}
             </p>
           </div>
-          <div className="flex-column justify-between align-center">
+          <div className="user-information">
             <p className="ReadexFont parametrs">
-              <BasicRating value={5} />
+              Description: {userinf.description ? userinf.description : 'Empty'}
             </p>
+          </div>
+          <div className="flex-column justify-between align-center">
             <button className="edit-profile">
               <img className="edit-profile-img" src="./images/Editpen.png" alt="" />
             </button>

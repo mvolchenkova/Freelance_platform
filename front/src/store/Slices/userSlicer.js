@@ -84,18 +84,31 @@ export const BlockUser = createAsyncThunk('users/BlockUser', async (id, { reject
     return rejectWithValue(error);
   }
 });
+export const fetchInf = createAsyncThunk('users/Inf', async (_, { dispatch, setinf }) => {
+  try {
+    const response = axios.get(`${process.env.REACT_APP_API_URL}UserInformation/`);
+    dispatch(setinf(response));
+    return response;
+  } catch (error) {
+    return error;
+  }
+});
 
 const usersSlicer = createSlice({
   name: 'users',
   initialState: {
     users: [],
     savedUsers: [],
+    inf: {},
     currentUsers: null,
     status: null,
     error: null,
   },
 
   reducers: {
+    setinf(state, action) {
+      state.inf = action.payload;
+    },
     setCurrentUser(state, action) {
       state.currentUsers = action.payload;
     },
@@ -167,6 +180,16 @@ const usersSlicer = createSlice({
       .addCase(EditInformation.rejected, (state, action) => {
         state.status = 'rejected';
         state.error = action.error.message;
+      })
+      .addCase(fetchInf.pending, (state) => {
+        state.status = 'loading';
+        state.error = null;
+      })
+      .addCase(fetchInf.fulfilled, (state) => {
+        state.status = 'resolved';
+      })
+      .addCase(fetchInf.rejected, (state) => {
+        state.status = 'rejected';
       });
   },
 });

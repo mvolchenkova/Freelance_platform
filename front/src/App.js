@@ -10,10 +10,11 @@ import Profile from './pages/Profile/Profile.jsx';
 import Articles from './pages/Articles/Articles.jsx';
 import MainCandidates from './pages/MainCandidates/MainCandidates.jsx';
 import Portfolio from './pages/Portfolio/Portfolio.jsx';
-
+import SideBar from './compCustomer/SideBar/SideBar.jsx';
 function App() {
   return (
     <BrowserRouter>
+      <SideBar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/findJob" element={<FindJob />} />
@@ -25,6 +26,7 @@ function App() {
         <Route path="/mainCandidates" element={<MainCandidates />} />
         <Route path="/portfolio" element={<Portfolio />} />
       </Routes>
+
       <Footer />
     </BrowserRouter>
   );
