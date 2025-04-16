@@ -1,0 +1,41 @@
+.title{
+    font-weight: bold;
+    font-size: 1.8em;
+    margin-bottom: 10px;
+}
+.subtitle{
+    color: rgb(127, 135, 158);
+    font-size: 1.125em;
+    
+}
+.blogMain{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.articleCards{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap:29px;
+    row-gap: 40px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+.artdate{
+    color: rgb(127, 135, 158);
+    display: flex;
+    flex-direction: row;
+    gap: 25px;
+    font-size: 1.125em;
+}
+.articleCards>div>p{
+    font-size: 1.4em;
+    font-weight: bolder;
+    margin: 0;
+}
+.articleCards>div{
+    width: 394px;
+}
