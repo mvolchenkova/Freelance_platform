@@ -21,17 +21,19 @@ class ProposalController {
         })
     }
     async createProposal(req,res){
-        const {id} = req.params
-        const {description,isPublished} = req.body
-
+        const {description,isPublished,cost,skills,title,id} = req.body;
         try{
             const proposal = await Proposal.create({
                 description: description,
-                isPublished: isPublished,
-                CustomerIdCustomer: id
+                UserIdUser: id,
+                cost,
+                skills,
+                title,
+                isPublished,
             })
             return res.status(200).json(proposal)
         }catch(error){
+            console.error(error)
             return res.status(500).json('Internal server error '+error)
         }
     }
