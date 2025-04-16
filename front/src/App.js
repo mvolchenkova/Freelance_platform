@@ -11,6 +11,7 @@ import Articles from './pages/Articles/Articles.jsx';
 import MainCandidates from './pages/MainCandidates/MainCandidates.jsx';
 import Portfolio from './pages/Portfolio/Portfolio.jsx';
 import SideBar from './compCustomer/SideBar/SideBar.jsx';
+import Proposal from './pages/Proposal/Proposal.jsx'
 function App() {
   return (
     <BrowserRouter>
@@ -25,6 +26,7 @@ function App() {
         <Route path="/articles" element={<Articles />} />
         <Route path="/mainCandidates" element={<MainCandidates />} />
         <Route path="/portfolio" element={<Portfolio />} />
+        <Route path='/createProposal' element={<Proposal/>}/>
       </Routes>
 
       <Footer />

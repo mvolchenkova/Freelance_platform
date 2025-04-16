@@ -3,7 +3,7 @@ const router = new Router();
 const proposalController = require('../Controllers/Customer/ProposalController')
 
 router.get('/',proposalController.getProposal)
-router.post('/create/:id',proposalController.createProposal)
+router.post('/create/',proposalController.createProposal)
 router.delete('/delete/:id',proposalController.deleteProposal)
 router.put('/update/:id',proposalController.PublishProposal)
 

@@ -86,8 +86,8 @@ export const BlockUser = createAsyncThunk('users/BlockUser', async (id, { reject
 });
 export const fetchInf = createAsyncThunk('users/Inf', async (_, { dispatch, setinf }) => {
   try {
-    const response = axios.get(`${process.env.REACT_APP_API_URL}UserInformation/`);
-    dispatch(setinf(response));
+    const response = await axios.get(`${process.env.REACT_APP_API_URL}UserInformation/`);
+    dispatch(setinf(response.data));
     return response;
   } catch (error) {
     return error;

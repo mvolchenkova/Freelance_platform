@@ -51,7 +51,7 @@ export default function SideBar() {
           <img src="./images/VacancieIcon.png" alt="" />
           <p>Vacancie</p>
         </Link>
-        <Link to="/profile" className="icons-link">
+        <Link to="/createProposal" className="icons-link">
           <img src="./images/JobIcon.png" alt="" />
           <p>Job</p>
         </Link>

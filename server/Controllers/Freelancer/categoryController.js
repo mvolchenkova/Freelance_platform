@@ -3,16 +3,16 @@ const { Op } = require('sequelize');
 const fs = require('fs');
 const path = require('path');
 
-class TaskController {
+class categoryController{
     // Создание новой записи
     async create(req, res) {
         try {
-            const { categoryName } = req.body;
-            const category = await Category.create({ categoryName });
+            const { nameOfCategory } = req.body;
+            const category = await Category.create({ nameOfCategory });
             return res.status(201).json(category);
         } catch (error) {
             console.error('Ошибка при создании пользователя:', error);
-            return res.status(500).json({ message: 'Ошибка при создании пользователя' });
+            return res.status(500).json(error);
         }
     }
 
@@ -73,4 +73,4 @@ class TaskController {
     }
 }
 
-module.exports = new TaskController();
+module.exports = new categoryController();

@@ -59,15 +59,20 @@ const Chat = sequelize.define("Chat", {
 const Vacancie = sequelize.define("Vacancie", {
   idVacancie: { type: DataTypes.BIGINT, primaryKey: true, autoIncrement: true },
   description: { type: DataTypes.STRING, allowNull: false },
-  skills: { type: DataTypes.STRING },
+  title: { type:DataTypes.STRING, allowNull:false },
+  salary: {type:DataTypes.DECIMAL, allowNull: false},
+  skills: { type: DataTypes.STRING, allowNull:false},
 });
 const Proposal = sequelize.define("Proposal", {
   idProposal: { type: DataTypes.BIGINT, primaryKey: true, autoIncrement: true },
+  title: { type:DataTypes.STRING, allowNull:false },
   description: { type: DataTypes.STRING, allowNull: false },
+  cost: {type:DataTypes.DECIMAL, allowNull: false},
+  skills: { type: DataTypes.STRING, allowNull:false},
   isPublished: { type: DataTypes.BOOLEAN, allowNull: false },
 });
 const Category = sequelize.define("Category", {
-  idCategory: { type: DataTypes.BIGINT, primaryKey: true },
+  idCategory: { type: DataTypes.BIGINT, primaryKey: true,autoIncrement:true },
   nameOfCategory: { type: DataTypes.STRING, allowNull: false },
 });
 const Token = sequelize.define("Token", {
