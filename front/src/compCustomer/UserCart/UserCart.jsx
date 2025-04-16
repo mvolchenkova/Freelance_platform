@@ -1,8 +1,9 @@
 import './UserCart.css';
 import BasicRating from '../../materialuiComponents/ReadOnlyRating';
+
 export default function UserCart() {
   const user = JSON.parse(localStorage.getItem('currentUser'));
-  const skills = user.user.skills;
+  const { skills } = user.user;
   return (
     <article className="user-cart flex-column align-center">
       <div className="main-cart flex-row align-center">
@@ -16,10 +17,22 @@ export default function UserCart() {
         </div>
         <div className="user-parametrs flex-row  justify-between">
           <div className="user-information">
-            <p className="ReadexFont parametrs">Name: {user.user.name}</p>
-            <p className="ReadexFont parametrs">Age: {user.user.age}</p>
-            <p className="ReadexFont parametrs">Nickname: {user.user.login}</p>
-            <p className="ReadexFont parametrs">Email: {user.user.email}</p>
+            <p className="ReadexFont parametrs">
+              Name:
+              {user.user.name}
+            </p>
+            <p className="ReadexFont parametrs">
+              Age:
+              {user.user.age}
+            </p>
+            <p className="ReadexFont parametrs">
+              Nickname:
+              {user.user.login}
+            </p>
+            <p className="ReadexFont parametrs">
+              Email:
+              {user.user.email}
+            </p>
             <p className="ReadexFont parametrs">
               Created account: {new Date(user.user.createdAt).toLocaleDateString('ru-RU')}
             </p>

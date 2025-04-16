@@ -4,6 +4,7 @@ import teamsReucer from './Slices/teamSlicer.js';
 import pilotSlicer from './Slices/pilotsSlicer.js';
 import newsSlice from './Slices/newsSlicer.js';
 import usersReducer from './Slices/userSlicer.js';
+
 export default configureStore({
   reducer: {
     groups: groupReducer,

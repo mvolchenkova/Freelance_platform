@@ -1,4 +1,4 @@
-import '../SearchBar/SearchBar.css';
+import './SearchBar.css';
 import * as React from 'react';
 import Paper from '@mui/material/Paper';
 import InputBase from '@mui/material/InputBase';
@@ -32,16 +32,37 @@ export default function SearchBar() {
             padding: '10px',
           }}
         >
-          <IconButton sx={{ p: '10px', color: 'rgb(71, 209, 140)' }} aria-label="search">
+          <IconButton
+            sx={{
+              p: '10px',
+              color: 'rgb(71, 209, 140)',
+            }}
+            aria-label="search"
+          >
             <SearchIcon />
           </IconButton>
           <InputBase
-            sx={{ ml: 1, flex: 1 }}
+            sx={{
+              ml: 1,
+              flex: 1,
+            }}
             placeholder="Product designer"
             inputProps={{ 'aria-label': 'search google maps' }}
           />
-          <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
-          <FormControl variant="outlined" sx={{ width: '20%', border: 'none' }}>
+          <Divider
+            sx={{
+              height: 28,
+              m: 0.5,
+            }}
+            orientation="vertical"
+          />
+          <FormControl
+            variant="outlined"
+            sx={{
+              width: '20%',
+              border: 'none',
+            }}
+          >
             {country === '' && <InputLabel id="country-select-label">Country</InputLabel>}
             <Select
               labelId="country-select-label"
@@ -63,7 +84,10 @@ export default function SearchBar() {
                 <img
                   src="/images/location.svg"
                   alt="Location"
-                  style={{ width: '20px', marginRight: '10px' }}
+                  style={{
+                    width: '20px',
+                    marginRight: '10px',
+                  }}
                 />
                 USA
               </MenuItem>
@@ -71,7 +95,10 @@ export default function SearchBar() {
                 <img
                   src="/images/location.svg"
                   alt="Location"
-                  style={{ width: '20px', marginRight: '10px' }}
+                  style={{
+                    width: '20px',
+                    marginRight: '10px',
+                  }}
                 />
                 Canada
               </MenuItem>
@@ -79,7 +106,10 @@ export default function SearchBar() {
                 <img
                   src="/images/location.svg"
                   alt="Location"
-                  style={{ width: '20px', marginRight: '10px' }}
+                  style={{
+                    width: '20px',
+                    marginRight: '10px',
+                  }}
                 />
                 UK
               </MenuItem>
@@ -87,13 +117,22 @@ export default function SearchBar() {
                 <img
                   src="/images/location.svg"
                   alt="Location"
-                  style={{ width: '20px', marginRight: '10px' }}
+                  style={{
+                    width: '20px',
+                    marginRight: '10px',
+                  }}
                 />
                 Australia
               </MenuItem>
             </Select>
           </FormControl>
-          <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
+          <Divider
+            sx={{
+              height: 28,
+              m: 0.5,
+            }}
+            orientation="vertical"
+          />
           <Button text="Search" backgroundColor="rgb(71, 209, 140)" color="white" width="15%" />
         </Paper>
       </div>

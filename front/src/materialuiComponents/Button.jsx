@@ -20,7 +20,6 @@ const ColorButton = styled(Button)(
 export default function CustomizedButtons(props) {
   const { text, backgroundColor, color, borderRadius, fontSize, padding, showArrow, func, width } =
     props;
-
   return (
     <ColorButton
       variant="contained"

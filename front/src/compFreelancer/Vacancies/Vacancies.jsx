@@ -1,4 +1,5 @@
-import '../Vacancies/Vacancies.css';
+import './Vacancies.css';
+
 export default function Vacancies() {
   return (
     <>
@@ -11,7 +12,7 @@ export default function Vacancies() {
           <p>Sort by:</p>
         </div>
       </div>
-      <div></div>
+      <div />
     </>
   );
 }

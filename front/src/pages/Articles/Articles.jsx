@@ -1,5 +1,5 @@
-import '../Articles/Articles.css';
+import './Articles.css';
 
 export default function Articles() {
-  return <main className="blogMain"></main>;
+  return <main className="blogMain" />;
 }

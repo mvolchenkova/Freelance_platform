@@ -23,7 +23,7 @@ export const searchTeams = createAsyncThunk(
       const response = await axios.get(
         `${process.env.REACT_APP_API_URL}teams?limit=10&search=${search}`,
       );
-      const data = response.data;
+      const { data } = response;
       return data;
     } catch (error) {
       console.error('Find teams error:', error);

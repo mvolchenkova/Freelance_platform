@@ -39,7 +39,13 @@ export default function ContainerForRegLog() {
     if (!checkPasswords(password, Cpassword)) {
       return;
     }
-    const resultAction = await dispatch(registration({ email, password, login }));
+    const resultAction = await dispatch(
+      registration({
+        email,
+        password,
+        login,
+      }),
+    );
     if (resultAction.status === 500) {
       alert(error.message);
     } else {
@@ -52,7 +58,7 @@ export default function ContainerForRegLog() {
 
   return (
     <main className="container-for-reg-log">
-      {!passwordsMatch && <Alert message={'Passwods must be the same'} />}
+      {!passwordsMatch && <Alert message="Passwods must be the same" />}
       <section className="flex-con">
         <article className="article-for-form">
           <img src="./images/registrationPhoto.png" alt="" className="img width" />
@@ -84,23 +90,23 @@ export default function ContainerForRegLog() {
                 placeholder="Entire your login"
                 onChange={handleChangeLogin}
                 value={login}
-              ></input>
+              />
               <input
                 className="input-form"
                 type="password"
                 placeholder="Password"
                 onChange={handleChangePassword}
                 value={password}
-              ></input>
+              />
               <input
                 className="input-form"
                 type="password"
                 placeholder="Confirm password"
                 onChange={handleChangeCPassword}
                 value={Cpassword}
-              ></input>
+              />
             </div>
-            <input type="submit" className="reg-button" value={'Register'} />
+            <input type="submit" className="reg-button" value="Register" />
           </form>
         </article>
       </section>

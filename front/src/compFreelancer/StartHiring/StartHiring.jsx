@@ -1,5 +1,5 @@
 import Button from '../../materialuiComponents/Button';
-import '../StartHiring/StartHiring.css';
+import './StartHiring.css';
 
 export default function StartHiring() {
   return (
@@ -16,13 +16,13 @@ export default function StartHiring() {
           <div className="StartHiringButtons">
             <Button
               text="Start hiring"
-              showArrow={true}
+              showArrow
               backgroundColor="rgb(61,66,90)"
               color="rgb(255,255,255)"
             />
             <Button
               text="Post a job"
-              showArrow={true}
+              showArrow
               backgroundColor="rgb(255,255,255)"
               color="rgb(127,135,100)"
             />

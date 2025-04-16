@@ -7,7 +7,7 @@ import ExpandMore from '@mui/icons-material/ExpandMore';
 import Collapse from '@mui/material/Collapse';
 import { useState } from 'react';
 import Checkbox from '../../materialuiComponents/Checkbox';
-import '../PreferencesBar/PreferencesBar.css';
+import './PreferencesBar.css';
 
 export default function PreferencesBar() {
   const [openStates, setOpenStates] = useState({
@@ -30,7 +30,12 @@ export default function PreferencesBar() {
   return (
     <div className="ReadexFont preferBar">
       <List
-        sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper', borderRadius: '15px' }}
+        sx={{
+          width: '100%',
+          maxWidth: 360,
+          bgcolor: 'background.paper',
+          borderRadius: '15px',
+        }}
         component="nav"
       >
         <ListItemButton onClick={() => handleClick('experience')}>
@@ -40,7 +45,13 @@ export default function PreferencesBar() {
         <Collapse in={openStates.experience} timeout="auto" unmountOnExit>
           <List component="div" disablePadding>
             {['0-2 years', '3-5 years', '6-9 years', '10+ years'].map((text) => (
-              <ListItemButton key={text} sx={{ pl: 4, paddingLeft: 0 }}>
+              <ListItemButton
+                key={text}
+                sx={{
+                  pl: 4,
+                  paddingLeft: 0,
+                }}
+              >
                 <Checkbox />
                 <ListItemText primary={text} />
                 <p className="amount">12</p>
@@ -50,7 +61,14 @@ export default function PreferencesBar() {
         </Collapse>
       </List>
 
-      <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }} component="nav">
+      <List
+        sx={{
+          width: '100%',
+          maxWidth: 360,
+          bgcolor: 'background.paper',
+        }}
+        component="nav"
+      >
         <ListItemButton onClick={() => handleClick('category')}>
           <ListItemText primary="Category" />
           {openStates.category ? <ExpandLess /> : <ExpandMore />}
@@ -58,7 +76,13 @@ export default function PreferencesBar() {
         <Collapse in={openStates.category} timeout="auto" unmountOnExit>
           <List component="div" disablePadding>
             {['programming', 'design', 'voice acting', 'tutor'].map((text) => (
-              <ListItemButton key={text} sx={{ pl: 4, paddingLeft: 0 }}>
+              <ListItemButton
+                key={text}
+                sx={{
+                  pl: 4,
+                  paddingLeft: 0,
+                }}
+              >
                 <Checkbox />
                 <ListItemText primary={text} />
                 <p className="amount">12</p>
@@ -68,7 +92,14 @@ export default function PreferencesBar() {
         </Collapse>
       </List>
 
-      <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }} component="nav">
+      <List
+        sx={{
+          width: '100%',
+          maxWidth: 360,
+          bgcolor: 'background.paper',
+        }}
+        component="nav"
+      >
         <ListItemButton onClick={() => handleClick('employmentType')}>
           <ListItemText primary="Type of employment" />
           {openStates.employmentType ? <ExpandLess /> : <ExpandMore />}
@@ -76,7 +107,13 @@ export default function PreferencesBar() {
         <Collapse in={openStates.employmentType} timeout="auto" unmountOnExit>
           <List component="div" disablePadding>
             {['Fulltime', 'Part-time', 'Remote', 'Internship/Trainee', 'Hourly'].map((text) => (
-              <ListItemButton key={text} sx={{ pl: 4, paddingLeft: 0 }}>
+              <ListItemButton
+                key={text}
+                sx={{
+                  pl: 4,
+                  paddingLeft: 0,
+                }}
+              >
                 <Checkbox />
                 <ListItemText primary={text} />
                 <p className="amount">12</p>
@@ -86,7 +123,14 @@ export default function PreferencesBar() {
         </Collapse>
       </List>
 
-      <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }} component="nav">
+      <List
+        sx={{
+          width: '100%',
+          maxWidth: 360,
+          bgcolor: 'background.paper',
+        }}
+        component="nav"
+      >
         <ListItemButton onClick={() => handleClick('salaryRange')}>
           <ListItemText primary="Salary Range" />
           {openStates.salaryRange ? <ExpandLess /> : <ExpandMore />}
@@ -94,7 +138,13 @@ export default function PreferencesBar() {
         <Collapse in={openStates.salaryRange} timeout="auto" unmountOnExit>
           <List component="div" disablePadding>
             {['under $100', '$100-500', '$500-1000', 'over $1000'].map((text) => (
-              <ListItemButton key={text} sx={{ pl: 4, paddingLeft: 0 }}>
+              <ListItemButton
+                key={text}
+                sx={{
+                  pl: 4,
+                  paddingLeft: 0,
+                }}
+              >
                 <Checkbox />
                 <ListItemText primary={text} />
                 <p className="amount">12</p>
@@ -104,7 +154,14 @@ export default function PreferencesBar() {
         </Collapse>
       </List>
 
-      <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }} component="nav">
+      <List
+        sx={{
+          width: '100%',
+          maxWidth: 360,
+          bgcolor: 'background.paper',
+        }}
+        component="nav"
+      >
         <ListItemButton onClick={() => handleClick('employmentStatus')}>
           <ListItemText primary="Employment Status" />
           {openStates.employmentStatus ? <ExpandLess /> : <ExpandMore />}
@@ -112,7 +169,13 @@ export default function PreferencesBar() {
         <Collapse in={openStates.employmentStatus} timeout="auto" unmountOnExit>
           <List component="div" disablePadding>
             {['Full-time', 'Part-time', 'Contract', 'Temporary'].map((text) => (
-              <ListItemButton key={text} sx={{ pl: 4, paddingLeft: 0 }}>
+              <ListItemButton
+                key={text}
+                sx={{
+                  pl: 4,
+                  paddingLeft: 0,
+                }}
+              >
                 <Checkbox />
                 <ListItemText primary={text} />
                 <p className="amount">12</p>
@@ -122,7 +185,14 @@ export default function PreferencesBar() {
         </Collapse>
       </List>
 
-      <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }} component="nav">
+      <List
+        sx={{
+          width: '100%',
+          maxWidth: 360,
+          bgcolor: 'background.paper',
+        }}
+        component="nav"
+      >
         <ListItemButton onClick={() => handleClick('location')}>
           <ListItemText primary="Location" />
           {openStates.location ? <ExpandLess /> : <ExpandMore />}
@@ -130,7 +200,13 @@ export default function PreferencesBar() {
         <Collapse in={openStates.location} timeout="auto" unmountOnExit>
           <List component="div" disablePadding>
             {['Saudi Arabia', 'United States', 'Germany', 'Australia'].map((text) => (
-              <ListItemButton key={text} sx={{ pl: 4, paddingLeft: 0 }}>
+              <ListItemButton
+                key={text}
+                sx={{
+                  pl: 4,
+                  paddingLeft: 0,
+                }}
+              >
                 <Checkbox />
                 <ListItemText primary={text} />
                 <p className="amount">12</p>
@@ -140,7 +216,14 @@ export default function PreferencesBar() {
         </Collapse>
       </List>
 
-      <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }} component="nav">
+      <List
+        sx={{
+          width: '100%',
+          maxWidth: 360,
+          bgcolor: 'background.paper',
+        }}
+        component="nav"
+      >
         <ListItemButton onClick={() => handleClick('timeZones')}>
           <ListItemText primary="Time Zones" />
           {openStates.timeZones ? <ExpandLess /> : <ExpandMore />}
@@ -148,7 +231,13 @@ export default function PreferencesBar() {
         <Collapse in={openStates.timeZones} timeout="auto" unmountOnExit>
           <List component="div" disablePadding>
             {['GMT', 'CET', 'EST', 'PST'].map((text) => (
-              <ListItemButton key={text} sx={{ pl: 4, paddingLeft: 0 }}>
+              <ListItemButton
+                key={text}
+                sx={{
+                  pl: 4,
+                  paddingLeft: 0,
+                }}
+              >
                 <Checkbox />
                 <ListItemText primary={text} />
                 <p className="amount">12</p>

@@ -3,7 +3,7 @@ import axios from 'axios';
 
 export const fetchUsers = createAsyncThunk(
   'users/fetchUsers',
-  async (_, { rejectWithValue, dispatch }) => {
+  async (_, { rejectWithValue, dispatch, setUsers }) => {
     try {
       const response = await axios.get(`${process.env.REACT_APP_API_URL}user/`);
       dispatch(setUsers(response.data));
@@ -18,9 +18,9 @@ export const registration = createAsyncThunk(
   async ({ email, login, password }, { rejectWithValue }) => {
     try {
       const response = await axios.post(`${process.env.REACT_APP_API_URL}user/registration`, {
-        email: email,
-        login: login,
-        password: password,
+        email,
+        login,
+        password,
       });
 
       localStorage.setItem('currentUser', JSON.stringify(response.data));
@@ -49,8 +49,8 @@ export const login = createAsyncThunk(
   async ({ email, password }, { rejectWithValue }) => {
     try {
       const response = await axios.post(`${process.env.REACT_APP_API_URL}user/login`, {
-        email: email,
-        password: password,
+        email,
+        password,
       });
       localStorage.setItem('currentUser', JSON.stringify(response.data));
       return response.data;
@@ -64,11 +64,11 @@ export const EditInformation = createAsyncThunk(
   async ({ name, age, nationality }, { rejectWithValue }) => {
     try {
       const user = JSON.parse(localStorage.getItem('currentUser'));
-      const id = user.user.id;
+      const { id } = user.user;
       const response = await axios.put(`${process.env.REACT_APP_API_URL}user/updateUser/${id}`, {
-        name: name,
-        age: age,
-        nationality: nationality,
+        name,
+        age,
+        nationality,
       });
       localStorage.setItem('currentUser', JSON.stringify(response.data));
       return response.data;

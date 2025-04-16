@@ -2,6 +2,7 @@ import './ConInfUser.css';
 import { Gauge, gaugeClasses } from '@mui/x-charts/Gauge';
 import Button from '../../materialuiComponents/Button';
 import SavedFreelancers from '../SavedFreelancers/SavedFreelancers';
+
 export default function ConInfUser() {
   const taskList = [
     {
@@ -81,8 +82,9 @@ export default function ConInfUser() {
             <div key={task.id} className="task flex-row align-center justify-between" id={task.id}>
               <span className="bounded"> {task.id}</span>
               <p>
-                Task: {task.task1.length > 15 ? task.task1.slice(0, 15) + '...' : task.task1}.
-                Stage: {task.completed ? 'completed' : 'in develop'}
+                Task: {task.task1.length > 15 ? `${task.task1.slice(0, 15)}...` : task.task1}.
+                Stage:
+                {task.completed ? 'completed' : 'in develop'}
               </p>
             </div>
           ))}
@@ -101,7 +103,7 @@ export default function ConInfUser() {
       <SavedFreelancers />
       {userRole == 'customer' ? (
         <>
-          <h2 className="header-block"></h2>
+          <h2 className="header-block" />
           <div className="flex-row align-center create-job-vacancie">
             <Button
               className="ReadexFont"

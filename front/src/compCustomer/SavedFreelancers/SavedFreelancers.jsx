@@ -12,7 +12,7 @@ export default function SavedFreelancers() {
   const savedCandidates = useSelector((state) => state.users.savedUsers) || [];
   console.log(savedCandidates);
   const user = JSON.parse(localStorage.getItem('currentUser'));
-  const role = user.user.role;
+  const { role } = user.user;
   const dispatch = useDispatch();
   const toggleFavorite = (candidate) => {
     try {
@@ -55,7 +55,7 @@ export default function SavedFreelancers() {
                 <div className="candidate-inf">
                   <div className="candidate-name">
                     <p className="ReadexFont gray">
-                      {user.name}, {user.age} y.o.
+                      {user.name},{user.age} y.o.
                     </p>
                     <p className="ReadexFont gray">{user.RegisterDate}</p>
                   </div>

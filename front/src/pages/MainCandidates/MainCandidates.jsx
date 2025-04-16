@@ -1,4 +1,4 @@
-import '../MainCandidates/MainCandidates.css';
+import './MainCandidates.css';
 import Button from '../../materialuiComponents/Button';
 import { Link } from 'react-router-dom';
 import Header from '../../compCustomer/Header/Header';
@@ -9,20 +9,21 @@ export default function MainCandidates() {
       <Header />
       <main className="mainCandidates ReadexFont">
         <p className="findJobTitle">
-          Find Your <span className="greenText">Dream Job</span>
+          Find Your
+          <span className="greenText">Dream Job</span>
         </p>
         <p className="findJobDescr">289 jobs in 28 locations</p>
         <div className="findNcvDiv">
           <Button
             text="Find a job"
-            showArrow={true}
+            showArrow
             backgroundColor="rgb(61,66,90)"
             color="rgb(255,255,255)"
           />
           <Link to="/portfolio">
             <Button
               text="Create CV"
-              showArrow={true}
+              showArrow
               backgroundColor="rgb(255,255,255)"
               color="rgb(127,135,100)"
             />
@@ -79,7 +80,8 @@ export default function MainCandidates() {
           </div>
         </div>
         <p className="freshOpportText">
-          <span className="greenText">Fresh </span>Opportunities
+          <span className="greenText">Fresh </span>
+          Opportunities
         </p>
         <p className="findJobDescr">Most people are looking for this kind of job</p>
         <div className="colorCategories">
@@ -95,7 +97,7 @@ export default function MainCandidates() {
         </div>
         <Button
           text="Find a job"
-          showArrow={true}
+          showArrow
           backgroundColor="rgb(61,66,90)"
           color="rgb(255,255,255)"
         />
@@ -107,10 +109,10 @@ export default function MainCandidates() {
             </p>
             <Button
               text="Get started"
-              showArrow={true}
+              showArrow
               backgroundColor="rgb(61,66,90)"
               color="rgb(255,255,255)"
-            ></Button>
+            />
           </div>
           <img className="createResImg" src="/images/createResMan.png" alt="" />
         </div>

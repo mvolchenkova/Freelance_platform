@@ -26,7 +26,9 @@ export default function Partners() {
     <div className="ReadexFont partnersMainDiv">
       <div className="partnersSliderNavigation">
         <p className="worldClassText">
-          Working With<span className="greenText"> World Class </span>Partners
+          Working With
+          <span className="greenText"> World Class </span>
+          Partners
         </p>
         <div className="sliderArrowsDiv">
           <p className="arrowsText">

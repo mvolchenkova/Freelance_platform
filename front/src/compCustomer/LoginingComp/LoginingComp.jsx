@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import { login } from '../../store/Slices/userSlicer';
 import Alert from '../ReadyToUseComponents/alert';
 import './LoginingComp.css';
+
 export default function LoginingComp() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -20,14 +21,17 @@ export default function LoginingComp() {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const resultAction = await dispatch(login({ email, password }));
-    const user = resultAction.payload.user;
+    const resultAction = await dispatch(
+      login({
+        email,
+        password,
+      }),
+    );
+    const { user } = resultAction.payload;
     if (resultAction.payload === 404) {
       setIsCorrect(false);
-      return;
     } else if (user.isBlocked) {
       setisBlocked(true);
-      return;
     } else {
       localStorage.setItem('token', resultAction.payload.refreshToken);
       if (resultAction.payload.user.role === 'customer') {
@@ -77,9 +81,9 @@ export default function LoginingComp() {
                 placeholder="Password"
                 onChange={handleChangePassword}
                 value={password}
-              ></input>
+              />
             </div>
-            <input type="submit" className="reg-button" value={'Logining'} />
+            <input type="submit" className="reg-button" value="Logining" />
           </form>
           <div className="switch">
             <p className="uppercase ReadexFont">

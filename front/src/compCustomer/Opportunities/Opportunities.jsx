@@ -1,4 +1,4 @@
-import '../Opportunities/Opportunities.css';
+import './Opportunities.css';
 import React, { useEffect, useState } from 'react';
 import Card from '../Card/Card';
 

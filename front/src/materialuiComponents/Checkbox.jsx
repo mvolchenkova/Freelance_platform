@@ -10,9 +10,7 @@ export default function ColorCheckboxes() {
         {...label}
         sx={{
           color: 'rgb(71,209,140)',
-          '&.Mui-checked': {
-            color: 'rgb(71,209,140)',
-          },
+          '&.Mui-checked': { color: 'rgb(71,209,140)' },
         }}
       />
     </div>

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Card from '../Card/Card';
-import '../Steps/Steps.css';
+import './Steps.css';
 
 export default function Steps() {
   const [cardData, setCardData] = useState([]);
@@ -42,7 +42,7 @@ export default function Steps() {
           cardPadding="20px 20px 40px 20px"
           textwidth="90%"
           margin={`${card.id * 50}px 0 0 0`}
-          alternateColors={true}
+          alternateColors
         />
       ))}
     </div>

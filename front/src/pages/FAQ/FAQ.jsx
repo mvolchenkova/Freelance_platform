@@ -8,6 +8,7 @@ import Button from '../../materialuiComponents/Button';
 import Header from '../../compCustomer/Header/Header';
 import Accordion from '../../materialuiComponents/accordion/Accordion';
 import StillHaveQuestion from '../../compCustomer/StillHaveQuestion/StillHaveQuestion';
+
 export default function FAQ() {
   return (
     <>
@@ -29,11 +30,20 @@ export default function FAQ() {
                   padding: '10px',
                 }}
               >
-                <IconButton sx={{ p: '10px', color: 'rgb(71, 209, 140)' }} aria-label="search">
+                <IconButton
+                  sx={{
+                    p: '10px',
+                    color: 'rgb(71, 209, 140)',
+                  }}
+                  aria-label="search"
+                >
                   <SearchIcon />
                 </IconButton>
                 <InputBase
-                  sx={{ ml: 1, flex: 1 }}
+                  sx={{
+                    ml: 1,
+                    flex: 1,
+                  }}
                   placeholder="Search questions"
                   inputProps={{ 'aria-label': 'search google maps' }}
                 />

@@ -1,4 +1,4 @@
-import '../Vacancies/Vacancies.css';
+import './Vacancies.css';
 import * as React from 'react';
 import Avatar from '@mui/material/Avatar';
 import Stack from '@mui/material/Stack';
@@ -8,6 +8,7 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
 import { setSavedFreelancer, removeSavedFreelancer } from '../../store/Slices/userSlicer';
 import { useDispatch, useSelector } from 'react-redux';
+
 export default function Vacancies() {
   const candidates = {
     id: 1,
@@ -71,7 +72,7 @@ export default function Vacancies() {
             <div className="candidate-inf">
               <div className="candidate-name">
                 <p className="ReadexFont gray">
-                  {candidates.name}, {candidates.age} y.o.
+                  {candidates.name},{candidates.age} y.o.
                 </p>
                 <p className="ReadexFont gray">{candidates.RegisterDate}</p>
               </div>

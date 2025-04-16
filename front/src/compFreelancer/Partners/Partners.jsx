@@ -1,4 +1,4 @@
-import '../Partners/Partners.css';
+import './Partners.css';
 import React, { useEffect, useState } from 'react';
 import Card from '../Card/Card';
 
@@ -26,7 +26,9 @@ export default function Partners() {
     <div className="ReadexFont partnersMainDiv">
       <div className="partnersSliderNavigation">
         <p className="worldClassText">
-          Working With<span className="greenText"> World Class </span>Partners
+          Working With
+          <span className="greenText"> World Class </span>
+          Partners
         </p>
         <div className="sliderArrowsDiv">
           <p className="arrowsText">

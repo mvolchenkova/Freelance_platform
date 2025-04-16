@@ -3,12 +3,13 @@ import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { logout } from '../../store/Slices/userSlicer';
+
 export default function SideBar() {
   const dispatch = useDispatch();
   const user = JSON.parse(localStorage.getItem('currentUser')) || null;
   useEffect(() => {
     const sidebar = document.querySelector('.sideBar');
-    const body = document.body;
+    const { body } = document;
 
     const handleMouseEnter = () => body.classList.add('sidebar-hover');
     const handleMouseLeave = () => body.classList.remove('sidebar-hover');

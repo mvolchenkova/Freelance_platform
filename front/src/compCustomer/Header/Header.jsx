@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import '../Header/Header.css';
+import './Header.css';
 import '../../index.css';
 import { useSelector } from 'react-redux';
 

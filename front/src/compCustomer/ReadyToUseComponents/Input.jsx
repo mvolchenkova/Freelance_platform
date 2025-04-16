@@ -4,9 +4,7 @@ import InputBase from '@mui/material/InputBase';
 
 export default function Input(props) {
   const BootstrapInput = styled(InputBase)(({ theme }) => ({
-    'label + &': {
-      marginTop: theme.spacing(3),
-    },
+    'label + &': { marginTop: theme.spacing(3) },
     '& .MuiInputBase-input': {
       borderRadius: 10,
       position: 'relative',

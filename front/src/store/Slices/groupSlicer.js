@@ -20,7 +20,7 @@ export const searchGroups = createAsyncThunk(
       const response = await axios.get(
         `${process.env.REACT_APP_API_URL}group?limit=4&search=${search}`,
       );
-      const data = response.data;
+      const { data } = response;
       return data;
     } catch (error) {
       console.error('Find groups error:', error);

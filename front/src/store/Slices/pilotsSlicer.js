@@ -22,7 +22,7 @@ export const searchPilots = createAsyncThunk(
       const response = await axios.get(
         `${process.env.REACT_APP_API_URL}pilot?limit=10&search=${search}`,
       );
-      const data = response.data;
+      const { data } = response;
       return data;
     } catch (error) {
       console.error('Find pilot error:', error);
@@ -44,15 +44,15 @@ export const getByIdPilot = createAsyncThunk(
 );
 export const getSavedPilots = createAsyncThunk(
   'pilots/getSavedPilots',
-  async (_, { rejectWithValue, dispatch }) => {
+  async (_, { rejectWithValue, dispatch, addSavedPilots }) => {
     try {
       const user = JSON.parse(localStorage.getItem('currentUser'));
-      const id = user.user.id;
+      const { id } = user.user;
       const response = await axios.get(`${process.env.REACT_APP_API_URL}savedpilots/${id}`);
       dispatch(addSavedPilots(response.data));
       return response.data;
     } catch (error) {
-      console.log('Find Saved pilot error' + error);
+      console.error(`Find Saved pilot error${error}`);
       return rejectWithValue(error.message);
     }
   },
@@ -62,9 +62,9 @@ export const SavePilot = createAsyncThunk(
   async (idPilot, { rejectWithValue }) => {
     try {
       const user = JSON.parse(localStorage.getItem('currentUser'));
-      const id = user.user.id;
+      const { id } = user.user;
       await axios.post(`${process.env.REACT_APP_API_URL}savedpilots/save`, {
-        idPilot: idPilot,
+        idPilot,
         idUser: id,
       });
     } catch (error) {
@@ -77,11 +77,11 @@ export const DeleteSavePilot = createAsyncThunk(
   async (idPilot, { rejectWithValue }) => {
     try {
       const user = JSON.parse(localStorage.getItem('currentUser'));
-      const id = user.user.id;
+      const { id } = user.user;
 
       await axios.delete(`${process.env.REACT_APP_API_URL}savedpilots/delete`, {
         data: {
-          idPilot: idPilot,
+          idPilot,
           idUser: id,
         },
       });

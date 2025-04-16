@@ -1,44 +1,44 @@
 .portfolioForm {
-    background-color: white; /* Цвет фона формы */
-    border-radius: 30px;
-    padding: 40px;
-    width: 80%;
-    margin: 0 auto; /* Центрирование формы */
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Тень для формы */
+  background-color: white; /* Цвет фона формы */
+  border-radius: 30px;
+  padding: 40px;
+  width: 80%;
+  margin: 0 auto; /* Центрирование формы */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Тень для формы */
 }
 
 .formContainer {
-    display: flex;
-    flex-direction: column;
-    gap: 20px; /* Промежуток между полями */
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Промежуток между полями */
 }
 
 .formGroup {
-    display: flex;
-    flex-direction: column;
-    gap: 5px; /* Промежуток между меткой и полем */
+  display: flex;
+  flex-direction: column;
+  gap: 5px; /* Промежуток между меткой и полем */
 }
 
 .formLabel {
-    font-size: 1.25em; /* Размер шрифта меток */
-    font-weight: bold; /* Жирный шрифт */
-    color: rgb(61, 66, 90); /* Цвет меток */
+  font-size: 1.25em; /* Размер шрифта меток */
+  font-weight: bold; /* Жирный шрифт */
+  color: rgb(61, 66, 90); /* Цвет меток */
 }
 
 .formInput,
 .formTextarea {
-    padding: 10px; /* Внутренний отступ */
-    border: 1px solid rgb(61, 66, 90); /* Цвет границы */
-    border-radius: 10px; /* Закругленные углы */
-    font-size: 1em; /* Размер шрифта для ввода */
+  padding: 10px; /* Внутренний отступ */
+  border: 1px solid rgb(61, 66, 90); /* Цвет границы */
+  border-radius: 10px; /* Закругленные углы */
+  font-size: 1em; /* Размер шрифта для ввода */
 }
 
 .formTextarea {
-    resize: vertical; /* Позволяет изменять размер textarea только по вертикали */
-    height: 100px; /* Высота textarea */
+  resize: vertical; /* Позволяет изменять размер textarea только по вертикали */
+  height: 100px; /* Высота textarea */
 }
-.portfolioForm{
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+.portfolioForm {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }

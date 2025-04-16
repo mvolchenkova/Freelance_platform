@@ -11,12 +11,8 @@ const Accordion = styled((props) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
 ))(({ theme }) => ({
   border: `0px solid ${theme.palette.divider}`,
-  '&:not(:last-child)': {
-    borderBottom: 0,
-  },
-  '&::before': {
-    display: 'none',
-  },
+  '&:not(:last-child)': { borderBottom: 0 },
+  '&::before': { display: 'none' },
 }));
 
 const AccordionSummary = styled((props) => (
@@ -31,12 +27,8 @@ const AccordionSummary = styled((props) => (
   [`& .${accordionSummaryClasses.expandIconWrapper}.${accordionSummaryClasses.expanded}`]: {
     transform: 'rotate(90deg)',
   },
-  [`& .${accordionSummaryClasses.content}`]: {
-    marginLeft: theme.spacing(1),
-  },
-  ...theme.applyStyles('dark', {
-    backgroundColor: 'transparent',
-  }),
+  [`& .${accordionSummaryClasses.content}`]: { marginLeft: theme.spacing(1) },
+  ...theme.applyStyles('dark', { backgroundColor: 'transparent' }),
 }));
 
 const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
@@ -76,7 +68,7 @@ export default function CustomizedAccordions() {
           <Typography component="span">What do we need to apply for a job?</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography></Typography>
+          <Typography />
         </AccordionDetails>
       </Accordion>
       <Accordion expanded={expanded === 'panel3'} onChange={handleChange('panel3')}>
@@ -84,7 +76,7 @@ export default function CustomizedAccordions() {
           <Typography component="span">Do we get cv from Developli?</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography></Typography>
+          <Typography />
         </AccordionDetails>
       </Accordion>
       <Accordion expanded={expanded === 'panel4'} onChange={handleChange('panel4')}>
@@ -92,7 +84,7 @@ export default function CustomizedAccordions() {
           <Typography component="span">Can we reschedule the interview meeting?</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography></Typography>
+          <Typography />
         </AccordionDetails>
       </Accordion>
       <Accordion expanded={expanded === 'panel5'} onChange={handleChange('panel5')}>
@@ -100,7 +92,7 @@ export default function CustomizedAccordions() {
           <Typography component="span">Can we apply for all jobs?</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography></Typography>
+          <Typography />
         </AccordionDetails>
       </Accordion>
     </div>

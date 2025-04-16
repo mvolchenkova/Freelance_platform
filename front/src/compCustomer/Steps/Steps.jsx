@@ -42,7 +42,7 @@ export default function Steps() {
           cardPadding="20px 20px 40px 20px"
           textwidth="90%"
           margin={`${card.id * 50}px 0 0 0`}
-          alternateColors={true}
+          alternateColors
         />
       ))}
     </div>
