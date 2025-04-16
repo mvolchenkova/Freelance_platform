@@ -1,15 +1,16 @@
-import {configureStore} from "@reduxjs/toolkit"
-import groupReducer from './Slices/groupSlicer.js'
-import teamsReucer from './Slices/teamSlicer.js'
-import pilotSlicer from './Slices/pilotsSlicer.js'
-import newsSlice from './Slices/newsSlicer.js'
-import usersReducer from './Slices/userSlicer.js'
+import { configureStore } from '@reduxjs/toolkit';
+import groupReducer from './Slices/groupSlicer.js';
+import teamsReucer from './Slices/teamSlicer.js';
+import pilotSlicer from './Slices/pilotsSlicer.js';
+import newsSlice from './Slices/newsSlicer.js';
+import usersReducer from './Slices/userSlicer.js';
+
 export default configureStore({
-    reducer:{
-        groups:groupReducer,
-        teams:teamsReucer,
-        pilots:pilotSlicer,
-        news:newsSlice,
-        users:usersReducer
-    }
-})
+  reducer: {
+    groups: groupReducer,
+    teams: teamsReucer,
+    pilots: pilotSlicer,
+    news: newsSlice,
+    users: usersReducer,
+  },
+});
