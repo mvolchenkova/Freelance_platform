@@ -1,8 +1,6 @@
 {
   "scripts": {
-    "start:admin": "cross-env ROLE=admin nodemon server.js",
-    "start:freelancer": "cross-env ROLE=freelancer nodemon server.js",
-    "start:customer": "cross-env ROLE=customer nodemon server.js"
+    "start": "nodemon server.js"
   },
   "dependencies": {
     "bcrypt": "^5.1.1",

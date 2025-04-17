@@ -38,15 +38,6 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "lint-staged": {
-    "*.{js,jsx,ts,tsx}": [
-      "eslint --fix",
-      "prettier --write"
-    ],
-    "*.{css,scss,md,json}": [
-      "prettier --write"
-    ]
-  },
   "eslintConfig": {
     "extends": [
       "react-app",
