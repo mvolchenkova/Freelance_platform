@@ -2,7 +2,7 @@ import './ConInfUser.css';
 import { Gauge, gaugeClasses } from '@mui/x-charts/Gauge';
 import Button from '../../materialuiComponents/Button';
 import SavedFreelancers from '../SavedFreelancers/SavedFreelancers';
-
+import { Link } from 'react-router-dom';
 export default function ConInfUser() {
   const taskList = [
     {
@@ -98,34 +98,39 @@ export default function ConInfUser() {
         </div>
       </div>
       <h2 className="header-block">
-        {userRole == 'customer' ? 'Saved freelancers' : 'Saved customers'}
+        {userRole === 'customer' ? 'Saved freelancers' : 'Saved customers'}
       </h2>
       <SavedFreelancers />
-      {userRole == 'customer' ? (
+      {userRole === 'customer' ? (
         <>
-          <h2 className="header-block" />
           <div className="flex-row align-center create-job-vacancie">
-            <Button
-              className="ReadexFont"
-              text="Create a job"
-              backgroundColor="rgb(219, 242, 215)"
-              color="#000"
-              fontSize="16px"
-              width="200px"
-            />
+            <Link to='/createProposal'>
+              <Button
+                className="ReadexFont"
+                text="Create a job"
+                backgroundColor="rgb(219, 242, 215)"
+                color="#000"
+                fontSize="16px"
+                width="200px"
+              />
+            </Link>
+           
             <p className="ReadexFont">
               - you can create a jobs for freelancers and they can help to resolve you problem
             </p>
           </div>
           <div className="flex-row align-center create-job-vacancie">
-            <Button
-              className="ReadexFont"
-              text="Create a vacancie"
-              backgroundColor="rgb(219, 242, 215)"
-              color="#000"
-              fontSize="16px"
-              width="200px"
-            />
+            <Link to ='/'>
+              <Button
+                className="ReadexFont"
+                text="Create a vacancie"
+                backgroundColor="rgb(219, 242, 215)"
+                color="#000"
+                fontSize="16px"
+                width="200px"
+              />
+            </Link>
+           
             <p className="ReadexFont">
               - you can create a vacancie for freelancers and they can become your employee
             </p>

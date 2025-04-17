@@ -1,0 +1,51 @@
+.main-proposal{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    gap: 40px;
+}
+.title-proposal{
+    font-size: 40px;
+}
+.create-form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+}
+.text-area{
+    max-width: 280px;
+    min-width: 280px;
+    min-height: 200px;
+}
+.proposal{
+    min-height: 450px;
+}
+.proposal-input{
+    background-color: transparent;
+    border: 1px solid gray;
+    min-width: 280px;
+}
+.proposal > div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.proposal > div > label{
+    margin-bottom: 5px;
+}
+.choice-proposal{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+
+}
+.label{
+   display: flex;
+   gap: 5px;
+   font-size: 20px;
+}

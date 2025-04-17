@@ -50,7 +50,6 @@ export default function ContainerForRegLog() {
     if (resultAction.status === 500) {
       alert(error.message);
     } else {
-      console.log('Результат регистрации:', resultAction.payload);
       localStorage.setItem('token', resultAction.payload.refreshToken);
       navigate('/');
       window.location.reload();
