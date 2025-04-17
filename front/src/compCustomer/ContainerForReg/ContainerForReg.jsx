@@ -44,6 +44,7 @@ export default function ContainerForRegLog() {
         email,
         password,
         login,
+        role,
       }),
     );
     if (resultAction.status === 500) {
@@ -54,6 +55,13 @@ export default function ContainerForRegLog() {
       navigate('/');
       window.location.reload();
     }
+  };
+
+  //ROLE
+  const [role, setRole] = useState('');
+
+  const handleChangeRole = (event) => {
+    setRole(event.target.value);
   };
 
   return (
@@ -72,22 +80,39 @@ export default function ContainerForRegLog() {
           </div>
           <form action="register" onSubmit={handleSubmit} className="registration-form width">
             <h3>registration</h3>
-            <p>
-              <button>As customer</button>/<button>As freelancer</button>
-            </p>
+            <div className="ChooseRole">
+              <label>
+                <input
+                  type="radio"
+                  value="customer"
+                  checked={role === 'customer'}
+                  onChange={handleChangeRole}
+                />
+                As customer
+              </label>
+              <label>
+                <input
+                  type="radio"
+                  value="freelancer"
+                  checked={role === 'freelancer'}
+                  onChange={handleChangeRole}
+                />
+                As freelancer
+              </label>
+            </div>
 
             <div className="inputs">
               <input
                 className="input-form"
                 type="Email"
-                placeholder="Entire your email"
+                placeholder="Enter your email"
                 onChange={handleChangeEmail}
                 value={email}
               />
               <input
                 className="input-form"
                 type="text"
-                placeholder="Entire your login"
+                placeholder="Enter your login"
                 onChange={handleChangeLogin}
                 value={login}
               />

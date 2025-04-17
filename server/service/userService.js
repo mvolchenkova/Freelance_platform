@@ -4,7 +4,7 @@ const TokenService = require("./tokenService");
 const UserDto = require("../dto/UserDto");
 
 class UserService {
-  async registration(email, password, login, name) {
+  async registration(email, password, login, name, role) {
     const user = await User.findOne({
       where: {
         email: email,
@@ -19,7 +19,7 @@ class UserService {
       password: hashpassword,
       login,
       isBlocked: 0,
-      role: "customer",
+      role,
       name: name,
     });
     const userAfterReg = await User.findOne({

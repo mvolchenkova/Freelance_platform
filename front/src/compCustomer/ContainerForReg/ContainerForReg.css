@@ -104,6 +104,11 @@
 .uppercase {
   text-transform: uppercase;
 }
+.ChooseRole {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
 
 @media screen and (max-width: 768px) {
   .inputs {

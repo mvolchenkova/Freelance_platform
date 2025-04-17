@@ -15,12 +15,13 @@ export const fetchUsers = createAsyncThunk(
 );
 export const registration = createAsyncThunk(
   'users/registration',
-  async ({ email, login, password }, { rejectWithValue }) => {
+  async ({ email, login, password, role }, { rejectWithValue }) => {
     try {
       const response = await axios.post(`${process.env.REACT_APP_API_URL}user/registration`, {
         email,
         login,
         password,
+        role,
       });
 
       localStorage.setItem('currentUser', JSON.stringify(response.data));

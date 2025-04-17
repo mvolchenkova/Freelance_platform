@@ -4,7 +4,7 @@ export default function UserCart() {
   const user = JSON.parse(localStorage.getItem('currentUser'));
   const { status } = useSelector((state) => state.users.users);
   const userinf = useSelector((state) => state.users.inf);
-  const { skills } = user.user;
+  // const { skills } = user.user;
   if (status === 'loading') {
     return <p>loading</p>;
   }
@@ -40,7 +40,7 @@ export default function UserCart() {
               Location: {userinf.location ? userinf.location : 'no location'}
             </p>
             <p className="ReadexFont parametrs">
-              Created account: {new Date(user.user.createdAt).toLocaleDateString('ru-RU')}
+              Account created: {new Date(user.user.createdAt).toLocaleDateString('ru-RU')}
             </p>
           </div>
           <div className="user-information">
@@ -56,7 +56,7 @@ export default function UserCart() {
         </div>
       </div>
 
-      {user.user.role === 'freelancer' ? (
+      {/* {user.user.role === 'freelancer' ? (
         <div className="skills">
           {skills.map((skill) => (
             <div key={skill.id} id="">
@@ -66,7 +66,7 @@ export default function UserCart() {
         </div>
       ) : (
         <></>
-      )}
+      )} */}
     </article>
   );
 }
