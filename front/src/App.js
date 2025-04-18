@@ -12,6 +12,7 @@ import MainCandidates from './pages/MainCandidates/MainCandidates.jsx';
 import Portfolio from './pages/Portfolio/Portfolio.jsx';
 import SideBar from './compCustomer/SideBar/SideBar.jsx';
 import Proposal from './pages/Proposal/Proposal.jsx'
+import UsersTasks from './pages/UsersTasks/UsersTasks.jsx'
 function App() {
   return (
     <BrowserRouter>
@@ -27,6 +28,7 @@ function App() {
         <Route path="/mainCandidates" element={<MainCandidates />} />
         <Route path="/portfolio" element={<Portfolio />} />
         <Route path='/createProposal' element={<Proposal/>}/>
+        <Route path='/userProposal' element={<UsersTasks/>}/>
       </Routes>
 
       <Footer />
