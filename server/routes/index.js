@@ -21,7 +21,7 @@ router.use('/SavedFreelancer',SavedFreelancerRouter)
 router.use('/Stat',StatRouter)
 router.use('/Support',SupportRouter)
 router.use('/Transaction',TransactionRouter)
-router.use('/Vacancie',VacancieRouter)
+router.use('/vacancie',VacancieRouter)
 router.use('/UserInformation', UserInformationRouter)
 router.use('/category',categoryRouter)
 

@@ -1,7 +1,7 @@
 import { useState,useEffect } from 'react'
 import Button from '../materialuiComponents/Button'
 
-export default function Task({task, handledelete,handleUpdate}){
+export default function Vacancie({task, handledelete,handleUpdate}){
     const [isPublish, setIsPublished] = useState(task.isPublished);
 
     useEffect(() => {
@@ -11,7 +11,7 @@ export default function Task({task, handledelete,handleUpdate}){
     const handleToggle = () => {
       const nextIsPublished = !isPublish;
       setIsPublished(nextIsPublished);
-      handleUpdate(task.idProposal, nextIsPublished);
+      handleUpdate(task.idVacancie, nextIsPublished);
     };
     const ViewDate = (date) =>{
         const dateObject = new Date(date);
@@ -31,7 +31,7 @@ export default function Task({task, handledelete,handleUpdate}){
                             color="rgb(255,255,255)"
                             backgroundColor="rgb(61,66,90)"
                             width="100%"
-                            func={() =>handledelete(task.idProposal)}
+                            func={() =>handledelete(task.idVacancie)}
                         />
                         <Button text={isPublish? 'Unpublish' : 'Publish'}
                             color="rgb(255,255,255)"
@@ -51,7 +51,7 @@ export default function Task({task, handledelete,handleUpdate}){
                 </div>
             </div>
             <div className='salary-create-time'>
-                <p className='ReadexFont'>Salary: {task.cost}$/month</p>
+                <p className='ReadexFont'>Salary: {task.salary}$/month</p>
                 <p>{ViewDate(task.createdAt)}</p>
             </div>
         </div>
