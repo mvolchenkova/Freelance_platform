@@ -13,6 +13,8 @@ import Portfolio from './pages/Portfolio/Portfolio.jsx';
 import SideBar from './compCustomer/SideBar/SideBar.jsx';
 import Proposal from './pages/Proposal/Proposal.jsx'
 import UsersTasks from './pages/UsersTasks/UsersTasks.jsx'
+import CreateVacancie from './pages/CreateVacancie.jsx';
+import UsersVacancie from './pages/UsersVacancie.jsx';
 function App() {
   return (
     <BrowserRouter>
@@ -29,6 +31,8 @@ function App() {
         <Route path="/portfolio" element={<Portfolio />} />
         <Route path='/createProposal' element={<Proposal/>}/>
         <Route path='/userProposal' element={<UsersTasks/>}/>
+        <Route path='/createVacancie' element={<CreateVacancie/>}/>
+        <Route path='/userVacancie' element={<UsersVacancie/>}/>
       </Routes>
 
       <Footer />

@@ -47,7 +47,7 @@ export default function SideBar() {
           <p>Chat</p>
         </Link>
         {}
-        <Link to="/profile" className="icons-link">
+        <Link to="/userVacancie" className="icons-link">
           <img src="./images/VacancieIcon.png" alt="" />
           <p>Vacancie</p>
         </Link>

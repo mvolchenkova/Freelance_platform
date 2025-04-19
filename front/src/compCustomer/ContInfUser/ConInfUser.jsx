@@ -88,13 +88,16 @@ export default function ConInfUser() {
               </p>
             </div>
           ))}
-          <Button
-            className="ReadexFont"
-            text="View all tasks"
-            backgroundColor="rgb(219, 242, 215)"
-            color="#000"
-            fontSize="16px"
-          />
+          <Link to={userRole === 'customer' ? '/userProposal' : ''}>
+            <Button
+              className="ReadexFont"
+              text="View all tasks"
+              backgroundColor="rgb(219, 242, 215)"
+              color="#000"
+              fontSize="16px"
+            />
+          </Link>
+         
         </div>
       </div>
       <h2 className="header-block">
@@ -120,7 +123,7 @@ export default function ConInfUser() {
             </p>
           </div>
           <div className="flex-row align-center create-job-vacancie">
-            <Link to ='/'>
+            <Link to ='/createVacancie'>
               <Button
                 className="ReadexFont"
                 text="Create a vacancie"

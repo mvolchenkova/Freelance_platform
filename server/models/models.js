@@ -62,6 +62,7 @@ const Vacancie = sequelize.define("Vacancie", {
   title: { type:DataTypes.STRING, allowNull:false },
   salary: {type:DataTypes.DECIMAL, allowNull: false},
   skills: { type: DataTypes.STRING, allowNull:false},
+  isPublished: { type: DataTypes.BOOLEAN, allowNull: false },
 });
 const Proposal = sequelize.define("Proposal", {
   idProposal: { type: DataTypes.BIGINT, primaryKey: true, autoIncrement: true },

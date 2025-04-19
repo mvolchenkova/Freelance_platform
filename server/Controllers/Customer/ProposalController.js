@@ -79,7 +79,6 @@ class ProposalController {
             if(!proposal){
                 return res.status(404).json('Proposal not found')
             }
-            console.log(isPublished)
             const response = await proposal.update({
                 isPublished: isPublished
             })

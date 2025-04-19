@@ -60,9 +60,21 @@ export const publishProposal = createAsyncThunk(
         }
     }
 )
+export const fetchAllProposal = createAsyncThunk(
+    'proposal/fetchAllProposal',
+    async(_,{rejectWithValue}) =>{
+        try{
+            const response = await axios.get(`${process.env.REACT_APP_API_URL}proposal/`);
+            return response.data
+        } catch (error){
+            return rejectWithValue(error.message);
+        }
+    }
+)
 const proposalSlicer = createSlice({
     name:'proposal',
     initialState:{
+        allProposal:[],
         proposal:[],
         status:null,
         error:null
@@ -99,6 +111,18 @@ const proposalSlicer = createSlice({
             state.proposal = action.payload;
         })
         .addCase(fetchProposalbyId.rejected, (state, action) => {
+            state.status = 'rejected';
+            state.error = action.error.message;
+        })
+        .addCase(fetchAllProposal.pending, (state) => {
+            state.status = 'loading';
+            state.error = null;
+        })
+        .addCase(fetchAllProposal.fulfilled, (state, action) => {
+            state.status = 'resolved';
+            state.allProposal = action.payload;
+        })
+        .addCase(fetchAllProposal.rejected, (state, action) => {
             state.status = 'rejected';
             state.error = action.error.message;
         })
