@@ -6,9 +6,8 @@ import Modal from '@mui/material/Modal';
 import './ModalUpdInf.css'
 import CustomizedButtons  from '../Button.jsx'
 import { useState } from 'react';
-import { EditInformation,fetchInf } from '../../store/Slices/userSlicer.js';
+import { EditInformation } from '../../store/Slices/userSlicer.js';
 import { useDispatch } from 'react-redux';
-import { useEffect } from 'react';
 const style = {
   position: 'absolute',
   top: '50%',
@@ -24,15 +23,12 @@ const style = {
 
 export default function BasicModal(inf) {
   const dispatch = useDispatch();
-  useEffect(()=>{
-    dispatch(fetchInf())
-  },[dispatch])
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-  const [salary,setSalary] = useState(inf.inf.salary) || 0
-  const [location, setLocation] = useState(inf.inf.location) || ''
-  const [describe,setDescribe] = useState(inf.inf.description) || ''
+  const [salary,setSalary] = useState(0) || 0
+  const [location, setLocation] = useState('') || ''
+  const [describe,setDescribe] = useState('') || ''
   const maxLength = 300;
   console.log(inf)
   const handleSetSalary = (e) =>{

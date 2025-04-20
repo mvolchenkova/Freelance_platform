@@ -6,13 +6,14 @@ import { fetchInf } from '../../store/Slices/userSlicer';
 import { useEffect } from 'react';
 export default function UserCart() {
   const dispatch = useDispatch()
-  useEffect(()=>{
-    dispatch(fetchInf());
-  },[dispatch])
+  
   const user = JSON.parse(localStorage.getItem('currentUser'));
-  const { status } = useSelector((state) => state.users.users);
+  const  status  = useSelector((state) => state.users.status);
   const userinf = useSelector((state) => state.users.inf);
   // const { skills } = user.user;
+  useEffect(()=>{
+      dispatch(fetchInf());
+  },[dispatch])
   if (status === 'loading') {
     return <p>loading</p>;
   }
