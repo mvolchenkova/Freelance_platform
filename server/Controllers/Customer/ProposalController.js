@@ -31,6 +31,7 @@ class ProposalController {
                 skills,
                 title,
                 isPublished,
+                stage:'Not taken',
             })
             const userInf = {
                 id: user.id,

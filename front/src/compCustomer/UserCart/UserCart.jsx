@@ -1,15 +1,23 @@
 import './UserCart.css';
-import { useSelector } from 'react-redux';
 import Button from '../../materialuiComponents/Button';
-
+import { useDispatch, useSelector } from 'react-redux';
+import BasicModal from '../../materialuiComponents/ModalUpdInf/ModalUpdInf';
+import { fetchInf } from '../../store/Slices/userSlicer';
+import { useEffect } from 'react';
 export default function UserCart() {
+  const dispatch = useDispatch()
+  
   const user = JSON.parse(localStorage.getItem('currentUser'));
-  const { status } = useSelector((state) => state.users.users);
+  const  status  = useSelector((state) => state.users.status);
   const userinf = useSelector((state) => state.users.inf);
   // const { skills } = user.user;
+  useEffect(()=>{
+      dispatch(fetchInf());
+  },[dispatch])
   if (status === 'loading') {
     return <p>loading</p>;
   }
+
   return (
     <article className="user-cart flex-column align-center">
       <div className="main-cart flex-row align-center">
@@ -24,40 +32,34 @@ export default function UserCart() {
         <div className="user-parametrs flex-row  justify-between">
           <div className="user-information">
             <p className="ReadexFont parametrs">
-              Name: {user.user.name}
-            </p>
-            <p className="ReadexFont parametrs">
               Nickname: {user.user.login}
             </p>
             <p className="ReadexFont parametrs">
               Email: {user.user.email}
             </p>
             <p className="ReadexFont parametrs">
-              Salary: {userinf.salary ? userinf.salary : 'empty'}
+              Salary: {userinf.salary ? (`${userinf.salary}$/month`) : 'Empty'}
             </p>
             <p className="ReadexFont parametrs">
-              Location: {userinf.location ? userinf.location : 'no location'}
+              Location: {userinf.location ? userinf.location : 'No location'}
             </p>
             <p className="ReadexFont parametrs">
               Account created: {new Date(user.user.createdAt).toLocaleDateString('ru-RU')}
             </p>
           </div>
-          <div className="user-information">
-            <p className="ReadexFont parametrs">
-              Description: {userinf.description ? userinf.description : 'Empty'}
-            </p>
-          </div>
+          
           <div className="flex-column justify-between align-center">
-            <button className="edit-profile">
-              <img className="edit-profile-img" src="./images/Editpen.png" alt="" />
-            </button>
+            <BasicModal inf={userinf}/>
           </div>
         </div>
-        
-        
+      </div>
+      <div className="user-description">
+        <p className="ReadexFont description-text parametrs">
+          Description: {userinf.description ? userinf.description : 'Empty'}
+        </p>
       </div>
       {
-          user.user.role =='freelancer'?
+          user.user.role ==='freelancer'?
           <div className='editPortfolioButton'>
             <Button
             text="Edit portfolio"
@@ -69,7 +71,7 @@ export default function UserCart() {
           </div>
           :<></>
         }
-
+      
       {/* {user.user.role === 'freelancer' ? (
         <div className="skills">
           {skills.map((skill) => (

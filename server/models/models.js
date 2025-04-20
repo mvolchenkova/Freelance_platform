@@ -71,6 +71,7 @@ const Proposal = sequelize.define("Proposal", {
   cost: {type:DataTypes.DECIMAL, allowNull: false},
   skills: { type: DataTypes.STRING, allowNull:false},
   isPublished: { type: DataTypes.BOOLEAN, allowNull: false },
+  stage:{type: DataTypes.STRING,allowNull:false},
 });
 const Category = sequelize.define("Category", {
   idCategory: { type: DataTypes.BIGINT, primaryKey: true,autoIncrement:true },

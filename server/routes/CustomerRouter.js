@@ -15,5 +15,6 @@ router.put('/blockUser/:id',userController.blockUser);
 router.post('/login',userController.logining)
 router.post('/logout',userController.logout)
 router.get('/refresh',userController.refresh)
+router.get('/:id', userController.getById)
 
 module.exports = router;
