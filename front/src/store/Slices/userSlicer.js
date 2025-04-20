@@ -62,17 +62,16 @@ export const login = createAsyncThunk(
 );
 export const EditInformation = createAsyncThunk(
   'users/EditInformation',
-  async ({ name, age, nationality }, { rejectWithValue }) => {
+  async ({ salary, location, description }, { rejectWithValue }) => {
     try {
-      const user = JSON.parse(localStorage.getItem('currentUser'));
-      const { id } = user.user;
-      const response = await axios.put(`${process.env.REACT_APP_API_URL}user/updateUser/${id}`, {
-        name,
-        age,
-        nationality,
-      });
-      localStorage.setItem('currentUser', JSON.stringify(response.data));
-      return response.data;
+     const user = JSON.parse(localStorage.getItem('currentUser'))
+     const id = user.user.id
+     const response = await axios.post(`${process.env.REACT_APP_API_URL}UserInformation/${id}`,{
+      salary,
+      location,
+      description
+     })
+     return response.data;
     } catch (error) {
       return rejectWithValue(error);
     }
@@ -85,13 +84,14 @@ export const BlockUser = createAsyncThunk('users/BlockUser', async (id, { reject
     return rejectWithValue(error);
   }
 });
-export const fetchInf = createAsyncThunk('users/Inf', async (_, { dispatch, setinf }) => {
+export const fetchInf = createAsyncThunk('users/Inf', async (_, { rejectWithValue }) => {
   try {
-    const response = await axios.get(`${process.env.REACT_APP_API_URL}UserInformation/`);
-    dispatch(setinf(response.data));
-    return response;
+    const user = JSON.parse(localStorage.getItem('currentUser'))
+    const id = user.user.id
+    const response = await axios.get(`${process.env.REACT_APP_API_URL}UserInformation/${id}`);
+    return response.data;
   } catch (error) {
-    return error;
+    return rejectWithValue(error)
   }
 });
 
@@ -176,7 +176,7 @@ const usersSlicer = createSlice({
       })
       .addCase(EditInformation.fulfilled, (state, action) => {
         state.status = 'resolved';
-        state.currentUsers = action.payload;
+        state.inf = action.payload;
       })
       .addCase(EditInformation.rejected, (state, action) => {
         state.status = 'rejected';
@@ -186,8 +186,9 @@ const usersSlicer = createSlice({
         state.status = 'loading';
         state.error = null;
       })
-      .addCase(fetchInf.fulfilled, (state) => {
+      .addCase(fetchInf.fulfilled, (state,action) => {
         state.status = 'resolved';
+        state.inf = action.payload;
       })
       .addCase(fetchInf.rejected, (state) => {
         state.status = 'rejected';

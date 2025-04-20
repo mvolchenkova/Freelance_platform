@@ -2,67 +2,50 @@ import './ConInfUser.css';
 import { Gauge, gaugeClasses } from '@mui/x-charts/Gauge';
 import Button from '../../materialuiComponents/Button';
 import SavedFreelancers from '../SavedFreelancers/SavedFreelancers';
+import { fetchProposalbyId } from '../../store/Slices/proposalSlicer';
 import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 export default function ConInfUser() {
-  const taskList = [
-    {
-      id: 1,
-      task1: '12e12312asdasdasdasd',
-      completed: true,
-    },
-    {
-      id: 2,
-      task1: '12e12312',
-      completed: false,
-    },
-    {
-      id: 3,
-      task1: '12e12312',
-      completed: true,
-    },
-    {
-      id: 4,
-      task1: '12e12312',
-      completed: false,
-    },
-    {
-      id: 5,
-      task1: '12e12312',
-      completed: false,
-    },
-    {
-      id: 6,
-      task1: '12e12312',
-      completed: true,
-    },
-    {
-      id: 7,
-      task1: '12e12312',
-      completed: false,
-    },
-    {
-      id: 8,
-      task1: '12e12312',
-      completed: false,
-    },
-    {
-      id: 9,
-      task1: '12e12312',
-      completed: true,
-    },
-  ];
+const dispatch = useDispatch();
 
-  const completedTasks = taskList.filter((task) => task.completed).length;
+  useEffect(()=>{
+    dispatch(fetchProposalbyId())
+  },[dispatch])
+
   const user = JSON.parse(localStorage.getItem('currentUser'));
   const userRole = user.user.role;
+  const {proposal,status} = useSelector((state) => state.proposal)
+  const completedProposal = proposal.filter((task) => task.stage === 'completed').length;
+  if(status === 'loading') return <p>Loading</p>
   return (
     <article className="flex-column user-cart stat-block">
       <h2 className="header-block">Statistic</h2>
       <div className="graphics flex-row justify-around">
-        <div className="Pie-stat flex-column align-center">
+        {proposal.length === 0?(
+          userRole === 'customer'?(
+            <div className='condition-else'>
+            <p className='ReadexFont warning-proposal'>You dont create any task. Do you want to create it?</p>
+              <Link to ='/createVacancie'>
+                <Button
+                  className="ReadexFont"
+                  text="Create a task"
+                  backgroundColor="rgb(219, 242, 215)"
+                  color="#000"
+                  fontSize="16px"
+                  width="200px"
+              />
+            </Link>
+            </div>
+          ):(
+            <></>
+          )
+        ) :(
+          <>
+          <div className="Pie-stat flex-column align-center">
           <h3 className="center-text">Completed tasks</h3>
           <Gauge
-            value={completedTasks}
+            value={completedProposal}
             startAngle={-110}
             endAngle={110}
             sx={{
@@ -71,20 +54,23 @@ export default function ConInfUser() {
                 transform: 'translate(0px, 0px)',
               },
             }}
-            valueMax={taskList.length}
+            valueMax={proposal.length}
             text={({ value, valueMax }) => `${value} / ${valueMax}`}
             height={300}
             width={300}
           />
         </div>
-        <div className="TaskList flex-column align-center">
-          {taskList.slice(0, 6).map((task) => (
-            <div key={task.id} className="task flex-row align-center justify-between" id={task.id}>
-              <span className="bounded"> {task.id}</span>
+        <div className="TaskList flex-column align-center justify-between">
+          {proposal.slice(0, 6).map((task) => (
+            <div key={task.id} className="task flex-row align-center justify-between" id={task.idProposal}>
+              <span className="bounded"> {task.idProposal}</span>
               <p>
-                Task: {task.task1.length > 15 ? `${task.task1.slice(0, 15)}...` : task.task1}.
-                Stage:
-                {task.completed ? 'completed' : 'in develop'}
+                Task: {task.title.length > 15 ? `${task.title.slice(0, 15)}...` : task.title} Stage: 
+                <span className={`${task.stage === 'Not taken' 
+                  ? 'not-taken'
+                  : task.stage ==='In develop' 
+                  ? 'in-develop' : 'completed'}`}>
+                  {task.stage}</span>
               </p>
             </div>
           ))}
@@ -99,6 +85,9 @@ export default function ConInfUser() {
           </Link>
          
         </div>
+          </>
+        )}
+        
       </div>
       <h2 className="header-block">
         {userRole === 'customer' ? 'Saved freelancers' : 'Saved customers'}
