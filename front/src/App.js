@@ -16,11 +16,15 @@ import UsersTasks from './pages/UsersTasks/UsersTasks.jsx'
 import CreateVacancie from './pages/CreateVacancie.jsx';
 import UsersVacancie from './pages/UsersVacancie.jsx';
 function App() {
+
+  const user =  JSON.parse(localStorage.getItem('currentUser'))
+  const role = user ? user.user.role : null;
   return (
+
     <BrowserRouter>
       <SideBar />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={user&&role==='freelancer'?<MainCandidates/>:<Home/>} />
         <Route path="/findJob" element={<FindJob />} />
         <Route path="/FAQ" element={<FAQ />} />
         <Route path="/registration" element={<Registration />} />

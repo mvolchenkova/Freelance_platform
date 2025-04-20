@@ -196,4 +196,4 @@ const usersSlicer = createSlice({
 });
 export const { setCurrentUser, setUsers, setSavedFreelancer, removeSavedFreelancer } =
   usersSlicer.actions;
-export default usersSlicer.reducer;
+  export default usersSlicer.reducer;

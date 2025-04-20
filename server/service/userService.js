@@ -1,4 +1,4 @@
-const { User, UserInformation } = require("../models/models");
+const { User, UserInformation, Portfolio } = require("../models/models");
 const bcrypt = require("bcrypt");
 const TokenService = require("./tokenService");
 const UserDto = require("../dto/UserDto");
@@ -25,9 +25,15 @@ class UserService {
     const userAfterReg = await User.findOne({
       where: { email: userReg.email },
     });
+
+    await Portfolio.create({
+      idUser: userAfterReg.idUser,
+    })
+
     await UserInformation.create({
       idUser: userAfterReg.idUser,
     });
+    
     const userDto = new UserDto(userReg);
     const tokens = TokenService.generateTokens({ ...userDto });
     await TokenService.saveToken(userDto.id, tokens.refreshToken);

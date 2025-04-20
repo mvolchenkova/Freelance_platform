@@ -1,5 +1,7 @@
 import './UserCart.css';
 import { useSelector } from 'react-redux';
+import Button from '../../materialuiComponents/Button';
+
 export default function UserCart() {
   const user = JSON.parse(localStorage.getItem('currentUser'));
   const { status } = useSelector((state) => state.users.users);
@@ -22,16 +24,13 @@ export default function UserCart() {
         <div className="user-parametrs flex-row  justify-between">
           <div className="user-information">
             <p className="ReadexFont parametrs">
-              Name:
-              {user.user.name}
+              Name: {user.user.name}
             </p>
             <p className="ReadexFont parametrs">
-              Nickname:
-              {user.user.login}
+              Nickname: {user.user.login}
             </p>
             <p className="ReadexFont parametrs">
-              Email:
-              {user.user.email}
+              Email: {user.user.email}
             </p>
             <p className="ReadexFont parametrs">
               Salary: {userinf.salary ? userinf.salary : 'empty'}
@@ -54,7 +53,22 @@ export default function UserCart() {
             </button>
           </div>
         </div>
+        
+        
       </div>
+      {
+          user.user.role =='freelancer'?
+          <div className='editPortfolioButton'>
+            <Button
+            text="Edit portfolio"
+            backgroundColor="rgb(219, 242, 215)"
+            color="#000"
+            fontSize="18px"
+            />
+            
+          </div>
+          :<></>
+        }
 
       {/* {user.user.role === 'freelancer' ? (
         <div className="skills">
