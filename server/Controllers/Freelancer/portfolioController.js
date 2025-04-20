@@ -1,4 +1,4 @@
-const { Portfolio } = require('../../models/models');
+const { Portfolio, User } = require('../../models/models');
 const { Op } = require('sequelize');
 const fs = require('fs');
 const path = require('path');
@@ -7,8 +7,8 @@ class PortfolioController {
     // Создание новой записи
     async create(req, res) {
         try {
-            const { workExperience, userId } = req.body;
-            const portfolio = await Portfolio.create({ workExperience, userId });
+            const { idUser } = req.body;
+            const portfolio = await Portfolio.create({ idUser });
             return res.status(201).json(portfolio);
         } catch (error) {
             console.error('Ошибка при создании портфолио:', error);
@@ -28,30 +28,24 @@ class PortfolioController {
 
     async update(req, res) {
         try {
-            const id = req.params.id;
-            
+            const { id } = req.params; 
             if (!id) {
                 return res.status(400).json({ message: 'ID портфолио не указан' });
             }
     
-            console.log('ID портфолио:', id);
-            console.log('Данные для обновления:', req.body);
-    
-            const portfolio = await Portfolio.findByPk(id);
-            console.log('Найденный портфолио:', portfolio);
+            const portfolio = await Portfolio.findByPk(id); 
     
             if (!portfolio) {
-                return res.status(404).json({ message: 'портфолио не найден' });
+                return res.status(404).json({ message: 'Портфолио не найдено' });
             }
     
-            const { workExperience } = req.body;
-            const updated = await portfolio.update({ workExperience });
-            console.log('Обновленный портфолио:', updated);
+            const { phone, skills, workExperience, education } = req.body;
+            const updatedPortfolio = await portfolio.update({ phone, skills, workExperience, education });
     
-            return res.json(updated); // Возвращаем обновленного пользователя
+            return res.json(updatedPortfolio); 
         } catch (error) {
-            console.error('Ошибка при обновлении пользователя:', error);
-            return res.status(500).json({ message: 'Ошибка при обновлении пользователя' });
+            console.error('Ошибка при обновлении портфолио:', error);
+            return res.status(500).json({ message: 'Ошибка server' });
         }
     }
     
@@ -69,6 +63,22 @@ class PortfolioController {
         } catch (error) {
             console.error('Error deleting user:', error);
             return res.status(500).json({ message: 'Server error' });
+        }
+    }
+
+    async getByUserId(req, res) {
+        try {
+            const { id } = req.params;
+            const portfolio = await Portfolio.findOne({ where: { idUser: id } }); 
+    
+            if (!portfolio) { 
+                return res.status(404).json({ message: 'Портфолио не найдено' });
+            }
+    
+            return res.status(200).json(portfolio); 
+        } catch (error) {
+            console.error('Ошибка при поиске портфолио:', error);
+            return res.status(500).json({ message: 'Ошибка сервера' });
         }
     }
 }

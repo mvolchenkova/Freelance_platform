@@ -2,6 +2,10 @@ import './MainCandidates.css';
 import Button from '../../materialuiComponents/Button';
 import { Link } from 'react-router-dom';
 import Header from '../../compCustomer/Header/Header';
+import circle1 from '../../images/circle1.svg'
+import circle2 from '../../images/circle2.png'
+import circle3 from '../../images/circle3.png'
+
 
 export default function MainCandidates() {
   return (
@@ -49,7 +53,7 @@ export default function MainCandidates() {
         </p>
         <div className="stepsHired">
           <div className="card1_1">
-            <img className="cardImg" src="/images/circle1_1.png" alt="" />
+            <img className="cardImg" src={circle1} alt="" />
             <div className="cardText">
               <p className="cardTitle">Build your profile</p>
               <p className="cardDescr">
@@ -59,7 +63,7 @@ export default function MainCandidates() {
             </div>
           </div>
           <div className="card2_1">
-            <img className="cardImg" src="/images/circle2_1.png" alt="" />
+            <img className="cardImg" src={circle2} alt="" />
             <div className="cardText">
               <p className="cardTitle">Search for job openings</p>
               <p className="cardDescr">
@@ -69,7 +73,7 @@ export default function MainCandidates() {
             </div>
           </div>
           <div className="card3_1">
-            <img className="cardImg" src="/images/circle3_1.png" alt="" />
+            <img className="cardImg" src={circle3} alt="" />
             <div className="cardText">
               <p className="cardTitle">Apply for jobs you interested in</p>
               <p className="cardDescr">

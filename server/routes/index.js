@@ -12,6 +12,7 @@ const TransactionRouter = require('./TransactionRouter')
 const VacancieRouter = require('./VacancieRouter')
 const UserInformationRouter = require('./UserInformationRouter')
 const categoryRouter = require('./categoryRouter')
+const portfolioRouter = require('./portfolioRouter')
 
 router.use('/Chat',ChatRouter)
 router.use('/user',CustomerRouter)
@@ -24,5 +25,6 @@ router.use('/Transaction',TransactionRouter)
 router.use('/vacancie',VacancieRouter)
 router.use('/UserInformation', UserInformationRouter)
 router.use('/category',categoryRouter)
+router.use('/portfolio', portfolioRouter)
 
 module.exports = router;

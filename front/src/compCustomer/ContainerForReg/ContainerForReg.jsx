@@ -12,8 +12,10 @@ export default function ContainerForRegLog() {
   const [password, setpassword] = useState('');
   const [Cpassword, setCpassword] = useState('');
   const [login, setlogin] = useState('');
+  const [role, setRole] = useState();
   const { error } = useSelector((state) => state.users);
   const [passwordsMatch, setPasswordsMatch] = useState(true);
+  const [roleMatch, setRoleMatch] = useState(true);
   const handleChangeEmail = (e) => {
     setemail(e.target.value);
   };
@@ -34,11 +36,23 @@ export default function ContainerForRegLog() {
     }
     return true;
   };
+
+  const checkRole = (role) =>{
+    if(!role){
+      setRoleMatch(false);
+      return false;
+    }
+    return true;
+  }
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!checkPasswords(password, Cpassword)) {
       return;
     }
+    if(!checkRole(role)){
+      return
+    }
+    
     const resultAction = await dispatch(
       registration({
         email,
@@ -51,13 +65,16 @@ export default function ContainerForRegLog() {
       alert(error.message);
     } else {
       localStorage.setItem('token', resultAction.payload.refreshToken);
-      navigate('/');
+      if (role === 'freelancer') {
+        navigate('/mainCandidates');
+      } else {
+        navigate('/');
+      }
       window.location.reload();
-    }
+    } 
   };
 
-  //ROLE
-  const [role, setRole] = useState('');
+
 
   const handleChangeRole = (event) => {
     setRole(event.target.value);
@@ -66,6 +83,7 @@ export default function ContainerForRegLog() {
   return (
     <main className="container-for-reg-log">
       {!passwordsMatch && <Alert message="Passwods must be the same" />}
+      {!roleMatch && <Alert message="Please select a role before registering."/>}
       <section className="flex-con">
         <article className="article-for-form">
           <img src="./images/registrationPhoto.png" alt="" className="img width" />
