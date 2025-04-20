@@ -1,4 +1,4 @@
-const { DataTypes } = require("sequelize");
+const { DataTypes, STRING } = require("sequelize");
 const sequelize = require("../db");
 const User = sequelize.define("User", {
   idUser: { type: DataTypes.BIGINT, primaryKey: true, autoIncrement: true },
@@ -155,11 +155,12 @@ const Portfolio = sequelize.define(
       primaryKey: true,
       autoIncrement: true,
     },
-    workExperience: { type: DataTypes.INTEGER },
+    workExperience: { type: DataTypes.STRING, allowNull: true },
+    phone: {type: DataTypes.STRING, allowNull: true},
+    skills: {type: DataTypes.STRING, allowNull: true},
+    education: {type: DataTypes.STRING, allowNull:true},
+    idUser: {type:DataTypes.BIGINT, allowNull: false}
   },
-  {
-    tableName: "portfolios",
-  }
 );
 
 const Task = sequelize.define(
@@ -316,10 +317,6 @@ const Language = sequelize.define(
 User.hasMany(Response, { foreignKey: "userId", as: "responses" });
 Response.belongsTo(User, { foreignKey: "userId", as: "user" });
 
-// freelancer-portfolio 1:1
-User.hasOne(Portfolio, { foreignKey: "userId", as: "portfolio" });
-Portfolio.belongsTo(User, { foreignKey: "userId", as: "user" });
-
 // freelancer-balance 1:1
 User.hasOne(Balance, { foreignKey: "userId", as: "balance" });
 Balance.belongsTo(User, { foreignKey: "userId", as: "user" });
@@ -333,23 +330,7 @@ Transaction.belongsTo(User, { foreignKey: "userId", as: "user" });
 // freelancer-review 1:M
 // skill-skillAssessment 1:M
 // task-review 1:M
-
-module.exports = {
-  Portfolio,
-  Task,
-  Response,
-  AdditionalService,
-  Balance,
-  Deal,
-  Review,
-  SkillAssessment,
-  Category,
-  Skill,
-  Project,
-  Language,
-  Transaction,
-};
-
+  
 module.exports = {
   User,
   Support,
@@ -363,4 +344,17 @@ module.exports = {
   Category,
   Token,
   UserInformation,
+  Portfolio,
+  Task,
+  Response,
+  AdditionalService,
+  Balance,
+  Deal,
+  Review,
+  SkillAssessment,
+  Category,
+  Skill,
+  Project,
+  Language,
+  Transaction,
 };

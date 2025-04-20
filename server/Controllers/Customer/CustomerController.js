@@ -97,6 +97,7 @@ class UserController {
       }
 
       const { email, password, login, name, role } = req.body;
+      console.log(role)
       const userData = await UserService.registration(
         email,
         password,
