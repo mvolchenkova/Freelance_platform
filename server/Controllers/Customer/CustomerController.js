@@ -59,13 +59,13 @@ class UserController {
   }
   async updateUser(req, res) {
     const { id } = req.params;
-    const { name, age, description, salary, location } = req.body;
+    const { name } = req.body;
     try {
       const user = await User.findByPk(id);
       if (!user) {
         return res.status(404).json("User not found");
       }
-      const userdata = await user.update({ name, BirthdayDate });
+      const userdata = await user.update({ name });
       const userDto = new UserDto(userdata);
       const tokens = TokenService.generateTokens({ userDto });
       await TokenService.saveToken(userDto.id, tokens.refreshToken);

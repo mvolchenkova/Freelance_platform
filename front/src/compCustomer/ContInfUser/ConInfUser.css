@@ -28,3 +28,12 @@
 .create-job-vacancie > p{
     font-size: 18px;
 }
+.not-taken{
+    color: #ff2b2b
+}
+.in-develop{
+    color: #f1a922;
+}
+.completed{
+    color: #20f719;
+}
