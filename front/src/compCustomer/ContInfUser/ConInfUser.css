@@ -37,9 +37,3 @@
 .completed{
     color: #20f719;
 }
-.serviceNbutton{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-}

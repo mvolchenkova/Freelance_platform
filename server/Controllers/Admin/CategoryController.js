@@ -1,21 +1,30 @@
 const {Category} = require('../../models/models')
 
 class CategoryController{
-        async create(req, res) {
-            try {
-                const category = await Category.create(req.body);
-                res.status(201).json(category);
-            } catch (error) {
-                res.status(400).json({ error: error.message });
+    async create(req, res) {
+        try {
+            const name = req.body.name || req.body.nameOfCategory; // Принимаем оба варианта
+            
+            if (!name?.trim()) {
+              return res.status(400).json({ error: "Название категории обязательно" });
             }
-        }
+        
+            const category = await Category.create({ 
+              nameOfCategory: name.trim() 
+            });
+            
+            res.status(201).json(category);
+          } catch (error) {
+            res.status(500).json({ error: error.message });
+          }
+    }
         async getAll(req, res) {
             try {
                 const categories = await Category.findAll();
-                res.status(200).json(categories);
-            } catch (error) {
+                res.json(categories);
+              } catch (error) {
                 res.status(500).json({ error: error.message });
-            }
+              }
         }
         async getById(req, res) {
             try {

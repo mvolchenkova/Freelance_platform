@@ -39,8 +39,12 @@ class UserController {
             if (!id) {
                 return res.status(400).json({ message: 'ID пользователя не указан' });
             }
-        
+    
+            console.log('ID пользователя:', id);
+            console.log('Данные для обновления:', req.body);
+    
             const user = await User.findByPk(id);
+            console.log('Найденный пользователь:', user);
     
             if (!user) {
                 return res.status(404).json({ message: 'Пользователь не найден' });
@@ -48,6 +52,7 @@ class UserController {
     
             const { password, profilePicture, rating } = req.body;
             const updated = await user.update({ password, profilePicture, rating });
+            console.log('Обновленный пользователь:', updated);
     
             return res.json(updated); // Возвращаем обновленного пользователя
         } catch (error) {
@@ -72,25 +77,6 @@ class UserController {
             return res.status(500).json({ message: 'Server error' });
         }
     }
-
-    async getUserServices(req, res) {
-        try {
-          const { id } = req.params;
-      
-          const userInfo = await User.findOne({
-            where: { idUser: id },
-          });
-      
-          if (!userInfo) {
-            return res.status(404).json({ message: 'User information not found' });
-          }
-      
-          return res.status(200).json(userInfo.addServices);
-        } catch (error) {
-          console.error('Error find services:', error);
-          return res.status(500).json({ message: 'Server error' });
-        }
-      }
 }
 
 module.exports = new UserController();

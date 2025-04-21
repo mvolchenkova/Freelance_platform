@@ -2,33 +2,20 @@ import './UserCart.css';
 import Button from '../../materialuiComponents/Button';
 import { useDispatch, useSelector } from 'react-redux';
 import BasicModal from '../../materialuiComponents/ModalUpdInf/ModalUpdInf';
-import AdditionalServicesModal from '../../materialuiComponents/ModalAddServices/ModalAddServices'
 import { fetchInf } from '../../store/Slices/userSlicer';
-import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { createAdditionalService } from '../../store/Slices/additionalServicesSlice';
+import { useEffect } from 'react';
 export default function UserCart() {
-  const dispatch = useDispatch();
-
-  const user = JSON.parse(localStorage.getItem('currentUser'));
-  const status = useSelector((state) => state.users.status);
-  const userinf = useSelector((state) => state.users.inf);
-  // const userServices = useSelector((state) => state.users.services)
-  const handleCreateService = ({ serviceName, description, price }) => {
-    console.log("Adding service from parent...", serviceName, description, price);
-    // Здесь можно сделать dispatch для добавления нового сервиса
-    dispatch(createAdditionalService({ serviceName, description, price }));
-  };
-  useEffect(() => {
-    dispatch(fetchInf());
-  }, [dispatch]);
-
-  // useEffect(() => {
-  //   dispatch(getUserServices());
-  // }, []);
+  const dispatch = useDispatch()
   
+  const user = JSON.parse(localStorage.getItem('currentUser'));
+  const  status  = useSelector((state) => state.users.status);
+  const userinf = useSelector((state) => state.users.inf);
+  // const { skills } = user.user;
+  useEffect(()=>{
+      dispatch(fetchInf());
+  },[dispatch])
   if (status === 'loading') {
-    return <p>Loading...</p>;
+    return <p>loading</p>;
   }
 
   return (
@@ -42,43 +29,60 @@ export default function UserCart() {
             />
           </div>
         </div>
-        <div className="user-parametrs flex-row justify-between">
+        <div className="user-parametrs flex-row  justify-between">
           <div className="user-information">
-            <p className="ReadexFont parametrs">Nickname: {user.user.login}</p>
-            <p className="ReadexFont parametrs">Email: {user.user.email}</p>
+            <p className="ReadexFont parametrs">
+              Nickname: {user.user.login}
+            </p>
+            <p className="ReadexFont parametrs">
+              Email: {user.user.email}
+            </p>
+            <p className="ReadexFont parametrs">
+              Salary: {userinf.salary ? (`${userinf.salary}$/month`) : 'Empty'}
+            </p>
+            <p className="ReadexFont parametrs">
+              Location: {userinf.location ? userinf.location : 'No location'}
+            </p>
             <p className="ReadexFont parametrs">
               Account created: {new Date(user.user.createdAt).toLocaleDateString('ru-RU')}
             </p>
           </div>
-
-          <div className='buttons'>
-            <div className="flex-column justify-between">
-              <BasicModal inf={userinf} />
-            </div>
-
-            <div className="flex-column justify-between">
-              <AdditionalServicesModal onCreateService={handleCreateService}/>
-            </div>
+          
+          <div className="flex-column justify-between align-center">
+            <BasicModal inf={userinf}/>
           </div>
         </div>
       </div>
-
-      <div className="user-description"></div>
-
-      {user.user.role === 'freelancer' && (
-        <div className="editPortfolioButton">
-          <Link to="/portfolio">
+      <div className="user-description">
+        <p className="ReadexFont description-text parametrs">
+          Description: {userinf.description ? userinf.description : 'Empty'}
+        </p>
+      </div>
+      {
+          user.user.role ==='freelancer'?
+          <div className='editPortfolioButton'>
             <Button
-              text="Edit portfolio"
-              backgroundColor="rgb(219, 242, 215)"
-              color="#000"
-              fontSize="18px"
+            text="Edit portfolio"
+            backgroundColor="rgb(219, 242, 215)"
+            color="#000"
+            fontSize="18px"
             />
-          </Link>
-
-
+            
+          </div>
+          :<></>
+        }
+      
+      {/* {user.user.role === 'freelancer' ? (
+        <div className="skills">
+          {skills.map((skill) => (
+            <div key={skill.id} id="">
+              {skill}
+            </div>
+          ))}
         </div>
-      )}
+      ) : (
+        <></>
+      )} */}
     </article>
   );
 }

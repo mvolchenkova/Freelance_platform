@@ -18,7 +18,7 @@ class PortfolioController {
 
     async getAll(req, res) {
         try {
-            const portfolios = await Portfolio.findAll(); // Получаем все отзывы
+            const portfolios = await Portfolio.findAll(); 
             return res.json(portfolios);
         } catch (error) {
             console.error('Ошибка при получении портфолио:', error);

@@ -4,15 +4,16 @@ import skillsReducer from './Slices/skillsSlicer'
 import proposalSlicer from './Slices/proposalSlicer.js'
 import vacancieSlicer from './Slices/vacancieSlicer.js'
 import portfolioSlice from './Slices/portfolioSlice.js'
-import additionalServicesSlice from './Slices/additionalServicesSlice.js'
-
+import categoryReducer from './Slices/categorySlicer.js'
+import freelancerReducer from './Slices/freelancerSlicer';
 export default configureStore({
   reducer: {
     users: usersReducer,
     skills: skillsReducer,
     proposal:proposalSlicer,
     vacancie:vacancieSlicer,
-    portfolio: portfolioSlice,
-    additionalServices: additionalServicesSlice,
+    categories:categoryReducer,
+    freelancers: freelancerReducer,
+    portfolio: portfolioSlice
   },
 });

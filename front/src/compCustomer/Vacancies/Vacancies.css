@@ -39,6 +39,7 @@
     justify-content: space-between;
     width: 390px;
     background-color: #fff;
+    margin: 30px 15px 30px 15px;
     border-radius: 16px;
     transition: all 0.1s;
     gap: 20px;
