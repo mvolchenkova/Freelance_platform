@@ -24,15 +24,17 @@ const dispatch = useDispatch();
     
   useEffect(() => {
     dispatch(fetchAdditionalServicesByIds(userId));
-  }, [dispatch]);
+  }, [dispatch,userId]);
 
   const userRole = user.user.role;
   const {proposal,status} = useSelector((state) => state.proposal)
-  const completedProposal = proposal.filter((task) => task.stage === 'completed').length;
+  
 
   if(status === 'loading') return <p>Loading</p>
   if(statusService === 'loading') return <p>Loading</p>
-
+  const completedProposal = Array.isArray(proposal) 
+    ? proposal.filter((task) => task.stage === 'completed').length 
+    : 0;
   const handleDeleteService = (serviceId) => {
     dispatch(removeService(serviceId))
     dispatch(deleteAdditionalService({serviceId}))
@@ -47,7 +49,7 @@ const dispatch = useDispatch();
           userRole === 'customer'?(
             <div className='condition-else'>
             <p className='ReadexFont warning-proposal'>You dont create any task. Do you want to create it?</p>
-              <Link to ='/createVacancie'>
+              <Link to ='/createProposal'>
                 <Button
                   className="ReadexFont"
                   text="Create a task"
@@ -82,7 +84,7 @@ const dispatch = useDispatch();
           />
         </div>
         <div className="TaskList flex-column align-center justify-between">
-          {proposal.slice(0, 6).map((task) => (
+          {Array.isArray(proposal) && proposal.slice(0, 6).map((task) => (
             <div key={task.id} className="task flex-row align-center justify-between" id={task.idProposal}>
               <span className="bounded"> {task.idProposal}</span>
               <p>

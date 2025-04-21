@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import BasicModal from '../../materialuiComponents/ModalUpdInf/ModalUpdInf';
 import AdditionalServicesModal from '../../materialuiComponents/ModalAddServices/ModalAddServices'
 import { fetchInf } from '../../store/Slices/userSlicer';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { createAdditionalService } from '../../store/Slices/additionalServicesSlice';
 export default function UserCart() {
@@ -44,8 +44,20 @@ export default function UserCart() {
         </div>
         <div className="user-parametrs flex-row justify-between">
           <div className="user-information">
-            <p className="ReadexFont parametrs">Nickname: {user.user.login}</p>
-            <p className="ReadexFont parametrs">Email: {user.user.email}</p>
+          <p className="ReadexFont parametrs">
+              Nickname:
+              {user.user.login}
+            </p>
+            <p className="ReadexFont parametrs">
+              Email:
+              {user.user.email}
+            </p>
+            <p className="ReadexFont parametrs">
+              Salary: ${userinf.salary ? userinf.salary : 'empty'}/month
+            </p>
+            <p className="ReadexFont parametrs">
+              Location: {userinf.location ? userinf.location : 'no location'}
+            </p>
             <p className="ReadexFont parametrs">
               Account created: {new Date(user.user.createdAt).toLocaleDateString('ru-RU')}
             </p>
@@ -61,9 +73,11 @@ export default function UserCart() {
             </div>
           </div>
         </div>
+        
       </div>
-
-      <div className="user-description"></div>
+      <div className="user-description">
+        <p>Description: {userinf.description}</p>
+      </div>
 
       {user.user.role === 'freelancer' && (
         <div className="editPortfolioButton">

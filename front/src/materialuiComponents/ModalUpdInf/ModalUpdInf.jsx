@@ -26,11 +26,10 @@ export default function BasicModal(inf) {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-  const [salary,setSalary] = useState(0) || 0
-  const [location, setLocation] = useState('') || ''
-  const [describe,setDescribe] = useState('') || ''
-  const maxLength = 300;
-  console.log(inf)
+  const [salary,setSalary] = useState(inf?.inf.salary || 0)
+  const [location, setLocation] = useState(inf?.inf.location || '')
+  const [describe,setDescribe] = useState(inf?.inf.description || '')
+  const maxLength = 255;
   const handleSetSalary = (e) =>{
     setSalary(e.target.value);
   }
