@@ -12,6 +12,7 @@ module.exports = class UserDto {
   description;
   salary;
   createdAt;
+  addServices;
   constructor(model) {
     this.email = model.email;
     this.id = model.idUser;
@@ -26,5 +27,6 @@ module.exports = class UserDto {
     this.location = model.location;
     this.description = model.description;
     this.salary = model.salary;
+    this.addServices = model.addServices;
   }
 };

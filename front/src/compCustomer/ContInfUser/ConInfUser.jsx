@@ -6,18 +6,39 @@ import { fetchProposalbyId } from '../../store/Slices/proposalSlicer';
 import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { fetchAdditionalServicesByIds } from '../../store/Slices/additionalServicesSlice';
+import { deleteAdditionalService, removeService } from '../../store/Slices/additionalServicesSlice';
+
 export default function ConInfUser() {
 const dispatch = useDispatch();
+
 
   useEffect(()=>{
     dispatch(fetchProposalbyId())
   },[dispatch])
 
   const user = JSON.parse(localStorage.getItem('currentUser'));
+  const userId = user?.user?.id;
+
+  const { addService, statusService } = useSelector((state) => state.additionalServices);
+    
+  useEffect(() => {
+    dispatch(fetchAdditionalServicesByIds(userId));
+  }, [dispatch]);
+
   const userRole = user.user.role;
   const {proposal,status} = useSelector((state) => state.proposal)
   const completedProposal = proposal.filter((task) => task.stage === 'completed').length;
+
   if(status === 'loading') return <p>Loading</p>
+  if(statusService === 'loading') return <p>Loading</p>
+
+  const handleDeleteService = (serviceId) => {
+    dispatch(removeService(serviceId))
+    dispatch(deleteAdditionalService({serviceId}))
+  };
+  
+
   return (
     <article className="flex-column user-cart stat-block">
       <h2 className="header-block">Statistic</h2>
@@ -131,6 +152,37 @@ const dispatch = useDispatch();
       ) : (
         <></>
       )}
+     
+     {userRole === 'freelancer' ? (
+      <div className="your-services ReadexFont">
+        <h2 className="header-block">Your additional services</h2>
+        {statusService === 'loading' ? (
+          <p>Loading services...</p>
+        ) : addService.length > 0 ? (
+          addService.map((service) => (
+            <div className='serviceNbutton'>
+              <div key={service.serviceId} className="service-card">
+                <h3>{service.serviceName}</h3>
+                <p>{service.description}</p>
+                <p>Price: ${service.price}</p>
+              </div>
+              <Button  
+              text="DELETE"
+              backgroundColor="rgb(236, 113, 121)"
+              color="#000"
+              fontSize="20px"
+              width="200px"
+              func={() => handleDeleteService(service.serviceId)}/>
+            </div>
+            
+          ))
+        ) : (
+          <p className="ReadexFont">- you have no services yet</p>
+        )}
+      </div>
+    ) : null}
+
+
       <h2 className="header-block">Requests</h2>
     </article>
   );

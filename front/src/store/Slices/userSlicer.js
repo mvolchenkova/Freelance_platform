@@ -95,12 +95,15 @@ export const fetchInf = createAsyncThunk('users/Inf', async (_, { rejectWithValu
   }
 });
 
+
+
 const usersSlicer = createSlice({
   name: 'users',
   initialState: {
     users: [],
     savedUsers: [],
     inf: {},
+    userServicesIds: [],
     currentUsers: null,
     status: null,
     error: null,
@@ -192,7 +195,9 @@ const usersSlicer = createSlice({
       })
       .addCase(fetchInf.rejected, (state) => {
         state.status = 'rejected';
-      });
+      })
+      
+      
   },
 });
 export const { setCurrentUser, setUsers, setSavedFreelancer, removeSavedFreelancer } =
