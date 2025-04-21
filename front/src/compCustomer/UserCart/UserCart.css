@@ -81,3 +81,14 @@
     width: 100%;
     margin: 10px 30px;
 }
+.editPortfolioButton{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 30px;
+}
+.buttons{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}

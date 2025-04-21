@@ -11,6 +11,7 @@ const User = sequelize.define("User", {
   isBlocked: { type: DataTypes.BOOLEAN, allowNull: false },
   phone: { type: DataTypes.STRING, allowNull: true },
   role: { type: DataTypes.STRING, allowNull: false },
+  addServices: {type: DataTypes.ARRAY(DataTypes.BIGINT), allowNull:true}
 });
 const UserInformation = sequelize.define("UserInformation", {
   idUserInformation: {
@@ -207,7 +208,8 @@ const AdditionalService = sequelize.define(
     },
     serviceName: { type: DataTypes.TEXT, allowNull: false },
     description: { type: DataTypes.TEXT, allowNull: false },
-    price: { type: DataTypes.DOUBLE, allowNull: false },
+    price: { type: DataTypes.INTEGER, allowNull: false },
+    idUser: {type: DataTypes.BIGINT, allowNull: false}
   },
   {
     tableName: "additionalServices",

@@ -13,6 +13,7 @@ const VacancieRouter = require('./VacancieRouter')
 const UserInformationRouter = require('./UserInformationRouter')
 const categoryRouter = require('./categoryRouter')
 const portfolioRouter = require('./portfolioRouter')
+const addServiceRouter = require('./addServiceRouter')
 
 router.use('/Chat',ChatRouter)
 router.use('/user',CustomerRouter)
@@ -26,5 +27,6 @@ router.use('/vacancie',VacancieRouter)
 router.use('/UserInformation', UserInformationRouter)
 router.use('/category',categoryRouter)
 router.use('/portfolio', portfolioRouter)
+router.use('/additionalServices', addServiceRouter)
 
 module.exports = router;
