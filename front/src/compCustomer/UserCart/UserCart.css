@@ -87,8 +87,9 @@
     align-items: center;
     gap: 30px;
 }
-.buttons{
+.userCartButtons{
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+
 }

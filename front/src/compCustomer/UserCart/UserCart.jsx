@@ -63,14 +63,18 @@ export default function UserCart() {
             </p>
           </div>
 
-          <div className='buttons'>
+          <div className='userCartButtons'>
             <div className="flex-column justify-between">
               <BasicModal inf={userinf} />
             </div>
+            {user.user.role==='freelancer'&&(
+               <div className="flex-column justify-between">
+                <AdditionalServicesModal onCreateService={handleCreateService}/>
+              </div>
+            )
 
-            <div className="flex-column justify-between">
-              <AdditionalServicesModal onCreateService={handleCreateService}/>
-            </div>
+            }
+           
           </div>
         </div>
         
