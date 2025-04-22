@@ -94,7 +94,54 @@ export const fetchInf = createAsyncThunk('users/Inf', async (_, { rejectWithValu
     return rejectWithValue(error)
   }
 });
-
+export const getUserByRole = createAsyncThunk('users/getUserByRole',
+  async({role},{rejectWithValue}) =>{
+    try{
+      const response = await axios.post(`${process.env.REACT_APP_API_URL}user/byRole`,{
+        role
+      })
+      return response.data;
+    } catch (error){
+      return rejectWithValue(error)
+    }
+  }
+)
+export const SaveUser = createAsyncThunk('users/SaveUser',
+  async(idUser, {rejectWithValue}) =>{
+    try{
+      const user = JSON.parse(localStorage.getItem('currentUser'))
+      const id = user.user.id
+      const response = await axios.post(`${process.env.REACT_APP_API_URL}savedUsers/add/${id}`,{
+        idUser
+      })
+      return response.data;
+    } catch(error){
+      return rejectWithValue(error)
+    }
+    
+  }
+)
+export const deleteUser = createAsyncThunk('users/DeleteUser',
+  async(id, {rejectWithValue}) =>{
+    try{
+      await axios.delete(`${process.env.REACT_APP_API_URL}savedUsers/delete/${id}`)
+    } catch (error){
+      return rejectWithValue(error)
+    }
+  }
+)
+export const getSavedUsers = createAsyncThunk('users/GetSaved',
+  async(_,{rejectWithValue}) =>{
+    try{
+      const user = JSON.parse(localStorage.getItem('currentUser'))
+      const id = user.user.id
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}savedUsers/${id}`)
+      return response.data
+    } catch(error){
+      return rejectWithValue(error)
+    }
+  }
+)
 
 
 const usersSlicer = createSlice({
@@ -122,8 +169,9 @@ const usersSlicer = createSlice({
     setSavedFreelancer(state, action) {
       state.savedUsers.push(action.payload);
     },
-    removeSavedFreelancer(state, action) {
-      state.savedUsers = state.savedUsers.filter((user) => user.id !== action.payload);
+    removeSavedFreelancer: (state, action) => {
+      const idToRemove = action.payload;
+      state.savedUsers = state.savedUsers.filter(user => user.idUser !== idToRemove);
     },
   },
 
@@ -193,8 +241,56 @@ const usersSlicer = createSlice({
         state.status = 'resolved';
         state.inf = action.payload;
       })
-      .addCase(fetchInf.rejected, (state) => {
+      .addCase(fetchInf.rejected, (state,action) => {
         state.status = 'rejected';
+        state.error = action.error.message;
+      })
+      .addCase(getUserByRole.pending, (state) => {
+        state.status = 'loading';
+        state.error = null;
+      })
+      .addCase(getUserByRole.fulfilled, (state,action) => {
+        state.status = 'resolved';
+        state.users = action.payload;
+      })
+      .addCase(getUserByRole.rejected, (state, action) => {
+        state.status = 'rejected';
+        state.error = action.error.message;
+      })
+      .addCase(SaveUser.pending, (state) => {
+        state.status = 'loading';
+        state.error = null;
+      })
+      .addCase(SaveUser.fulfilled, (state, action) => {
+        state.status = 'resolved';
+        state.savedUsers.push(action.payload);
+      })
+      .addCase(SaveUser.rejected, (state, action) => {
+        state.status = 'rejected';
+        state.error = action.error.message;
+      })
+      .addCase(deleteUser.fulfilled, (state) => {
+        state.status = 'resolved';
+      })
+      .addCase(deleteUser.pending, (state) => {
+        state.status = 'loading';
+        state.error = null;
+      })
+      .addCase(deleteUser.rejected, (state) => {
+        state.status = 'rejected';
+        state.error = null;
+      })
+      .addCase(getSavedUsers.fulfilled, (state,action) => {
+        state.status = 'resolved';
+        state.savedUsers = action.payload
+      })
+      .addCase(getSavedUsers.pending, (state) => {
+        state.status = 'loading';
+        state.error = null;
+      })
+      .addCase(getSavedUsers.rejected, (state) => {
+        state.status = 'rejected';
+        state.error = null;
       })
       
       
