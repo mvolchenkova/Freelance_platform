@@ -37,9 +37,10 @@ const Stat = sequelize.define("Stat", {
   information: { type: DataTypes.STRING, allowNull: true },
   countOfCompletedProposal: { type: DataTypes.INTEGER, allowNull: false },
 });
-const SavedFreelancer = sequelize.define("SavedFreelancer", {
-  idSavedFreelancers: { type: DataTypes.BIGINT, primaryKey: true },
-  idFreelancer: { type: DataTypes.BIGINT },
+//поставить название SavedUsers
+const SavedUsers = sequelize.define("SavedFreelancer", {
+  idSavedUser: { type: DataTypes.BIGINT, primaryKey: true, autoIncrement:true },
+  idUser: { type: DataTypes.BIGINT },
 });
 const Request = sequelize.define("Request", {
   idRequest: { type: DataTypes.BIGINT, primaryKey: true },
@@ -128,8 +129,8 @@ Report.belongsTo(User);
 User.hasOne(Stat);
 Stat.belongsTo(User);
 
-Stat.hasMany(SavedFreelancer);
-SavedFreelancer.belongsTo(Stat);
+SavedUsers.belongsTo(User, { foreignKey: 'UserIdUser', as: 'Owner' });
+SavedUsers.belongsTo(User, { foreignKey: 'idUser', as: 'SavedUser' });
 
 User.hasMany(Request);
 Request.belongsTo(User);
@@ -338,7 +339,7 @@ module.exports = {
   User,
   Support,
   Stat,
-  SavedFreelancer,
+  SavedUsers,
   Request,
   Transaction,
   Chat,

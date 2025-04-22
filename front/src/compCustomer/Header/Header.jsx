@@ -15,7 +15,7 @@ export default function Header() {
         <img src="/images/headerLogo.svg" alt="" />
       </Link>
       <nav className="navMenu">
-        <Link to="/findJob" className="navLink">
+        <Link to="/findFreelancers" className="navLink">
           Candidates
         </Link>
         <Link to="/employers" className="navLink">

@@ -1,4 +1,4 @@
-const { User, Token } = require("../../models/models");
+const { User, Token, UserInformation } = require("../../models/models");
 const UserDto = require("../../dto/UserDto");
 const { Op } = require("sequelize");
 const TokenService = require("../../service/tokenService");
@@ -152,6 +152,23 @@ class UserController {
       });
       return res.json(userData);
     } catch (e) {}
+  }
+  async getByRole(req,res){
+    try{
+      const {role} = req.body;
+      const users = await User.findAll({
+        where:{role},
+        include:{
+          model:UserInformation,
+        }
+      })
+      if(!users){
+        return res.status(404).json('Users not found');
+      }
+      return res.status(200).json(users);
+    } catch(error){
+      return res.status(500).json({ message: error.message });
+    }
   }
 }
 module.exports = new UserController();

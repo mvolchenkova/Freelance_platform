@@ -1,10 +1,10 @@
 const Router = require('express');
 const router = new Router();
-const savedFreelancerController = require('../Controllers/Customer/SavedFreelancerController');
+const savedFreelancerController = require('../Controllers/Customer/SavedUsersController');
 
-router.get('/',savedFreelancerController.getAllSavedFreelancer)
-router.delete('/delete/:id', savedFreelancerController.deleteSavedFreelancer)
-router.post('/add/:id',savedFreelancerController.addSavedFreelancer)
-router.get('/:id',savedFreelancerController.getUserSavedFreelancer)
+router.get('/',savedFreelancerController.getAllSavedUsers)
+router.delete('/delete/:id', savedFreelancerController.deleteSavedUser)
+router.post('/add/:id',savedFreelancerController.addSavedUser)
+router.get('/:id',savedFreelancerController.getUserSavedUser)
 
 module.exports = router;
