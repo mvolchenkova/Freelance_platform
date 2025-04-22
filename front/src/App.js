@@ -25,7 +25,7 @@ function App() {
       <SideBar />
       <Routes>
         <Route path="/" element={user&&role==='freelancer'?<MainCandidates/>:<Home/>} />
-        <Route path="/findJob" element={<FindJob />} />
+        <Route path="/findFreelancers" element={<FindJob />} />
         <Route path="/FAQ" element={<FAQ />} />
         <Route path="/registration" element={<Registration />} />
         <Route path="/login" element={<Logining />} />

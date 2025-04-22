@@ -19,7 +19,7 @@ export default function Footer() {
           </div>
           <div className="footerLink">
             <p className="footerTitle">Candidates</p>
-            <Link to="/findJob">
+            <Link to="/findFreelancers">
               <p>Get Hired</p>
             </Link>
             <p>Internships</p>
