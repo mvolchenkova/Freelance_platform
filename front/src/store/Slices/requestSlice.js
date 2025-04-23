@@ -29,6 +29,17 @@ import axios from 'axios';
 //         }
 //     }
 // )
+export const fetchAllUserRequests = createAsyncThunk('request/fetchUserRequests',
+    async({id}, {rejectWithValue}) => {
+        try{
+            const response = await axios.get(`${process.env.REACT_APP_API_URL}request/${id}`)
+            return response.data
+        }
+        catch(error){
+            return rejectWithValue(error);
+        }
+    }
+)
 
 export const sendRequest = createAsyncThunk('request/createRequest',
     async(idUser, {rejectWithValue}) => {
@@ -116,7 +127,18 @@ const requestSlice = createSlice({
             state.statusReq = 'rejected';
             state.error = action.error.message;
         })
-        
+        .addCase(fetchAllUserRequests.pending, (state) => {
+            state.statusReq = 'loading';
+            state.error = null;
+        })
+        .addCase(fetchAllUserRequests.fulfilled, (state, action) => {
+            state.statusReq = 'resolved';
+            state.request = action.payload;
+        })
+        .addCase(fetchAllUserRequests.rejected, (state, action) => {
+            state.statusReq = 'rejected';
+            state.error = action.error.message;
+        })
     }
 })
 export default requestSlice.reducer;
