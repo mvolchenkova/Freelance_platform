@@ -96,7 +96,7 @@ export default function Vacancies() {
               </div>
 
               <div className="flex-row align-center justify-between">
-                {vacancy.skills?.map((skill, index) => (
+                {vacancy.skills.split(',').map((skill, index) => (
                   <div key={index} className="skill">
                     <p className="ReadexFont gray">{skill}</p>
                   </div>
