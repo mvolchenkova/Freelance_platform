@@ -8,6 +8,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchAdditionalServicesByIds } from '../../store/Slices/additionalServicesSlice';
 import { deleteAdditionalService, removeService } from '../../store/Slices/additionalServicesSlice';
+import { fetchAllUserRequests } from '../../store/Slices/requestSlice';
 
 export default function ConInfUser() {
 const dispatch = useDispatch();
@@ -21,10 +22,15 @@ const dispatch = useDispatch();
   const userId = user?.user?.id;
 
   const { addService, statusService } = useSelector((state) => state.additionalServices);
+  const { request, statusReq } = useSelector((state) => state.request)
     
   useEffect(() => {
     dispatch(fetchAdditionalServicesByIds(userId));
   }, [dispatch,userId]);
+
+  useEffect(() => {
+    dispatch(fetchAllUserRequests(userId));
+  }, [dispatch, userId]);
 
   const userRole = user.user.role;
   const {proposal,status} = useSelector((state) => state.proposal)
@@ -32,6 +38,8 @@ const dispatch = useDispatch();
 
   if(status === 'loading') return <p>Loading</p>
   if(statusService === 'loading') return <p>Loading</p>
+  if(statusReq==='loading') return <p>Loading</p>
+
   const completedProposal = Array.isArray(proposal) 
     ? proposal.filter((task) => task.stage === 'completed').length 
     : 0;
@@ -97,7 +105,7 @@ const dispatch = useDispatch();
               </p>
             </div>
           ))}
-          <Link to={userRole === 'customer' ? '/userProposal' : ''}>
+          <Link to={userRole === 'customer' ? '/userProposal' : '/allTasksPage'}>
             <Button
               className="ReadexFont"
               text="View all tasks"
@@ -179,7 +187,7 @@ const dispatch = useDispatch();
             
           ))
         ) : (
-          <p className="ReadexFont">- you have no services yet</p>
+          <p className="ReadexFont">you have no services yet</p>
         )}
       </div>
     ) : null}
@@ -197,7 +205,27 @@ const dispatch = useDispatch();
         <p className="ReadexFont">- you have no tasks yet</p>
       )}
 
-      <h2 className="header-block">Requests</h2>
+      {userRole === 'freelancer'? (
+            <div className="your-services ReadexFont">
+              <h2 className="header-block">Requests</h2>
+              {statusReq === 'loading' ? (
+                <p>Loading services...</p>
+              ) : request.length > 0 ? (
+                request.map((req) => (
+                  <div className='serviceNbutton'>
+                    <div key={req.serviceId} className="service-card">
+                      <h3>{req.serviceName}</h3>
+                      <p>{req.description}</p>
+                      <p>Price: ${req.price}</p>
+                    </div>
+                  </div>
+                  
+                ))
+              ) : (
+                <p className="ReadexFont">you have no requests yet</p>
+              )}
+            </div>
+          ) : null}
     </article>
   );
 }
