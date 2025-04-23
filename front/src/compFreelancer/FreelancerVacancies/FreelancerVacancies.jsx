@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchVacancies } from '../../store/Slices/vacancieSlicer';
 import { setSavedFreelancer, removeSavedFreelancer } from '../../store/Slices/userSlicer';
@@ -8,6 +8,8 @@ import IconButton from '@mui/material/IconButton';
 import Button from '../../materialuiComponents/Button';
 import './FreelancerVacancies.css';
 import {sendRequest} from '../../store/Slices/requestSlice'
+import Select from '../../materialuiComponents/Select';
+import { fetchAllProposal } from '../../store/Slices/proposalSlicer';
 
 export default function Vacancies() {
   const dispatch = useDispatch();
@@ -16,7 +18,14 @@ export default function Vacancies() {
     dispatch(fetchVacancies());
   }, [dispatch]);
 
+  useEffect(() => {
+    dispatch(fetchAllProposal());
+  }, [dispatch]);
+
   const vacancies = useSelector((state) => state.vacancie.allVacanie?.data) || [];
+  const proposals = useSelector((state) => state.proposal.allProposal?.data) || [];
+  console.log(proposals)
+  
   const savedVacancies = useSelector((state) => state.users.savedUsers) || [];
 
   const toggleFavorite = (candidate) => {
@@ -30,6 +39,12 @@ export default function Vacancies() {
 
   const handleSendRequest = (id) => {
     dispatch(sendRequest(id))
+  } 
+
+  const [viewMode, setViewMode] = useState('vacancies'); 
+
+  const handleSelect = (value) => {
+    setViewMode(value);
   }
   return (
     <main className="main-vacancies">
@@ -38,12 +53,13 @@ export default function Vacancies() {
           <p>Recommendation</p>
           <p>{vacancies.length} vacancies for designers</p>
         </div>
-        <div>
-          <p>Order by:</p>
+        <div className='orderByDiv'>
+          <Select handleSelect={handleSelect}/>
         </div>
       </div>
 
-      <div className="carts">
+      {viewMode==='vacancies'&&(
+        <div className="carts">
         {vacancies.map((vacancy) => (
           <article key={vacancy.id} className="candidate-cart">
             <div className="candidate-div">
@@ -80,7 +96,7 @@ export default function Vacancies() {
               </div>
 
               <div className="flex-row align-center justify-between">
-                {vacancy.skills?.map((skill, index) => (
+                {vacancy.skills.split(',').map((skill, index) => (
                   <div key={index} className="skill">
                     <p className="ReadexFont gray">{skill}</p>
                   </div>
@@ -96,6 +112,57 @@ export default function Vacancies() {
           </article>
         ))}
       </div>
+    )}
+
+
+     {viewMode==='proposals'&&(
+      <div className="cartsprop">
+        {proposals.map((proposal) => (
+          <article key={proposal.idProposal} className="candidate-cart">
+            <div className="candidate-div">
+              <div className="header-cart">
+                <IconButton
+                  style={{ paddingRight: '5px' }}
+                  aria-label="add to favorites"
+                  onClick={() => toggleFavorite(proposal)}
+                >
+                  {savedVacancies.some((user) => user.id === proposal.idProposal) ? (
+                    <FavoriteIcon style={{ color: 'red' }} />
+                  ) : (
+                    <FavoriteBorder />
+                  )}
+                </IconButton>
+              </div>
+
+              <div className="candidate-inf">
+                <div className="candidate-name">
+                  <p className="ReadexFont gray">
+                    {proposal.title}, {proposal.description}
+                  </p>
+                </div>
+
+                <div className="location-payment">
+                  <div className="flex-row align-center">
+                    <img src="./images/dollar-circle.png" alt="" />
+                    <p className="ReadexFont gray">
+                      <span className="fontWeight600 black">{proposal.cost}</span>
+                      /month
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+
+            <div className="flex-row align-center justify-between">
+              <Button text="Send request" backgroundColor="#4FCB94" color="white" width="48%"
+              func={() => handleSendRequest(proposal.UserIdUser)} />
+              <Button text="Details" backgroundColor="#F3F3F3" color="#7F879E" width="48%" />
+            </div>
+          </article>
+        ))}
+      </div>
+     )}
     </main>
   );
 }

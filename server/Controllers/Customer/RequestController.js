@@ -1,6 +1,25 @@
 const {Request, User} = require('../../models/models');
 class RequestController {
 
+    async fetchUserRequests(req, res) {
+        try {
+            const { id } = req.params;
+    
+            const requests = await Request.findAll({
+                where: {
+                    idFreelancer: id,
+                },
+            });
+                if (requests.length === 0) {
+                return res.status(404).json({ message: 'No requests found for this user.' });
+            }
+                return res.status(200).json(requests);
+        } catch (error) {
+            console.error(error);
+            return res.status(500).json({ message: 'An error occurred while fetching requests.' });
+        }
+    }
+
     async createRequest(req, res){
         try{
             const {id} = req.params;

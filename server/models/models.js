@@ -63,7 +63,7 @@ const Vacancie = sequelize.define("Vacancie", {
   description: { type: DataTypes.STRING, allowNull: false },
   title: { type:DataTypes.STRING, allowNull:false },
   salary: {type:DataTypes.DECIMAL, allowNull: false},
-  skills: { type: DataTypes.ARRAY(DataTypes.STRING), allowNull:false},
+  skills: { type: DataTypes.STRING, allowNull:false},
   isPublished: { type: DataTypes.BOOLEAN, allowNull: false },
 });
 const Proposal = sequelize.define("Proposal", {
