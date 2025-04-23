@@ -18,11 +18,12 @@ body.sidebar-hover::after {
 }
 
 .sideBar {
+    width: 150px;
     position: fixed;
     height: 100vh;
     background-color: #fff;
     z-index: 1000;
-    left: -170px;
+    left: -200px;
     padding: 0px 5px;
     transition: all 0.3s;
 }
@@ -68,8 +69,14 @@ body.sidebar-hover::after {
     font-size: 18px;
 }
 .disable{
-    opacity: 0; 
+    display: none;
 }
 div.icons-link,button.icons-link{
     margin-bottom: 50px;
+}
+.OpenButton{
+    position: fixed;
+    left: 50px;
+    top:  60px;
+    width: 40px;
 }

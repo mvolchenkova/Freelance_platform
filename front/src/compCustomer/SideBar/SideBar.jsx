@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { logout } from '../../store/Slices/userSlicer';
-
+import sideBarImage from '../../images/sidebarIcon.png'
 export default function SideBar() {
   const dispatch = useDispatch();
   const user = JSON.parse(localStorage.getItem('currentUser')) || null;
@@ -29,35 +29,36 @@ export default function SideBar() {
     localStorage.removeItem('currentUser');
   };
   return (
-    <div className="sideBar flex-column justify-between align-center">
+    <div className={` sideBar  flex-column justify-between align-center`}>
+      <img src={sideBarImage} alt="asdasd" className='OpenButton'/>
       <div
-        className={` ${!user ? 'sideBar-links disable' : 'sideBar-links'} flex-column align-center`}
+        className={`sideBar-links flex-column align-center`}
       >
         <p className="ReadexFont">{user ? user.user.login : ''}</p>
-        <Link to="/profile" className="icons-link">
+        <Link to="/profile" className={`${!user ? 'disable' : ''} icons-link`}>
           <img src="./images/profileIcon.png" alt="" />
           <p>Profile</p>
         </Link>
-        <Link to="/profile" className="icons-link">
+        <Link to="/profile" className={`${!user ? 'disable' : ''} icons-link`}>
           <img src="./images/notification.svg" alt="" />
           <p>Notifications</p>
         </Link>
-        <Link to="/profile" className="icons-link">
+        <Link to="/profile" className={`${!user ? 'disable' : ''} icons-link`}>
           <img src="./images/ChatIcon.png" alt="" />
           <p>Chat</p>
         </Link>
         {}
-        <Link to="/userVacancie" className="icons-link">
+        <Link to="/userVacancie" className={`${!user ? 'disable' : ''} icons-link`}>
           <img src="./images/VacancieIcon.png" alt="" />
           <p>Vacancie</p>
         </Link>
-        <Link to="/userProposal" className="icons-link">
+        <Link to="/userProposal" className={`${!user ? 'disable' : ''} icons-link`}>
           <img src="./images/JobIcon.png" alt="" />
           <p>Job</p>
         </Link>
       </div>
       {user ? (
-        <button className="icons-link" onClick={() => getLogout()}>
+        <button className={`icons-link`} onClick={() => getLogout()}>
           <img src="./images/ExitIcon.png" alt="" />
           <p>Exit</p>
         </button>
