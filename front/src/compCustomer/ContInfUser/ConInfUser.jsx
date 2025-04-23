@@ -155,7 +155,7 @@ const dispatch = useDispatch();
         <></>
       )}
      
-     {userRole === 'freelancer' ? (
+     {userRole === 'freelancer'? (
       <div className="your-services ReadexFont">
         <h2 className="header-block">Your additional services</h2>
         {statusService === 'loading' ? (
@@ -184,6 +184,18 @@ const dispatch = useDispatch();
       </div>
     ) : null}
 
+     
+      {userRole === 'freelancer' ? (
+        <div>
+          <h2 className="header-block">Tasks</h2>
+          <div>
+              
+          </div>
+        </div>
+         
+      ):(
+        <p className="ReadexFont">- you have no tasks yet</p>
+      )}
 
       <h2 className="header-block">Requests</h2>
     </article>

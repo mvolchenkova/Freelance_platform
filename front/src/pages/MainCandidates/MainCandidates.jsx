@@ -18,12 +18,15 @@ export default function MainCandidates() {
         </p>
         <p className="findJobDescr">289 jobs in 28 locations</p>
         <div className="findNcvDiv">
-          <Button
-            text="Find a job"
-            showArrow
-            backgroundColor="rgb(61,66,90)"
-            color="rgb(255,255,255)"
-          />
+          <Link to='/findJob'>
+            <Button
+              text="Find a job"
+              showArrow
+              backgroundColor="rgb(61,66,90)"
+              color="rgb(255,255,255)"
+            />
+          </Link>
+          
           <Link to="/portfolio">
             <Button
               text="Create CV"

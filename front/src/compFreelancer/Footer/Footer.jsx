@@ -13,7 +13,10 @@ export default function Footer() {
           </div>
           <div className="footerLink">
             <p className="footerTitle">Employers</p>
-            <p>Start Hiring</p>
+            <Link to='/startHiring'>
+              <p>Start Hiring</p>
+            </Link>
+            
             <p>Volunteer</p>
             <p>Diversity and Inclusion</p>
           </div>
