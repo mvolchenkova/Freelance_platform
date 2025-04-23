@@ -1,5 +1,54 @@
-const {Request} = require('../../models/models');
+const {Request, User} = require('../../models/models');
 class RequestController {
+
+    async createRequest(req, res){
+        try{
+            const {id} = req.params;
+            const {idCustomer} = req.body;
+            const request = await Request.create(
+                {
+                    idFreelancer: id,
+                    UserIdUser: idCustomer
+                }
+            )
+            return res.status(201).json(request);
+        }
+        catch(error){
+            return res.status(500).json(error.message);
+        }
+    }
+    async acceptRequest(req, res){
+        try{
+            const {id} = req. params;
+
+            const request = await Request.findByPk(id)
+
+            const confirmedRequest = await request.update({isConfirmed: true})
+
+            return res.status(201).json(confirmedRequest);
+
+        }
+        catch(error){
+            return res.status(500).json("Something went wrong");
+        }
+    }
+
+    async rejectRequest(req, res){
+        try{
+            const {id} = req. params;
+
+            const request = await Request.findByPk(id)
+
+            const rejectedRequest = await request.update({isConfirmed: false})
+
+            return res.status(201).json(rejectedRequest);
+
+        }
+        catch(error){
+            return res.status(500).json("Something went wrong");
+        }
+    }
+
     async getRequest(req, res){
         const { page = 1, limit = 10, sortBy = 'idRequest', order = 'ASC'} = req.query;
         const offset = (page - 1) * limit;

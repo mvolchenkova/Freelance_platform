@@ -1,0 +1,14 @@
+.sidebarAndVacancies{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    margin-top: 40px;
+}
+.main-candidate{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    width: 100%;
+    padding: 0 45px;
+}

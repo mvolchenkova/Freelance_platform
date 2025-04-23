@@ -43,8 +43,8 @@ const SavedUsers = sequelize.define("SavedFreelancer", {
   idUser: { type: DataTypes.BIGINT },
 });
 const Request = sequelize.define("Request", {
-  idRequest: { type: DataTypes.BIGINT, primaryKey: true },
-  description: { type: DataTypes.STRING, allowNull: false },
+  idRequest: { type: DataTypes.BIGINT, primaryKey: true, autoIncrement:true },
+  isConfirmed: { type: DataTypes.BOOLEAN, allowNull: true, defaultValue: null },
   idFreelancer: { type: DataTypes.BIGINT, allowNull: false },
 });
 const Transaction = sequelize.define("Transaction", {
@@ -63,7 +63,7 @@ const Vacancie = sequelize.define("Vacancie", {
   description: { type: DataTypes.STRING, allowNull: false },
   title: { type:DataTypes.STRING, allowNull:false },
   salary: {type:DataTypes.DECIMAL, allowNull: false},
-  skills: { type: DataTypes.STRING, allowNull:false},
+  skills: { type: DataTypes.ARRAY(DataTypes.STRING), allowNull:false},
   isPublished: { type: DataTypes.BOOLEAN, allowNull: false },
 });
 const Proposal = sequelize.define("Proposal", {

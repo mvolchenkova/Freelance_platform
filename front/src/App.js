@@ -15,6 +15,7 @@ import Proposal from './pages/Proposal/Proposal.jsx'
 import UsersTasks from './pages/UsersTasks/UsersTasks.jsx'
 import CreateVacancie from './pages/CreateVacancie.jsx';
 import UsersVacancie from './pages/UsersVacancie.jsx';
+import StartHiringPage from './pages/StartHiringPage/StartHiringPage.jsx';
 function App() {
 
   const user =  JSON.parse(localStorage.getItem('currentUser'))
@@ -37,6 +38,8 @@ function App() {
         <Route path='/userProposal' element={<UsersTasks/>}/>
         <Route path='/createVacancie' element={<CreateVacancie/>}/>
         <Route path='/userVacancie' element={<UsersVacancie/>}/>
+        <Route path='/startHiring' element={<StartHiringPage/>}/>
+        <Route path='/findJob' element={<FindJob/>}/>
       </Routes>
 
       <Footer />

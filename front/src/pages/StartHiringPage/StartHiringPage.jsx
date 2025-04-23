@@ -1,10 +1,10 @@
 import SearchBar from '../../compCustomer/SearchBar/SearchBar';
 import PreferencesBar from '../../compCustomer/PreferencesBar/PreferencesBar';
-import FreelancerVacancies from '../../compFreelancer/FreelancerVacancies/FreelancerVacancies';
-import './FindJob.css';
+import Vacancies from '../../compCustomer/Vacancies/Vacancies';
+import './StartHiringPage.css';
 import Header from '../../compCustomer/Header/Header';
 
-export default function FindJob() {
+export default function StartHiring() {
   return (
     <>
       <Header />
@@ -12,7 +12,7 @@ export default function FindJob() {
       <div className="sidebarAndVacancies">
         <main className="main-candidate">
           <PreferencesBar />
-          <FreelancerVacancies />
+          <Vacancies />
         </main>
       </div>
     </>
