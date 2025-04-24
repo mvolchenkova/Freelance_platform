@@ -38,11 +38,18 @@ export default function Vacancies() {
   };
   const [viewMode, setViewMode] = useState('vacancies'); 
 
+
   const handleSelect = (value) => {
     setViewMode(value);
   }
   const handleSendRequest = (idFreelancer,idVacancie) => {
     dispatch(sendRequest({idFreelancer, idVacancie}))
+
+
+  const [viewMode, setViewMode] = useState('vacancies'); 
+
+  const handleSelect = (value) => {
+    setViewMode(value);
   }
   return (
     <main className="main-vacancies">
@@ -114,6 +121,55 @@ export default function Vacancies() {
     )}
 
 
+     {viewMode==='proposals'&&(
+      <div className="cartsprop">
+        {proposals.map((proposal) => (
+          <article key={proposal.idProposal} className="candidate-cart">
+            <div className="candidate-div">
+              <div className="header-cart">
+                <IconButton
+                  style={{ paddingRight: '5px' }}
+                  aria-label="add to favorites"
+                  onClick={() => toggleFavorite(proposal)}
+                >
+                  {savedVacancies.some((user) => user.id === proposal.idProposal) ? (
+                    <FavoriteIcon style={{ color: 'red' }} />
+                  ) : (
+                    <FavoriteBorder />
+                  )}
+                </IconButton>
+              </div>
+
+              <div className="candidate-inf">
+                <div className="candidate-name flex-column">
+                <p className="ReadexFont fontWeight600">
+                    {proposal.title}
+                  </p>
+                  <p className="ReadexFont gray">{proposal.description}</p>
+                </div>
+
+                <div className="location-payment">
+                  <div className="flex-row align-center">
+                    <img src="./images/dollar-circle.png" alt="" />
+                    <p className="ReadexFont gray">
+                      <span className="fontWeight600 black">{proposal.cost}</span>
+                      /month
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+
+            <div className="flex-row align-center justify-between">
+              <Button text="Send request" backgroundColor="#4FCB94" color="white" width="48%"
+              func={() => handleSendRequest(proposal.UserIdUser)} />
+              <Button text="Details" backgroundColor="#F3F3F3" color="#7F879E" width="48%" />
+            </div>
+          </article>
+        ))}
+      </div>
+    )}
      {viewMode==='proposals'&&(
       <div className="cartsprop">
         {proposals.map((proposal) => (
