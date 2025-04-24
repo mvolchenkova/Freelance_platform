@@ -24,8 +24,6 @@ export default function Vacancies() {
 
   const vacancies = useSelector((state) => state.vacancie.allVacanie?.data) || [];
   const proposals = useSelector((state) => state.proposal.allProposal?.data) || [];
-  console.log(proposals)
-  
   const savedVacancies = useSelector((state) => state.users.savedUsers) || [];
 
   const toggleFavorite = (candidate) => {
@@ -45,12 +43,8 @@ export default function Vacancies() {
   const handleSendRequest = (idFreelancer,idVacancie) => {
     dispatch(sendRequest({idFreelancer, idVacancie}))
 
-
-  const [viewMode, setViewMode] = useState('vacancies'); 
-
-  const handleSelect = (value) => {
-    setViewMode(value);
   }
+
   return (
     <main className="main-vacancies">
       <div className="sortDiv">
