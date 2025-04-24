@@ -47,8 +47,8 @@ export default function SideBar() {
           <img src="./images/ChatIcon.png" alt="" />
           <p>Chat</p>
         </Link>
-        {user.user.role === 'customer' &&(
-          <>
+      
+     
           <Link to="/userVacancie" className={`${!user ? 'disable' : ''} icons-link`}>
             <img src="./images/VacancieIcon.png" alt="" />
             <p>Vacancie</p>
@@ -57,8 +57,6 @@ export default function SideBar() {
             <img src="./images/JobIcon.png" alt="" />
             <p>Proposal</p>
           </Link>
-          </>
-        )}
        
       </div>
       {user ? (
