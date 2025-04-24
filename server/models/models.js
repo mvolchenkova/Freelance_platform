@@ -135,6 +135,12 @@ SavedUsers.belongsTo(User, { foreignKey: 'idUser', as: 'SavedUser' });
 User.hasMany(Request);
 Request.belongsTo(User);
 
+Proposal.hasMany(Request);
+Request.belongsTo(Proposal);
+
+Vacancie.hasMany(Request);
+Request.belongsTo(Vacancie);
+
 User.hasOne(Transaction);
 Transaction.belongsTo(User);
 

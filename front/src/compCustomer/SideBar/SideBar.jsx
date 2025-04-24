@@ -39,7 +39,7 @@ export default function SideBar() {
           <img src="./images/profileIcon.png" alt="" />
           <p>Profile</p>
         </Link>
-        <Link to="/profile" className={`${!user ? 'disable' : ''} icons-link`}>
+        <Link to="/notification" className={`${!user ? 'disable' : ''} icons-link`}>
           <img src="./images/notification.svg" alt="" />
           <p>Notifications</p>
         </Link>
@@ -47,15 +47,19 @@ export default function SideBar() {
           <img src="./images/ChatIcon.png" alt="" />
           <p>Chat</p>
         </Link>
-        {}
-        <Link to="/userVacancie" className={`${!user ? 'disable' : ''} icons-link`}>
-          <img src="./images/VacancieIcon.png" alt="" />
-          <p>Vacancie</p>
-        </Link>
-        <Link to="/userProposal" className={`${!user ? 'disable' : ''} icons-link`}>
-          <img src="./images/JobIcon.png" alt="" />
-          <p>Job</p>
-        </Link>
+        {user.user.role === 'customer' &&(
+          <>
+          <Link to="/userVacancie" className={`${!user ? 'disable' : ''} icons-link`}>
+            <img src="./images/VacancieIcon.png" alt="" />
+            <p>Vacancie</p>
+          </Link>
+          <Link to="/userProposal" className={`${!user ? 'disable' : ''} icons-link`}>
+            <img src="./images/JobIcon.png" alt="" />
+            <p>Proposal</p>
+          </Link>
+          </>
+        )}
+       
       </div>
       {user ? (
         <button className={`icons-link`} onClick={() => getLogout()}>

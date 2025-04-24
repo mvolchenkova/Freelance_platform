@@ -18,7 +18,7 @@ body.sidebar-hover::after {
 }
 
 .sideBar {
-    width: 150px;
+    width: 200px;
     position: fixed;
     height: 100vh;
     background-color: #fff;
