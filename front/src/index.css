@@ -49,6 +49,30 @@ p {
 .fontWeight600 {
   font-weight: 800;
 }
+.fontWeight500 {
+  font-weight: 600;
+}
+.fontSize12em{
+  font-size: 1.2em;
+}
+.gap10{
+  gap:10px;
+}
+.gap20{
+  gap:20px;
+}
+.align-start{
+  align-items: left;
+}
+.margin0{
+  margin: 0;
+}
+.margin5{
+  margin: 5px;
+}
+.marginTop20{
+  margin-top: 20px;
+}
 .gray {
   color: #7f879e;
 }

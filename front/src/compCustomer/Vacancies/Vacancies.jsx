@@ -3,12 +3,14 @@ import * as React from 'react';
 import Avatar from '@mui/material/Avatar';
 import Stack from '@mui/material/Stack';
 import Button from '../../materialuiComponents/Button';
+import ModalFreelancerDetails from '../../materialuiComponents/ModalFreelancerDetails/ModalFreelancerDetails'
 import IconButton from '@mui/material/IconButton';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
 import { removeSavedFreelancer, getUserByRole, deleteUser, SaveUser, getSavedUsers } from '../../store/Slices/userSlicer';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
+
 
 export default function Vacancies() {
   const dispatch = useDispatch();
@@ -23,7 +25,6 @@ export default function Vacancies() {
     dispatch(getSavedUsers())
   },[dispatch])
   const savedCandidates = useSelector((state) => state.users.savedUsers);
-  console.log(savedCandidates)
   const toggleFavorite = (candidate) => {
     try {
       const isFavorite = savedCandidates.some((user) => user.idUser === candidate.idUser);
@@ -117,12 +118,7 @@ export default function Vacancies() {
               </div>
               <div className="flex-row align-center justify-between">
                 <Button text="Send message" backgroundColor="#4FCB94" color="white" width="48%" />
-                <Button
-                  text="Detail Information"
-                  backgroundColor="#F3F3F3"
-                  color="#7F879E"
-                  width="48%"
-                />
+                <ModalFreelancerDetails candidate={candidate}/>
               </div>
             </div>
         </article>
