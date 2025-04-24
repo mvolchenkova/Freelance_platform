@@ -125,3 +125,8 @@
     width: 45%;
 }
 
+.flex-column{
+    flex-direction: column;
+    display: flex;
+    flex-wrap: wrap;
+}
