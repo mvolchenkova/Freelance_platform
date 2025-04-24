@@ -78,10 +78,11 @@ export default function Vacancies() {
               </div>
 
               <div className="candidate-inf">
-                <div className="candidate-name">
-                  <p className="ReadexFont gray">
-                    {vacancy.title}, {vacancy.description}
+                <div className="candidate-name flex-column">
+                  <p className="ReadexFont fontWeight600">
+                    {vacancy.title}
                   </p>
+                  <p className="ReadexFont gray">{vacancy.description}</p>
                 </div>
 
                 <div className="location-payment">
@@ -135,10 +136,11 @@ export default function Vacancies() {
               </div>
 
               <div className="candidate-inf">
-                <div className="candidate-name">
-                  <p className="ReadexFont gray">
-                    {proposal.title}, {proposal.description}
+                <div className="candidate-name flex-column">
+                <p className="ReadexFont fontWeight600">
+                    {proposal.title}
                   </p>
+                  <p className="ReadexFont gray">{proposal.description}</p>
                 </div>
 
                 <div className="location-payment">
