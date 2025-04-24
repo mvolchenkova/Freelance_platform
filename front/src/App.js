@@ -17,7 +17,7 @@ import CreateVacancie from './pages/CreateVacancie.jsx';
 import UsersVacancie from './pages/UsersVacancie.jsx';
 import StartHiringPage from './pages/StartHiringPage/StartHiringPage.jsx';
 import AllTasksPageFreelancer from './pages/AllTasksPageFreelancer/AllTasksPageFreelancer.jsx'
-
+import NotificationPage from './pages/NotificationPage/NotificationPage.jsx';
 function App() {
 
   const user =  JSON.parse(localStorage.getItem('currentUser'))
@@ -43,6 +43,7 @@ function App() {
         <Route path='/startHiring' element={<StartHiringPage/>}/>
         <Route path='/findJob' element={<FindJob/>}/>
         <Route path='/allTasksPage' element={<AllTasksPageFreelancer/>}/>
+        <Route path='/notification' element={<NotificationPage/>}/>
       </Routes>
 
       <Footer />

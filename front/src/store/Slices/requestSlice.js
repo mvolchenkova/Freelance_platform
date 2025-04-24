@@ -1,36 +1,8 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-// export const updPortfolio = createAsyncThunk('portfolio/updatePortfolio',
-//     async({phone, skills, workExperience, education, portId}, {rejectWithValue}) => {
-//         try{
-//             const response = await axios.put(`${process.env.REACT_APP_API_URL}portfolio/${portId}`, {
-//                 phone, 
-//                 skills, 
-//                 workExperience, 
-//                 education
-//             })
-//             return response.data;
-//         }
-//         catch(error){
-//             return rejectWithValue(error);
-//         }
-//     }
-// )
-
-// export const getByUserId = createAsyncThunk('portfolio/getByUserId', 
-//     async(id, {rejectWithValue}) => {
-//         try{
-//             const response = await axios.get(`${process.env.REACT_APP_API_URL}portfolio/getByUserId/${id}`)
-//             return response.data
-//         }
-//         catch(error){
-//             return rejectWithValue(error);
-//         }
-//     }
-// )
 export const fetchAllUserRequests = createAsyncThunk('request/fetchUserRequests',
-    async({id}, {rejectWithValue}) => {
+    async(id, {rejectWithValue}) => {
         try{
             const response = await axios.get(`${process.env.REACT_APP_API_URL}request/${id}`)
             return response.data
@@ -42,11 +14,18 @@ export const fetchAllUserRequests = createAsyncThunk('request/fetchUserRequests'
 )
 
 export const sendRequest = createAsyncThunk('request/createRequest',
-    async(idUser, {rejectWithValue}) => {
+    async({idFreelancer,idVacancie}, {rejectWithValue}) => {
         try{
+               console.log(idFreelancer)
+                console.log(idVacancie)
             const freelancer = JSON.parse(localStorage.getItem('currentUser'))
             const id = freelancer.user.id
-            const response = await axios.post(`${process.env.REACT_APP_API_URL}request/${id}`,{idUser})
+            const response = await axios.post(`${process.env.REACT_APP_API_URL}request/${id}`,
+                {
+                    idFreelancer:idFreelancer,
+                    idVacancie
+                }
+            )
             return response.data
         }
         catch(error){
@@ -56,7 +35,7 @@ export const sendRequest = createAsyncThunk('request/createRequest',
 )
 
 export const acceptRequest = createAsyncThunk('request/acceptRequest',
-    async({idRequest}, {rejectWithValue}) => {
+    async(idRequest, {rejectWithValue}) => {
         try{
             const response = await axios.put(`${process.env.REACT_APP_API_URL}request/acceptRequest/${idRequest}`)
             return response.data;
@@ -68,7 +47,7 @@ export const acceptRequest = createAsyncThunk('request/acceptRequest',
 )
 
 export const rejectRequest = createAsyncThunk('request/rejectRequest',
-    async({idRequest}, {rejectWithValue}) => {
+    async(idRequest, {rejectWithValue}) => {
         try{
             const response = await axios.put(`${process.env.REACT_APP_API_URL}request/rejectRequest/${idRequest}`)
             return response.data;
@@ -109,7 +88,7 @@ const requestSlice = createSlice({
         })
         .addCase(acceptRequest.fulfilled, (state, action) => {
             state.statusReq = 'resolved';
-            state.request = action.payload;
+
         })
         .addCase(acceptRequest.rejected, (state, action) => {
             state.statusReq = 'rejected';
@@ -121,7 +100,7 @@ const requestSlice = createSlice({
         })
         .addCase(rejectRequest.fulfilled, (state, action) => {
             state.statusReq = 'resolved';
-            state.request = action.payload;
+
         })
         .addCase(rejectRequest.rejected, (state, action) => {
             state.statusReq = 'rejected';

@@ -36,15 +36,13 @@ export default function Vacancies() {
       dispatch(setSavedFreelancer(candidate));
     }
   };
-
-  const handleSendRequest = (id) => {
-    dispatch(sendRequest(id))
-  } 
-
   const [viewMode, setViewMode] = useState('vacancies'); 
 
   const handleSelect = (value) => {
     setViewMode(value);
+  }
+  const handleSendRequest = (idFreelancer,idVacancie) => {
+    dispatch(sendRequest({idFreelancer, idVacancie}))
   }
   return (
     <main className="main-vacancies">
@@ -97,7 +95,7 @@ export default function Vacancies() {
               </div>
 
               <div className="flex-row align-center justify-between">
-                {vacancy.skills?.map((skill, index) => (
+                {vacancy.skills?.split(',').map((skill, index) => (
                   <div key={index} className="skill">
                     <p className="ReadexFont gray">{skill}</p>
                   </div>
@@ -107,7 +105,7 @@ export default function Vacancies() {
 
             <div className="flex-row align-center justify-between">
               <Button text="Send request" backgroundColor="#4FCB94" color="white" width="48%"
-              func={() => handleSendRequest(vacancy.UserIdUser)} />
+              func={() => handleSendRequest(vacancy.UserIdUser,vacancy.idVacancie)} />
               <Button text="Details" backgroundColor="#F3F3F3" color="#7F879E" width="48%" />
             </div>
           </article>

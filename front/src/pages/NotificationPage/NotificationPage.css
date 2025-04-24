@@ -1,0 +1,13 @@
+.main-notification{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 100px;
+}
+.notification-title{
+    margin-top: 50px;
+}
+.notification-title > p{
+    font-size: 1.5em;
+}
