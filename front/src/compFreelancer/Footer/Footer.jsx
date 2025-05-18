@@ -40,6 +40,11 @@ export default function Footer() {
             <Link to="/articles">
               <p>Articles</p>
             </Link>
+            <Link to="/support">
+              <p>Support</p>
+            </Link><Link to="/report">
+              <p>Report</p>
+            </Link>
           </div>
         </div>
         <hr />

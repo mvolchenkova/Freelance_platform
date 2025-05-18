@@ -44,5 +44,16 @@ class FineController{
             res.status(500).json({ error: error.message });
         }
     }
+    async getByUserId(req, res) {
+        try {
+            const fines = await Fine.findAll({ 
+                where: { idUser: req.params.userId },
+                order: [['createdAt', 'DESC']] // Optional: order by newest first
+            });
+            res.status(200).json(fines);
+        } catch (error) {
+            res.status(500).json({ error: error.message });
+        }
+    }
 }
 module.exports = new FineController();

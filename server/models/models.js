@@ -30,6 +30,7 @@ const Support = sequelize.define("Support", {
   question: { type: DataTypes.STRING, allowNull: false },
   timeOfAnswer: { type: DataTypes.DATE, allowNull: true },
   timeOfAsk: { type: DataTypes.DATE, allowNull: false },
+  UserId:{ type: DataTypes.BIGINT, allowNull: true}
 });
 //подумать
 const Stat = sequelize.define("Stat", {
@@ -90,7 +91,7 @@ const BannedUser = sequelize.define("BannedUser", {
   idAdmin: { type: DataTypes.BIGINT, allowNull: false },
 });
 const Fine = sequelize.define("Fine", {
-  idFine: { type: DataTypes.BIGINT, primaryKey: true },
+  idFine: { type: DataTypes.BIGINT, primaryKey: true ,autoIncrement: true },
   idUser: { type: DataTypes.BIGINT, allowNull: false },
   Reason: { type: DataTypes.STRING, allowNull: false },
   Cost: { type: DataTypes.DECIMAL, allowNull: false },
@@ -100,8 +101,8 @@ const Report = sequelize.define("Report", {
   Reason: { type: DataTypes.STRING, allowNull: false },
   idReportedUser: { type: DataTypes.BIGINT, allowNull: false },
   idReportedByUser: { type: DataTypes.BIGINT, allowNull: false },
-  Status: { type: DataTypes.STRING, allowNull: false },
-  idAdmin: { type: DataTypes.BIGINT, allowNull: false },
+  Status: { type: DataTypes.STRING, allowNull: true },
+  idAdmin: { type: DataTypes.BIGINT, allowNull: true },
   idDeal: { type: DataTypes.BIGINT, allowNull: true },
 });
 
@@ -353,9 +354,11 @@ module.exports = {
   Proposal,
   Category,
   Token,
+  Report,
   UserInformation,
   Portfolio,
   Task,
+  Fine,
   Response,
   AdditionalService,
   Balance,

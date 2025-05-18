@@ -6,6 +6,9 @@ import vacancieSlicer from './Slices/vacancieSlicer.js'
 import portfolioSlice from './Slices/portfolioSlice.js'
 import additionalServicesSlice from './Slices/additionalServicesSlice.js'
 import requestSlice from './Slices/requestSlice.js'
+import fineSlice from './Slices/fineSlice.js'
+import supportReducer from './Slices/supportSlice';
+import reportReducer from './Slices/reportSlice';
 
 export default configureStore({
   reducer: {
@@ -15,6 +18,9 @@ export default configureStore({
     vacancie:vacancieSlicer,
     portfolio: portfolioSlice,
     additionalServices: additionalServicesSlice,
-    request: requestSlice
+    request: requestSlice,
+    fine:fineSlice,
+    support: supportReducer,
+    report: reportReducer,
   },
 });

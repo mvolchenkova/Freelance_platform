@@ -18,6 +18,9 @@ import UsersVacancie from './pages/UsersVacancie.jsx';
 import StartHiringPage from './pages/StartHiringPage/StartHiringPage.jsx';
 import AllTasksPageFreelancer from './pages/AllTasksPageFreelancer/AllTasksPageFreelancer.jsx'
 import NotificationPage from './pages/NotificationPage/NotificationPage.jsx';
+import ViewUsers from './pages/ViewUsers.jsx';
+import Support from './pages/Support.jsx';
+import Report from './pages/Report.jsx';
 function App() {
 
   const user =  JSON.parse(localStorage.getItem('currentUser'))
@@ -44,6 +47,9 @@ function App() {
         <Route path='/findJob' element={<FindJob/>}/>
         <Route path='/allTasksPage' element={<AllTasksPageFreelancer/>}/>
         <Route path='/notification' element={<NotificationPage/>}/>
+        <Route path='/viewUsers' element={<ViewUsers/>}/>
+        <Route path='/support' element={<Support/>}/>
+        <Route path='/report' element={<Report/>}/>
       </Routes>
 
       <Footer />

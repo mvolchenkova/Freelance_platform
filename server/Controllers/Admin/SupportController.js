@@ -3,12 +3,15 @@ const {Support} = require('../../models/models');
 class SupportController {
     async create(req, res) {
         try {
-            const support = await Support.create(req.body);
-            res.status(201).json(support);
+          console.log('Incoming body:', req.body); // 👈 Добавь лог
+          const support = await Support.create(req.body);
+console.log('Created support:', support.toJSON());
+          res.status(201).json(support);
         } catch (error) {
-            res.status(400).json({ error: error.message });
+          console.error('Create error:', error);   // 👈 Обязательно лог ошибки
+          res.status(400).json({ error: error.message });
         }
-    }
+      }
     async getAll(req, res) {
         try {
             const supports = await Support.findAll();
@@ -43,6 +46,16 @@ class SupportController {
         } catch (error) {
             res.status(500).json({ error: error.message });
         }
+    }
+    async getByUserId(req,res){
+        try {
+    const supports = await Support.findAll({
+      where: { UserId: req.params.userId }
+    });
+    res.json(supports);
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to fetch supports by userId' });
+  }
     }
 }
 

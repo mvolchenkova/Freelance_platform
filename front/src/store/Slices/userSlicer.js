@@ -3,10 +3,10 @@ import axios from 'axios';
 
 export const fetchUsers = createAsyncThunk(
   'users/fetchUsers',
-  async (_, { rejectWithValue, dispatch, setUsers }) => {
+  async (_, { rejectWithValue, dispatch }) => { // Убран setUsers
     try {
       const response = await axios.get(`${process.env.REACT_APP_API_URL}user/`);
-      dispatch(setUsers(response.data));
+      dispatch(setUsers(response.data)); // Используем action creator setUsers
       return response.data;
     } catch (error) {
       return rejectWithValue(error.message);
