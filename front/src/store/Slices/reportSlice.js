@@ -14,6 +14,13 @@ export const fetchReportById = createAsyncThunk('report/fetchReportById', async 
   const response = await axios.get(`${API_URL}reports/${id}`);
   return response.data;
 });
+export const fetchReportsByUserId = createAsyncThunk(
+  'report/fetchReportsByUserId',
+  async (userId) => {
+    const response = await axios.get(`${API_URL}reports/user/${userId}`);
+    return response.data;
+  }
+);
 
 export const createReport = createAsyncThunk('report/createReport', async (reportData) => {
   const response = await axios.post(`${API_URL}reports`, reportData);
@@ -71,7 +78,19 @@ const reportSlice = createSlice({
 
       .addCase(deleteReport.fulfilled, (state, action) => {
         state.reports = state.reports.filter(r => r.idReport !== action.payload);
-      });
+      })
+      .addCase(fetchReportsByUserId.pending, (state) => {
+  state.status = 'loading';
+})
+.addCase(fetchReportsByUserId.fulfilled, (state, action) => {
+  state.status = 'succeeded';
+  state.reports = action.payload;
+})
+.addCase(fetchReportsByUserId.rejected, (state, action) => {
+  state.status = 'failed';
+  state.error = action.error.message;
+})
+
   }
 });
 

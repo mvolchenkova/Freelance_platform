@@ -17,6 +17,16 @@ class ReportController  {
             res.status(500).json({ error: error.message });
         }
     }
+    async getByUser(req, res) {
+    try {
+        const reports = await Report.findAll({
+            where: { idReportedByUser: req.params.userId }
+        });
+        res.status(200).json(reports);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+}
     async getById(req, res) {
         try {
             const report = await Report.findByPk(req.params.id);

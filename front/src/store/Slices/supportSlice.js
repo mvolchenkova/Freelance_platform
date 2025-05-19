@@ -66,6 +66,8 @@ export const updateSupport = createAsyncThunk(
 export const deleteSupport = createAsyncThunk(
   'support/delete',
   async (id, { rejectWithValue }) => {
+
+    console.log('Thunk deleteSupport started with id:', id);
     try {
       await axios.delete(`${API_URL}support/${id}`);
       return id;

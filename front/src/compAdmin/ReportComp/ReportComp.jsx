@@ -3,9 +3,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   fetchReports,
   createReport,
-  deleteReport
+  updateReport
 } from '../../store/Slices/reportSlice';
 import { fetchUsers } from '../../store/Slices/userSlicer';
+import { Button,Box } from '@mui/material';
 
 export default function ReportComp() {
   const dispatch = useDispatch();
@@ -39,28 +40,39 @@ export default function ReportComp() {
     }
   };
 
-  const handleDelete = (id) => {
-    dispatch(deleteReport(id));
-  };
+ const handleView = (id) => {
+  dispatch(updateReport({ id, data: { Status: 'viewed' } }));
+};
+
+const handleDeny = (id) => {
+  dispatch(updateReport({ id, data: { Status: 'denied' } }));
+};
+// if (!reports.Status) {
+//     return null;
+//   }
 
   if (role === 'admin') {
     return (
-      <div>
+      <Box sx={{display:"flex",flexDirection:"column",alignItems:"center"}}>
         <h2>All Reports</h2>
-        {reports.length === 0 && <p>No reports available.</p>}
-        {reports.map((report) => {
-          const reporter = users.find(u => u.idUser === report.idReportedByUser);
-          const reported = users.find(u => u.idUser === report.idReportedUser);
-          return (
-            <div key={report.idReport} style={{ border: '1px solid #ccc', marginBottom: '10px', padding: '10px' }}>
-              <p><strong>From:</strong> {reporter?.login || report.idReportedByUser}</p>
-              <p><strong>Against:</strong> {reported?.login || report.idReportedUser}</p>
-              <p><strong>Reason:</strong> {report.Reason}</p>
-              <button onClick={() => handleDelete(report.idReport)}>Delete</button>
-            </div>
-          );
-        })}
-      </div>
+        <Box sx={{display:"flex",gap:"10px",flexWrap:"wrap",marginTop:"50px"}}>
+        {reports
+          .filter(report => !report.Status) // только необработанные
+          .map((report) => {
+            const reporter = users.find(u => u.idUser === report.idReportedByUser);
+            const reported = users.find(u => u.idUser === report.idReportedUser);
+            return (
+              <Box key={report.idReport} sx={{ border: '1px solid #ccc', marginBottom: '10px', padding: '10px 10px 10px 10px',width:"300px",borderRadius:"10px",backgroundColor:"white" }}>
+                <p><strong>From:</strong> {reporter?.login || report.idReportedByUser}</p>
+                <p><strong>Against:</strong> {reported?.login || report.idReportedUser}</p>
+                <p><strong>Reason:</strong> {report.Reason}</p>
+                <Button sx={{backgroundColor:"green", color:"black", margin:"3px 3px 3px 3px"}} onClick={() => handleView(report.idReport)}>View</Button>
+                <Button sx={{backgroundColor:"red", color:"black", margin:"3px 3px 3px 3px"}} onClick={() => handleDeny(report.idReport)}>Deny</Button>
+              </Box>
+            );
+          })}
+        </Box>
+      </Box>
     );
   }
 

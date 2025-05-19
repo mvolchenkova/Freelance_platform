@@ -1,9 +1,10 @@
 import { fetchUsers } from "../../store/Slices/userSlicer";
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, IconButton } from "@mui/material";
+import DeleteIcon from '@mui/icons-material/Delete';
 
-export default function CustSupportNotification({ record }) {
+export default function CustSupportNotification({ record, onDelete }) {
   const dispatch = useDispatch();
   const users = useSelector((state) => state.users.users.data || []);
   const [userName, setUserName] = useState('');
@@ -31,15 +32,23 @@ export default function CustSupportNotification({ record }) {
         gap: "20px",
         justifyContent: "space-between",
         backgroundColor: "white",
-        padding: "5px 10px",
-        borderRadius: "10px"
+        padding: "10px",
+        borderRadius: "10px",
+        alignItems: "center"
       }}
     >
       <Box>
-        <Typography ><strong>Question:</strong> {record.question}</Typography>
+        <Typography><strong>Question:</strong> {record.question}</Typography>
+        <Typography><strong>Answer:</strong> {record.answer}</Typography>
       </Box>
-      <Typography><strong>Answer:</strong> {record.answer}</Typography>
-      
+
+      <IconButton
+        aria-label="delete"
+        color="error"
+        onClick={() => onDelete(record.idSupport)}
+      >
+        <DeleteIcon />
+      </IconButton>
     </Box>
   );
 }
