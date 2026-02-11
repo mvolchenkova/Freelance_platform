@@ -1,8 +1,10 @@
 const Router = require('express');
 const router = new Router();
-const supportController = require('../Controllers/Customer/SupportController');
+const supportController = require('../Controllers/Admin/SupportController');
 
-router.get('/',supportController.getSupport)
-router.post('/create/:id',supportController.createSupport)
-router.put('/update/:id', supportController.updateSupport)
+router.get('/',supportController.getAll)
+router.post('/',supportController.create)
+router.put('/:id', supportController.update)
+router.get("/user/:userId",supportController.getByUserId)
+router.delete("/:id",supportController.delete)
 module.exports = router;

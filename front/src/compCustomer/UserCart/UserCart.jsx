@@ -97,6 +97,20 @@ export default function UserCart() {
 
         </div>
       )}
+       {user.user.role === 'admin' && (
+        <div className="editPortfolioButton">
+          <Link to="/viewUsers">
+            <Button
+              text="View Users"
+              backgroundColor="rgb(219, 242, 215)"
+              color="#000"
+              fontSize="18px"
+            />
+          </Link>
+
+
+        </div>
+      )}
     </article>
   );
 }

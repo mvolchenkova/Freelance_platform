@@ -41,6 +41,10 @@ export default function LoginingComp() {
         navigate('/mainCandidates');
         window.location.reload();
       }
+      else if(resultAction.payload.user.role==='admin'){
+        navigate('/');
+        window.location.reload();
+      }
     }
   };
   return (
