@@ -30,7 +30,7 @@ export default function CustomizedButtons(props) {
       padding={padding}
       onClick={func}
       width={width}
-      onClickCapture={func}
+      
     >
       {text}
       {showArrow && <ArrowForwardIcon style={{ marginLeft: '8px' }} />}

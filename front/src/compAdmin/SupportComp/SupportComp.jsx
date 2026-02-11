@@ -49,7 +49,7 @@ const users = useSelector((state) => state.users.users.data || []);
     const payload={
         question:newQuestion,
        timeOfAsk: new Date().toISOString(),
-       UserId : userId
+       UserIdUser : userId
     }
       
    
@@ -75,7 +75,7 @@ const users = useSelector((state) => state.users.users.data || []);
           supports
   .filter(record => !record.answer) // скрыть уже отвеченные
   .map((record) => {
-    const userData = users.find(u => u.idUser == Number(record.UserId));   
+    const userData = users.find(u => u.idUser == Number(record.UserIdUser));   
     
     return (
       <Box key={record.idSupport} sx={{width:"13%",display:"flex",flexDirection:"column",backgroundColor:"white", padding:"10px 10px 10px 10px",borderRadius:"10px"}}>

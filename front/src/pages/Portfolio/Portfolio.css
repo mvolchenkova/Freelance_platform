@@ -41,10 +41,12 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
+    width: 30%;
 }
 .portDiv{
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
 }

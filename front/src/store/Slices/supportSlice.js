@@ -18,9 +18,9 @@ export const createSupport = createAsyncThunk(
 );
 export const fetchSupportByUserId = createAsyncThunk(
   'support/fetchByUserId',
-  async (userId, { rejectWithValue }) => {
+  async (UserIdUser, { rejectWithValue }) => {
     try {
-      const response = await axios.get(`${API_URL}support/user/${userId}`);
+      const response = await axios.get(`${API_URL}support/user/${UserIdUser}`);
       return response.data;
     } catch (error) {
       return rejectWithValue(error.response?.data?.error || error.message);

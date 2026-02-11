@@ -50,7 +50,7 @@ console.log('Created support:', support.toJSON());
     async getByUserId(req,res){
         try {
     const supports = await Support.findAll({
-      where: { UserId: req.params.userId }
+      where: { UserIdUser: req.params.userId }
     });
     res.json(supports);
   } catch (err) {

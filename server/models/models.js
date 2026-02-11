@@ -30,7 +30,7 @@ const Support = sequelize.define("Support", {
   question: { type: DataTypes.STRING, allowNull: false },
   timeOfAnswer: { type: DataTypes.DATE, allowNull: true },
   timeOfAsk: { type: DataTypes.DATE, allowNull: false },
-  UserId:{ type: DataTypes.BIGINT, allowNull: true}
+  UserIdUser:{ type: DataTypes.BIGINT, allowNull: true}
 });
 //подумать
 const Stat = sequelize.define("Stat", {
